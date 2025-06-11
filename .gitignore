@@ -43,4 +43,4 @@ batch_push.sh
 provenance_output/
 provenance_output.crate/
 workflow_inputs/Data/
-provenance_output.crate.zip
+
