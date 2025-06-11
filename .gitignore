@@ -1,0 +1,49 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+*.egg-info/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# CWL runtime temp files
+.cwltool/
+*.cwltool.log
+*.tmp/
+*.temp/
+
+# Log files
+*.log
+*.err
+*.out
+stderr.txt
+stdout.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+
+# Backup files
+*~
+*.bak
+
+batch_push.sh
+
+provenance_output/
+provenance_output.crate/
+workflow_inputs/Data/
+T59GLL_20220207T222541_B03_10m.pickle
+T59GLL_20220207T222541_B08_10m.pickle
+T59GLL_20220207T222541_GNDVI_10m.pickle
+T59GLL_20220207T222541_GNDVI_10m.tif

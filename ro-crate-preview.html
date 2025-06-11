@@ -1,0 +1,2344 @@
+
+
+<html>
+<head>
+
+
+<script type="application/ld+json"> 
+  {
+  "@context": [
+    "https://w3id.org/ro/crate/1.1/context",
+    "https://w3id.org/ro/terms/workflow-run"
+  ],
+  "@graph": [
+    {
+      "@id": "./",
+      "@type": "Dataset",
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/wfrun/process/0.1"
+        },
+        {
+          "@id": "https://w3id.org/ro/wfrun/workflow/0.1"
+        },
+        {
+          "@id": "https://w3id.org/ro/wfrun/provenance/0.1"
+        },
+        {
+          "@id": "https://w3id.org/workflowhub/workflow-ro-crate/1.0"
+        }
+      ],
+      "datePublished": "2025-06-11T01:41:15+00:00",
+      "description": "run of packed.cwl",
+      "hasPart": [
+        {
+          "@id": "packed.cwl"
+        },
+        {
+          "@id": "1dec49af2badecceb97f0e986d0f24c5aba79fa4"
+        },
+        {
+          "@id": "093c77ca95eb9646c5a96299b0650366922b4050"
+        },
+        {
+          "@id": "11fb277388f19c112e777aa5bf04096300e26011"
+        },
+        {
+          "@id": "0603d808e81c126dadaa99fb586fa30e0f0411bf"
+        },
+        {
+          "@id": "005d10def9470fd3947da333a45ad1133364d867"
+        },
+        {
+          "@id": "a32fad295ebe5cd057e9ab81c71307f52c2d73a8"
+        },
+        {
+          "@id": "7385396b3c482511e1a72c579254d15ec7d95a00"
+        },
+        {
+          "@id": "2b8004eb3ecd3a71e3459ce42bbc332340134445"
+        },
+        {
+          "@id": "8671ffbeef86c8f4d6f2de2900071e7c2f21077f"
+        },
+        {
+          "@id": "primary-job.json"
+        }
+      ],
+      "license": "notspecified",
+      "mainEntity": {
+        "@id": "packed.cwl"
+      },
+      "mentions": [
+        {
+          "@id": "#e0b50489-d010-4050-b137-731252385a35"
+        },
+        {
+          "@id": "#e851f185-9a32-44cd-a9e7-3ab04a402937"
+        },
+        {
+          "@id": "#911eb702-8a99-4b47-b5a8-6c082780e070"
+        }
+      ],
+      "name": "run of packed.cwl",
+      "@reverse": {
+        "about": [
+          {
+            "@id": "ro-crate-metadata.json"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "about": {
+        "@id": "./"
+      },
+      "conformsTo": [
+        {
+          "@id": "https://w3id.org/ro/crate/1.1"
+        },
+        {
+          "@id": "https://w3id.org/workflowhub/workflow-ro-crate/1.0"
+        }
+      ]
+    },
+    {
+      "@id": "https://w3id.org/ro/wfrun/process/0.1",
+      "@type": "CreativeWork",
+      "name": "Process Run Crate",
+      "version": "0.1",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "./"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://w3id.org/ro/wfrun/workflow/0.1",
+      "@type": "CreativeWork",
+      "name": "Workflow Run Crate",
+      "version": "0.1",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "./"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://w3id.org/ro/wfrun/provenance/0.1",
+      "@type": "CreativeWork",
+      "name": "Provenance Run Crate",
+      "version": "0.1",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "./"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://w3id.org/workflowhub/workflow-ro-crate/1.0",
+      "@type": "CreativeWork",
+      "name": "Workflow RO-Crate",
+      "version": "1.0",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "ro-crate-metadata.json"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl",
+      "@type": [
+        "File",
+        "SoftwareSourceCode",
+        "ComputationalWorkflow",
+        "HowTo"
+      ],
+      "connection": [
+        {
+          "@id": "#27df1b8c-5578-4054-9c45-3dcd5f070704"
+        },
+        {
+          "@id": "#968f4de7-b6d8-4041-a577-5e5461d544da"
+        }
+      ],
+      "hasPart": [
+        {
+          "@id": "packed.cwl#index_def.cwl"
+        },
+        {
+          "@id": "packed.cwl#tiff_gen.cwl"
+        }
+      ],
+      "input": [
+        {
+          "@id": "packed.cwl#main/bands"
+        },
+        {
+          "@id": "packed.cwl#main/color"
+        },
+        {
+          "@id": "packed.cwl#main/index"
+        }
+      ],
+      "name": "packed.cwl",
+      "output": [
+        {
+          "@id": "packed.cwl#main/all_outputs"
+        },
+        {
+          "@id": "packed.cwl#main/tiff"
+        }
+      ],
+      "programmingLanguage": {
+        "@id": "https://w3id.org/workflowhub/workflow-ro-crate#cwl"
+      },
+      "step": [
+        {
+          "@id": "packed.cwl#main/index_def"
+        },
+        {
+          "@id": "packed.cwl#main/tiff_gen"
+        }
+      ],
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          }
+        ],
+        "mainEntity": [
+          {
+            "@id": "./"
+          }
+        ],
+        "instrument": [
+          {
+            "@id": "#e0b50489-d010-4050-b137-731252385a35"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://w3id.org/workflowhub/workflow-ro-crate#cwl",
+      "@type": "ComputerLanguage",
+      "alternateName": "CWL",
+      "identifier": {
+        "@id": "https://w3id.org/cwl/v1.2/"
+      },
+      "name": "Common Workflow Language",
+      "url": {
+        "@id": "https://www.commonwl.org/"
+      },
+      "version": "v1.2",
+      "@reverse": {
+        "programmingLanguage": [
+          {
+            "@id": "packed.cwl"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#main/bands",
+      "@type": "FormalParameter",
+      "additionalType": "File",
+      "multipleValues": "True",
+      "name": "bands",
+      "@reverse": {
+        "input": [
+          {
+            "@id": "packed.cwl"
+          }
+        ],
+        "sourceParameter": [
+          {
+            "@id": "#a3142af6-baa6-4403-813c-b42fa8b55c2e"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "#pv-main/bands"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#main/color",
+      "@type": "FormalParameter",
+      "additionalType": "Text",
+      "name": "color",
+      "@reverse": {
+        "input": [
+          {
+            "@id": "packed.cwl"
+          }
+        ],
+        "sourceParameter": [
+          {
+            "@id": "#1026dc45-fd8d-4fad-ac41-db3c44e3119a"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "#pv-main/color"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#main/index",
+      "@type": "FormalParameter",
+      "additionalType": "Text",
+      "name": "index",
+      "@reverse": {
+        "input": [
+          {
+            "@id": "packed.cwl"
+          }
+        ],
+        "sourceParameter": [
+          {
+            "@id": "#dc471481-f3c3-4e1c-a8af-c5d474200ded"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "#pv-main/index"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#main/all_outputs",
+      "@type": "FormalParameter",
+      "additionalType": "File",
+      "multipleValues": "True",
+      "name": "all_outputs",
+      "@reverse": {
+        "output": [
+          {
+            "@id": "packed.cwl"
+          }
+        ],
+        "targetParameter": [
+          {
+            "@id": "#27df1b8c-5578-4054-9c45-3dcd5f070704"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "#pv-main/all_outputs"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#main/tiff",
+      "@type": "FormalParameter",
+      "additionalType": "File",
+      "name": "tiff",
+      "@reverse": {
+        "output": [
+          {
+            "@id": "packed.cwl"
+          }
+        ],
+        "targetParameter": [
+          {
+            "@id": "#968f4de7-b6d8-4041-a577-5e5461d544da"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "a32fad295ebe5cd057e9ab81c71307f52c2d73a8"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#main/index_def",
+      "@type": "HowToStep",
+      "connection": [
+        {
+          "@id": "#a3142af6-baa6-4403-813c-b42fa8b55c2e"
+        },
+        {
+          "@id": "#dc471481-f3c3-4e1c-a8af-c5d474200ded"
+        }
+      ],
+      "position": "0",
+      "workExample": {
+        "@id": "packed.cwl#index_def.cwl"
+      },
+      "@reverse": {
+        "step": [
+          {
+            "@id": "packed.cwl"
+          }
+        ],
+        "instrument": [
+          {
+            "@id": "#35f23882-63df-4f04-ac2d-c776bc5c2a3e"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#index_def.cwl",
+      "@type": "SoftwareApplication",
+      "input": [
+        {
+          "@id": "packed.cwl#index_def.cwl/bands"
+        },
+        {
+          "@id": "packed.cwl#index_def.cwl/index"
+        },
+        {
+          "@id": "packed.cwl#index_def.cwl/index_def"
+        }
+      ],
+      "name": "index_def.cwl",
+      "output": [
+        {
+          "@id": "packed.cwl#index_def.cwl/all_outputs"
+        },
+        {
+          "@id": "packed.cwl#index_def.cwl/index_matrix"
+        }
+      ],
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "packed.cwl"
+          }
+        ],
+        "workExample": [
+          {
+            "@id": "packed.cwl#main/index_def"
+          }
+        ],
+        "instrument": [
+          {
+            "@id": "#40db2267-e782-4c8f-930b-d5f4c715c3f1"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#index_def.cwl/bands",
+      "@type": "FormalParameter",
+      "additionalType": "File",
+      "multipleValues": "True",
+      "name": "bands",
+      "@reverse": {
+        "input": [
+          {
+            "@id": "packed.cwl#index_def.cwl"
+          }
+        ],
+        "targetParameter": [
+          {
+            "@id": "#a3142af6-baa6-4403-813c-b42fa8b55c2e"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "#pv-main/index_def/bands"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#index_def.cwl/index",
+      "@type": "FormalParameter",
+      "additionalType": "Text",
+      "name": "index",
+      "@reverse": {
+        "input": [
+          {
+            "@id": "packed.cwl#index_def.cwl"
+          }
+        ],
+        "targetParameter": [
+          {
+            "@id": "#dc471481-f3c3-4e1c-a8af-c5d474200ded"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "#pv-main/index_def/index"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#index_def.cwl/index_def",
+      "@type": "FormalParameter",
+      "additionalType": "File",
+      "defaultValue": "<cwl_utils.parser.cwl_v1_2.File object at 0x103cf7d70>",
+      "name": "index_def",
+      "@reverse": {
+        "input": [
+          {
+            "@id": "packed.cwl#index_def.cwl"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "#e851f185-9a32-44cd-a9e7-3ab04a402937"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#index_def.cwl/all_outputs",
+      "@type": "FormalParameter",
+      "additionalType": "File",
+      "multipleValues": "True",
+      "name": "all_outputs",
+      "@reverse": {
+        "output": [
+          {
+            "@id": "packed.cwl#index_def.cwl"
+          }
+        ],
+        "sourceParameter": [
+          {
+            "@id": "#27df1b8c-5578-4054-9c45-3dcd5f070704"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "#pv-main/index_def/all_outputs"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#index_def.cwl/index_matrix",
+      "@type": "FormalParameter",
+      "additionalType": "File",
+      "name": "index_matrix",
+      "@reverse": {
+        "output": [
+          {
+            "@id": "packed.cwl#index_def.cwl"
+          }
+        ],
+        "sourceParameter": [
+          {
+            "@id": "#dd5d0b0d-294a-4727-a503-20396baf0678"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "005d10def9470fd3947da333a45ad1133364d867"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#main/tiff_gen",
+      "@type": "HowToStep",
+      "connection": [
+        {
+          "@id": "#1026dc45-fd8d-4fad-ac41-db3c44e3119a"
+        },
+        {
+          "@id": "#dd5d0b0d-294a-4727-a503-20396baf0678"
+        }
+      ],
+      "position": "1",
+      "workExample": {
+        "@id": "packed.cwl#tiff_gen.cwl"
+      },
+      "@reverse": {
+        "step": [
+          {
+            "@id": "packed.cwl"
+          }
+        ],
+        "instrument": [
+          {
+            "@id": "#4c664353-7a37-42a6-bddd-62c7aa98d9e6"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#tiff_gen.cwl",
+      "@type": "SoftwareApplication",
+      "input": [
+        {
+          "@id": "packed.cwl#tiff_gen.cwl/color"
+        },
+        {
+          "@id": "packed.cwl#tiff_gen.cwl/index_array"
+        },
+        {
+          "@id": "packed.cwl#tiff_gen.cwl/tiff_gen"
+        }
+      ],
+      "name": "tiff_gen.cwl",
+      "output": [
+        {
+          "@id": "packed.cwl#tiff_gen.cwl/tiff"
+        }
+      ],
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "packed.cwl"
+          }
+        ],
+        "workExample": [
+          {
+            "@id": "packed.cwl#main/tiff_gen"
+          }
+        ],
+        "instrument": [
+          {
+            "@id": "#b3d578b5-69d2-4a67-804d-c3afc52afd9e"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#tiff_gen.cwl/color",
+      "@type": "FormalParameter",
+      "additionalType": "Text",
+      "name": "color",
+      "@reverse": {
+        "input": [
+          {
+            "@id": "packed.cwl#tiff_gen.cwl"
+          }
+        ],
+        "targetParameter": [
+          {
+            "@id": "#1026dc45-fd8d-4fad-ac41-db3c44e3119a"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "#pv-main/tiff_gen/color"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#tiff_gen.cwl/index_array",
+      "@type": "FormalParameter",
+      "additionalType": "File",
+      "name": "index_array",
+      "@reverse": {
+        "input": [
+          {
+            "@id": "packed.cwl#tiff_gen.cwl"
+          }
+        ],
+        "targetParameter": [
+          {
+            "@id": "#dd5d0b0d-294a-4727-a503-20396baf0678"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "005d10def9470fd3947da333a45ad1133364d867"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#tiff_gen.cwl/tiff_gen",
+      "@type": "FormalParameter",
+      "additionalType": "File",
+      "defaultValue": "<cwl_utils.parser.cwl_v1_2.File object at 0x10480df10>",
+      "name": "tiff_gen",
+      "@reverse": {
+        "input": [
+          {
+            "@id": "packed.cwl#tiff_gen.cwl"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "#911eb702-8a99-4b47-b5a8-6c082780e070"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "packed.cwl#tiff_gen.cwl/tiff",
+      "@type": "FormalParameter",
+      "additionalType": "File",
+      "name": "tiff",
+      "@reverse": {
+        "output": [
+          {
+            "@id": "packed.cwl#tiff_gen.cwl"
+          }
+        ],
+        "sourceParameter": [
+          {
+            "@id": "#968f4de7-b6d8-4041-a577-5e5461d544da"
+          }
+        ],
+        "exampleOfWork": [
+          {
+            "@id": "a32fad295ebe5cd057e9ab81c71307f52c2d73a8"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#a3142af6-baa6-4403-813c-b42fa8b55c2e",
+      "@type": "ParameterConnection",
+      "sourceParameter": {
+        "@id": "packed.cwl#main/bands"
+      },
+      "targetParameter": {
+        "@id": "packed.cwl#index_def.cwl/bands"
+      },
+      "@reverse": {
+        "connection": [
+          {
+            "@id": "packed.cwl#main/index_def"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#dc471481-f3c3-4e1c-a8af-c5d474200ded",
+      "@type": "ParameterConnection",
+      "sourceParameter": {
+        "@id": "packed.cwl#main/index"
+      },
+      "targetParameter": {
+        "@id": "packed.cwl#index_def.cwl/index"
+      },
+      "@reverse": {
+        "connection": [
+          {
+            "@id": "packed.cwl#main/index_def"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#1026dc45-fd8d-4fad-ac41-db3c44e3119a",
+      "@type": "ParameterConnection",
+      "sourceParameter": {
+        "@id": "packed.cwl#main/color"
+      },
+      "targetParameter": {
+        "@id": "packed.cwl#tiff_gen.cwl/color"
+      },
+      "@reverse": {
+        "connection": [
+          {
+            "@id": "packed.cwl#main/tiff_gen"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#dd5d0b0d-294a-4727-a503-20396baf0678",
+      "@type": "ParameterConnection",
+      "sourceParameter": {
+        "@id": "packed.cwl#index_def.cwl/index_matrix"
+      },
+      "targetParameter": {
+        "@id": "packed.cwl#tiff_gen.cwl/index_array"
+      },
+      "@reverse": {
+        "connection": [
+          {
+            "@id": "packed.cwl#main/tiff_gen"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#27df1b8c-5578-4054-9c45-3dcd5f070704",
+      "@type": "ParameterConnection",
+      "sourceParameter": {
+        "@id": "packed.cwl#index_def.cwl/all_outputs"
+      },
+      "targetParameter": {
+        "@id": "packed.cwl#main/all_outputs"
+      },
+      "@reverse": {
+        "connection": [
+          {
+            "@id": "packed.cwl"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#968f4de7-b6d8-4041-a577-5e5461d544da",
+      "@type": "ParameterConnection",
+      "sourceParameter": {
+        "@id": "packed.cwl#tiff_gen.cwl/tiff"
+      },
+      "targetParameter": {
+        "@id": "packed.cwl#main/tiff"
+      },
+      "@reverse": {
+        "connection": [
+          {
+            "@id": "packed.cwl"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#a9e4bcad-e48e-40ad-afce-df9579566ca5",
+      "@type": "SoftwareApplication",
+      "name": "cwltool 3.1.20250110105449",
+      "@reverse": {
+        "instrument": [
+          {
+            "@id": "#88e3e0c3-f630-46f7-8f8e-fbdf25204e60"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#88e3e0c3-f630-46f7-8f8e-fbdf25204e60",
+      "@type": "OrganizeAction",
+      "instrument": {
+        "@id": "#a9e4bcad-e48e-40ad-afce-df9579566ca5"
+      },
+      "name": "Run of cwltool 3.1.20250110105449",
+      "object": [
+        {
+          "@id": "#35f23882-63df-4f04-ac2d-c776bc5c2a3e"
+        },
+        {
+          "@id": "#4c664353-7a37-42a6-bddd-62c7aa98d9e6"
+        }
+      ],
+      "result": {
+        "@id": "#e0b50489-d010-4050-b137-731252385a35"
+      },
+      "startTime": "2025-06-11T13:40:36.239019"
+    },
+    {
+      "@id": "#e0b50489-d010-4050-b137-731252385a35",
+      "@type": "CreateAction",
+      "endTime": "2025-06-11T13:40:54.180144",
+      "instrument": {
+        "@id": "packed.cwl"
+      },
+      "name": "Run of workflow/packed.cwl#main",
+      "object": [
+        {
+          "@id": "#pv-main/bands"
+        },
+        {
+          "@id": "#pv-main/color"
+        },
+        {
+          "@id": "#pv-main/index"
+        }
+      ],
+      "result": [
+        {
+          "@id": "#pv-main/all_outputs"
+        },
+        {
+          "@id": "a32fad295ebe5cd057e9ab81c71307f52c2d73a8"
+        }
+      ],
+      "startTime": "2025-06-11T13:40:36.239067",
+      "@reverse": {
+        "mentions": [
+          {
+            "@id": "./"
+          }
+        ],
+        "result": [
+          {
+            "@id": "#88e3e0c3-f630-46f7-8f8e-fbdf25204e60"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "1dec49af2badecceb97f0e986d0f24c5aba79fa4",
+      "@type": "File",
+      "alternateName": "T59GLL_20220207T222541_B03_10m.jp2",
+      "contentSize": "3071888",
+      "sha1": "1dec49af2badecceb97f0e986d0f24c5aba79fa4",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          }
+        ],
+        "value": [
+          {
+            "@id": "#pv-main/bands"
+          },
+          {
+            "@id": "#pv-main/index_def/bands"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "093c77ca95eb9646c5a96299b0650366922b4050",
+      "@type": "File",
+      "alternateName": "T59GLL_20220207T222541_B08_10m.jp2",
+      "contentSize": "3545800",
+      "sha1": "093c77ca95eb9646c5a96299b0650366922b4050",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          }
+        ],
+        "value": [
+          {
+            "@id": "#pv-main/bands"
+          },
+          {
+            "@id": "#pv-main/index_def/bands"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#pv-main/bands",
+      "@type": "PropertyValue",
+      "exampleOfWork": {
+        "@id": "packed.cwl#main/bands"
+      },
+      "name": "bands",
+      "value": [
+        {
+          "@id": "1dec49af2badecceb97f0e986d0f24c5aba79fa4"
+        },
+        {
+          "@id": "093c77ca95eb9646c5a96299b0650366922b4050"
+        }
+      ],
+      "@reverse": {
+        "object": [
+          {
+            "@id": "#e0b50489-d010-4050-b137-731252385a35"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#pv-main/color",
+      "@type": "PropertyValue",
+      "exampleOfWork": {
+        "@id": "packed.cwl#main/color"
+      },
+      "name": "color",
+      "value": "RdYlGn",
+      "@reverse": {
+        "object": [
+          {
+            "@id": "#e0b50489-d010-4050-b137-731252385a35"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#pv-main/index",
+      "@type": "PropertyValue",
+      "exampleOfWork": {
+        "@id": "packed.cwl#main/index"
+      },
+      "name": "index",
+      "value": "GNDVI",
+      "@reverse": {
+        "object": [
+          {
+            "@id": "#e0b50489-d010-4050-b137-731252385a35"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "11fb277388f19c112e777aa5bf04096300e26011",
+      "@type": "File",
+      "alternateName": "T59GLL_20220207T222541_B03_10m.pickle",
+      "contentSize": "241121888",
+      "sha1": "11fb277388f19c112e777aa5bf04096300e26011",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          }
+        ],
+        "value": [
+          {
+            "@id": "#pv-main/all_outputs"
+          },
+          {
+            "@id": "#pv-main/index_def/all_outputs"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "0603d808e81c126dadaa99fb586fa30e0f0411bf",
+      "@type": "File",
+      "alternateName": "T59GLL_20220207T222541_B08_10m.pickle",
+      "contentSize": "241121888",
+      "sha1": "0603d808e81c126dadaa99fb586fa30e0f0411bf",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          }
+        ],
+        "value": [
+          {
+            "@id": "#pv-main/all_outputs"
+          },
+          {
+            "@id": "#pv-main/index_def/all_outputs"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "005d10def9470fd3947da333a45ad1133364d867",
+      "@type": "File",
+      "alternateName": "T59GLL_20220207T222541_GNDVI_10m.pickle",
+      "contentSize": "482242690",
+      "dateCreated": "2025-06-11T13:40:38.715080",
+      "exampleOfWork": [
+        {
+          "@id": "packed.cwl#index_def.cwl/index_matrix"
+        },
+        {
+          "@id": "packed.cwl#tiff_gen.cwl/index_array"
+        }
+      ],
+      "sha1": "005d10def9470fd3947da333a45ad1133364d867",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          }
+        ],
+        "value": [
+          {
+            "@id": "#pv-main/all_outputs"
+          },
+          {
+            "@id": "#pv-main/index_def/all_outputs"
+          }
+        ],
+        "result": [
+          {
+            "@id": "#40db2267-e782-4c8f-930b-d5f4c715c3f1"
+          }
+        ],
+        "object": [
+          {
+            "@id": "#b3d578b5-69d2-4a67-804d-c3afc52afd9e"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#pv-main/all_outputs",
+      "@type": "PropertyValue",
+      "dateCreated": "2025-06-11T13:40:54.179987",
+      "exampleOfWork": {
+        "@id": "packed.cwl#main/all_outputs"
+      },
+      "name": "all_outputs",
+      "value": [
+        {
+          "@id": "11fb277388f19c112e777aa5bf04096300e26011"
+        },
+        {
+          "@id": "0603d808e81c126dadaa99fb586fa30e0f0411bf"
+        },
+        {
+          "@id": "005d10def9470fd3947da333a45ad1133364d867"
+        }
+      ],
+      "@reverse": {
+        "result": [
+          {
+            "@id": "#e0b50489-d010-4050-b137-731252385a35"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "a32fad295ebe5cd057e9ab81c71307f52c2d73a8",
+      "@type": "File",
+      "alternateName": "T59GLL_20220207T222541_GNDVI_10m.tif",
+      "contentSize": "78643406",
+      "dateCreated": "2025-06-11T13:40:54.058608",
+      "exampleOfWork": [
+        {
+          "@id": "packed.cwl#main/tiff"
+        },
+        {
+          "@id": "packed.cwl#tiff_gen.cwl/tiff"
+        }
+      ],
+      "sha1": "a32fad295ebe5cd057e9ab81c71307f52c2d73a8",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          }
+        ],
+        "result": [
+          {
+            "@id": "#e0b50489-d010-4050-b137-731252385a35"
+          },
+          {
+            "@id": "#b3d578b5-69d2-4a67-804d-c3afc52afd9e"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#40db2267-e782-4c8f-930b-d5f4c715c3f1",
+      "@type": "CreateAction",
+      "endTime": "2025-06-11T13:40:38.715070",
+      "instrument": {
+        "@id": "packed.cwl#index_def.cwl"
+      },
+      "name": "Run of workflow/packed.cwl#main/index_def",
+      "object": [
+        {
+          "@id": "#pv-main/index_def/bands"
+        },
+        {
+          "@id": "#pv-main/index_def/index"
+        },
+        {
+          "@id": "#e851f185-9a32-44cd-a9e7-3ab04a402937"
+        }
+      ],
+      "result": [
+        {
+          "@id": "#pv-main/index_def/all_outputs"
+        },
+        {
+          "@id": "005d10def9470fd3947da333a45ad1133364d867"
+        }
+      ],
+      "startTime": "2025-06-11T13:40:36.376914",
+      "@reverse": {
+        "object": [
+          {
+            "@id": "#35f23882-63df-4f04-ac2d-c776bc5c2a3e"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#35f23882-63df-4f04-ac2d-c776bc5c2a3e",
+      "@type": "ControlAction",
+      "instrument": {
+        "@id": "packed.cwl#main/index_def"
+      },
+      "name": "orchestrate index_def.cwl",
+      "object": {
+        "@id": "#40db2267-e782-4c8f-930b-d5f4c715c3f1"
+      },
+      "@reverse": {
+        "object": [
+          {
+            "@id": "#88e3e0c3-f630-46f7-8f8e-fbdf25204e60"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#pv-main/index_def/bands",
+      "@type": "PropertyValue",
+      "exampleOfWork": {
+        "@id": "packed.cwl#index_def.cwl/bands"
+      },
+      "name": "bands",
+      "value": [
+        {
+          "@id": "1dec49af2badecceb97f0e986d0f24c5aba79fa4"
+        },
+        {
+          "@id": "093c77ca95eb9646c5a96299b0650366922b4050"
+        }
+      ],
+      "@reverse": {
+        "object": [
+          {
+            "@id": "#40db2267-e782-4c8f-930b-d5f4c715c3f1"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#pv-main/index_def/index",
+      "@type": "PropertyValue",
+      "exampleOfWork": {
+        "@id": "packed.cwl#index_def.cwl/index"
+      },
+      "name": "index",
+      "value": "GNDVI",
+      "@reverse": {
+        "object": [
+          {
+            "@id": "#40db2267-e782-4c8f-930b-d5f4c715c3f1"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "7385396b3c482511e1a72c579254d15ec7d95a00",
+      "@type": "File",
+      "alternateName": "index_def.py",
+      "contentSize": "12299",
+      "sha1": "7385396b3c482511e1a72c579254d15ec7d95a00",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "#e851f185-9a32-44cd-a9e7-3ab04a402937"
+          }
+        ],
+        "mainEntity": [
+          {
+            "@id": "#e851f185-9a32-44cd-a9e7-3ab04a402937"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#e851f185-9a32-44cd-a9e7-3ab04a402937",
+      "@type": "Collection",
+      "exampleOfWork": {
+        "@id": "packed.cwl#index_def.cwl/index_def"
+      },
+      "hasPart": [
+        {
+          "@id": "7385396b3c482511e1a72c579254d15ec7d95a00"
+        },
+        {
+          "@id": "2b8004eb3ecd3a71e3459ce42bbc332340134445"
+        }
+      ],
+      "mainEntity": {
+        "@id": "7385396b3c482511e1a72c579254d15ec7d95a00"
+      },
+      "@reverse": {
+        "mentions": [
+          {
+            "@id": "./"
+          }
+        ],
+        "object": [
+          {
+            "@id": "#40db2267-e782-4c8f-930b-d5f4c715c3f1"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "2b8004eb3ecd3a71e3459ce42bbc332340134445",
+      "@type": "File",
+      "alternateName": "file_handling.py",
+      "contentSize": "783",
+      "sha1": "2b8004eb3ecd3a71e3459ce42bbc332340134445",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "#e851f185-9a32-44cd-a9e7-3ab04a402937"
+          },
+          {
+            "@id": "#911eb702-8a99-4b47-b5a8-6c082780e070"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#pv-main/index_def/all_outputs",
+      "@type": "PropertyValue",
+      "dateCreated": "2025-06-11T13:40:38.715080",
+      "exampleOfWork": {
+        "@id": "packed.cwl#index_def.cwl/all_outputs"
+      },
+      "name": "all_outputs",
+      "value": [
+        {
+          "@id": "11fb277388f19c112e777aa5bf04096300e26011"
+        },
+        {
+          "@id": "0603d808e81c126dadaa99fb586fa30e0f0411bf"
+        },
+        {
+          "@id": "005d10def9470fd3947da333a45ad1133364d867"
+        }
+      ],
+      "@reverse": {
+        "result": [
+          {
+            "@id": "#40db2267-e782-4c8f-930b-d5f4c715c3f1"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#b3d578b5-69d2-4a67-804d-c3afc52afd9e",
+      "@type": "CreateAction",
+      "endTime": "2025-06-11T13:40:54.058587",
+      "instrument": {
+        "@id": "packed.cwl#tiff_gen.cwl"
+      },
+      "name": "Run of workflow/packed.cwl#main/tiff_gen",
+      "object": [
+        {
+          "@id": "#pv-main/tiff_gen/color"
+        },
+        {
+          "@id": "005d10def9470fd3947da333a45ad1133364d867"
+        },
+        {
+          "@id": "#911eb702-8a99-4b47-b5a8-6c082780e070"
+        }
+      ],
+      "result": [
+        {
+          "@id": "a32fad295ebe5cd057e9ab81c71307f52c2d73a8"
+        }
+      ],
+      "startTime": "2025-06-11T13:40:39.195823",
+      "@reverse": {
+        "object": [
+          {
+            "@id": "#4c664353-7a37-42a6-bddd-62c7aa98d9e6"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#4c664353-7a37-42a6-bddd-62c7aa98d9e6",
+      "@type": "ControlAction",
+      "instrument": {
+        "@id": "packed.cwl#main/tiff_gen"
+      },
+      "name": "orchestrate tiff_gen.cwl",
+      "object": {
+        "@id": "#b3d578b5-69d2-4a67-804d-c3afc52afd9e"
+      },
+      "@reverse": {
+        "object": [
+          {
+            "@id": "#88e3e0c3-f630-46f7-8f8e-fbdf25204e60"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#pv-main/tiff_gen/color",
+      "@type": "PropertyValue",
+      "exampleOfWork": {
+        "@id": "packed.cwl#tiff_gen.cwl/color"
+      },
+      "name": "color",
+      "value": "RdYlGn",
+      "@reverse": {
+        "object": [
+          {
+            "@id": "#b3d578b5-69d2-4a67-804d-c3afc52afd9e"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "8671ffbeef86c8f4d6f2de2900071e7c2f21077f",
+      "@type": "File",
+      "alternateName": "tiff_gen.py",
+      "contentSize": "2112",
+      "sha1": "8671ffbeef86c8f4d6f2de2900071e7c2f21077f",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "#911eb702-8a99-4b47-b5a8-6c082780e070"
+          }
+        ],
+        "mainEntity": [
+          {
+            "@id": "#911eb702-8a99-4b47-b5a8-6c082780e070"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#911eb702-8a99-4b47-b5a8-6c082780e070",
+      "@type": "Collection",
+      "exampleOfWork": {
+        "@id": "packed.cwl#tiff_gen.cwl/tiff_gen"
+      },
+      "hasPart": [
+        {
+          "@id": "8671ffbeef86c8f4d6f2de2900071e7c2f21077f"
+        },
+        {
+          "@id": "2b8004eb3ecd3a71e3459ce42bbc332340134445"
+        }
+      ],
+      "mainEntity": {
+        "@id": "8671ffbeef86c8f4d6f2de2900071e7c2f21077f"
+      },
+      "@reverse": {
+        "mentions": [
+          {
+            "@id": "./"
+          }
+        ],
+        "object": [
+          {
+            "@id": "#b3d578b5-69d2-4a67-804d-c3afc52afd9e"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "primary-job.json",
+      "@type": "File",
+      "encodingFormat": "application/json",
+      "name": "input object document",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          }
+        ]
+      }
+    }
+  ]
+}
+</script>
+
+    
+<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script -->
+<script src="https://unpkg.com/ro-crate-html-js/dist/ro-crate-dynamic.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<meta charset='utf-8'/>
+<style>
+
+table.table {
+  padding-bottom: 300px;
+}
+</style>
+</head>
+
+
+<body>
+
+  <nav class="navbar">
+
+    <ul class="nav navbar-nav" >
+        <li ><a href="#"><span class="glyphicon glyphicon-home dataset_name">&nbsp;run of packed.cwl</span></a></li>
+    </ul>
+
+  </nav>
+<div class="container">
+<div class="jumbotron">
+<h4 class="citation"></h3>
+<h3 class="item_name">run of packed.cwl</h4>
+
+
+<a href="./ro-crate-metadata.json">⬇️🏷️ Download all the metadata for <span class='name'>run of packed.cwl</span> in JSON-LD format</a>
+
+
+<div id="check"></div>
+
+
+</div>
+
+
+
+<div id="summary">
+<div class='all-meta'>
+           <div>
+            <h3> run of packed.cwl</h3>
+            
+            
+            
+            
+        <div id="./">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>./</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>run of packed.cwl</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>Dataset</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
+            <td style='text-align:left'><span>run of packed.cwl</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">datePublished<span>&nbsp;</span><a href="http://schema.org/datePublished">[?]</a></th>
+            <td style='text-align:left'><span>2025-06-11T01:41:15+00:00</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#https%3A//w3id.org/ro/wfrun/process/0.1">Process Run Crate</a></li>
+                        
+                        <li><a href="#https%3A//w3id.org/ro/wfrun/workflow/0.1">Workflow Run Crate</a></li>
+                        
+                        <li><a href="#https%3A//w3id.org/ro/wfrun/provenance/0.1">Provenance Run Crate</a></li>
+                        
+                        <li><a href="#https%3A//w3id.org/workflowhub/workflow-ro-crate/1.0">Workflow RO-Crate</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#packed.cwl">packed.cwl</a></li>
+                        
+                        <li><a href="#1dec49af2badecceb97f0e986d0f24c5aba79fa4">1dec49af2badecceb97f0e986d0f24c5aba79fa4</a></li>
+                        
+                        <li><a href="#093c77ca95eb9646c5a96299b0650366922b4050">093c77ca95eb9646c5a96299b0650366922b4050</a></li>
+                        
+                        <li><a href="#11fb277388f19c112e777aa5bf04096300e26011">11fb277388f19c112e777aa5bf04096300e26011</a></li>
+                        
+                        <li><a href="#0603d808e81c126dadaa99fb586fa30e0f0411bf">0603d808e81c126dadaa99fb586fa30e0f0411bf</a></li>
+                        
+                        <li><a href="#005d10def9470fd3947da333a45ad1133364d867">005d10def9470fd3947da333a45ad1133364d867</a></li>
+                        
+                        <li><a href="#a32fad295ebe5cd057e9ab81c71307f52c2d73a8">a32fad295ebe5cd057e9ab81c71307f52c2d73a8</a></li>
+                        
+                        <li><a href="#7385396b3c482511e1a72c579254d15ec7d95a00">7385396b3c482511e1a72c579254d15ec7d95a00</a></li>
+                        
+                        <li><a href="#2b8004eb3ecd3a71e3459ce42bbc332340134445">2b8004eb3ecd3a71e3459ce42bbc332340134445</a></li>
+                        
+                        <li><a href="#8671ffbeef86c8f4d6f2de2900071e7c2f21077f">8671ffbeef86c8f4d6f2de2900071e7c2f21077f</a></li>
+                        
+                        <li><a href="#primary-job.json">input object document</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">license<span>&nbsp;</span><a href="http://schema.org/license">[?]</a></th>
+            <td style='text-align:left'><span>notspecified</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
+            <td style='text-align:left'><a href="#packed.cwl">packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">mentions<span>&nbsp;</span><a href="http://schema.org/mentions">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#%23e0b50489-d010-4050-b137-731252385a35">Run of workflow/packed.cwl#main</a></li>
+                        
+                        <li><a href="#%23e851f185-9a32-44cd-a9e7-3ab04a402937">#e851f185-9a32-44cd-a9e7-3ab04a402937</a></li>
+                        
+                        <li><a href="#%23911eb702-8a99-4b47-b5a8-6c082780e070">#911eb702-8a99-4b47-b5a8-6c082780e070</a></li>
+                        </ul></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
+            <td style='text-align:left'><a href="#ro-crate-metadata.json">ro-crate-metadata.json</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="https://w3id.org/ro/wfrun/process/0.1">Go to: </a> Process Run Crate</h3>
+            
+            
+            
+            
+        <div id="https://w3id.org/ro/wfrun/process/0.1">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><a href="https://w3id.org/ro/wfrun/process/0.1">https://w3id.org/ro/wfrun/process/0.1</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>Process Run Crate</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>CreativeWork</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">version<span>&nbsp;</span><a href="http://schema.org/version">[?]</a></th>
+            <td style='text-align:left'><span>0.1</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="https://w3id.org/ro/wfrun/workflow/0.1">Go to: </a> Workflow Run Crate</h3>
+            
+            
+            
+            
+        <div id="https://w3id.org/ro/wfrun/workflow/0.1">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><a href="https://w3id.org/ro/wfrun/workflow/0.1">https://w3id.org/ro/wfrun/workflow/0.1</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>Workflow Run Crate</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>CreativeWork</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">version<span>&nbsp;</span><a href="http://schema.org/version">[?]</a></th>
+            <td style='text-align:left'><span>0.1</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="https://w3id.org/ro/wfrun/provenance/0.1">Go to: </a> Provenance Run Crate</h3>
+            
+            
+            
+            
+        <div id="https://w3id.org/ro/wfrun/provenance/0.1">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><a href="https://w3id.org/ro/wfrun/provenance/0.1">https://w3id.org/ro/wfrun/provenance/0.1</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>Provenance Run Crate</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>CreativeWork</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">version<span>&nbsp;</span><a href="http://schema.org/version">[?]</a></th>
+            <td style='text-align:left'><span>0.1</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="https://w3id.org/workflowhub/workflow-ro-crate/1.0">Go to: </a> Workflow RO-Crate</h3>
+            
+            
+            
+            
+        <div id="https://w3id.org/workflowhub/workflow-ro-crate/1.0">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><a href="https://w3id.org/workflowhub/workflow-ro-crate/1.0">https://w3id.org/workflowhub/workflow-ro-crate/1.0</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>Workflow RO-Crate</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>CreativeWork</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">version<span>&nbsp;</span><a href="http://schema.org/version">[?]</a></th>
+            <td style='text-align:left'><span>1.0</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">run of packed.cwl</a></li>
+                        
+                        <li><a href="#ro-crate-metadata.json">ro-crate-metadata.json</a></li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="packed.cwl">⬇️ Download: </a> packed.cwl</h3>
+            
+            
+            
+            
+        <div id="packed.cwl">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>packed.cwl</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>packed.cwl</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><ul>
+                        <li><span>File</span></li>
+                        
+                        <li><span>SoftwareSourceCode</span></li>
+                        
+                        <li><span>ComputationalWorkflow</span></li>
+                        
+                        <li><span>HowTo</span></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">connection<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#connection">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#%2327df1b8c-5578-4054-9c45-3dcd5f070704">#27df1b8c-5578-4054-9c45-3dcd5f070704</a></li>
+                        
+                        <li><a href="#%23968f4de7-b6d8-4041-a577-5e5461d544da">#968f4de7-b6d8-4041-a577-5e5461d544da</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#packed.cwl%23index_def.cwl">index_def.cwl</a></li>
+                        
+                        <li><a href="#packed.cwl%23tiff_gen.cwl">tiff_gen.cwl</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">input<span>&nbsp;</span><a href="https://bioschemas.org/ComputationalWorkflow#input">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#packed.cwl%23main/bands">bands</a></li>
+                        
+                        <li><a href="#packed.cwl%23main/color">color</a></li>
+                        
+                        <li><a href="#packed.cwl%23main/index">index</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">output<span>&nbsp;</span><a href="https://bioschemas.org/ComputationalWorkflow#output">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#packed.cwl%23main/all_outputs">all_outputs</a></li>
+                        
+                        <li><a href="#packed.cwl%23main/tiff">tiff</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">programmingLanguage<span>&nbsp;</span><a href="http://schema.org/programmingLanguage">[?]</a></th>
+            <td style='text-align:left'><a href="#https%3A//w3id.org/workflowhub/workflow-ro-crate%23cwl">Common Workflow Language</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">step<span>&nbsp;</span><a href="http://schema.org/step">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#packed.cwl%23main/index_def">packed.cwl#main/index_def</a></li>
+                        
+                        <li><a href="#packed.cwl%23main/tiff_gen">packed.cwl#main/tiff_gen</a></li>
+                        </ul></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">instrument<span>&nbsp;</span><a href="http://schema.org/instrument">[?]</a></th>
+            <td style='text-align:left'><a href="#%23e0b50489-d010-4050-b137-731252385a35">Run of workflow/packed.cwl#main</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="1dec49af2badecceb97f0e986d0f24c5aba79fa4">⬇️ Download: </a> 1dec49af2badecceb97f0e986d0f24c5aba79fa4</h3>
+            
+            
+            
+            
+        <div id="1dec49af2badecceb97f0e986d0f24c5aba79fa4">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>1dec49af2badecceb97f0e986d0f24c5aba79fa4</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">contentSize<span>&nbsp;</span><a href="http://schema.org/contentSize">[?]</a></th>
+            <td style='text-align:left'><span>3071888</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">alternateName<span>&nbsp;</span><a href="http://schema.org/alternateName">[?]</a></th>
+            <td style='text-align:left'><span>T59GLL_20220207T222541_B03_10m.jp2</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">sha1<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#sha1">[?]</a></th>
+            <td style='text-align:left'><span>1dec49af2badecceb97f0e986d0f24c5aba79fa4</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">value<span>&nbsp;</span><a href="http://schema.org/value">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li>bands: [object Object],[object Object]</li>
+                        
+                        <li>bands: [object Object],[object Object]</li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="093c77ca95eb9646c5a96299b0650366922b4050">⬇️ Download: </a> 093c77ca95eb9646c5a96299b0650366922b4050</h3>
+            
+            
+            
+            
+        <div id="093c77ca95eb9646c5a96299b0650366922b4050">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>093c77ca95eb9646c5a96299b0650366922b4050</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">contentSize<span>&nbsp;</span><a href="http://schema.org/contentSize">[?]</a></th>
+            <td style='text-align:left'><span>3545800</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">alternateName<span>&nbsp;</span><a href="http://schema.org/alternateName">[?]</a></th>
+            <td style='text-align:left'><span>T59GLL_20220207T222541_B08_10m.jp2</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">sha1<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#sha1">[?]</a></th>
+            <td style='text-align:left'><span>093c77ca95eb9646c5a96299b0650366922b4050</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">value<span>&nbsp;</span><a href="http://schema.org/value">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li>bands: [object Object],[object Object]</li>
+                        
+                        <li>bands: [object Object],[object Object]</li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="11fb277388f19c112e777aa5bf04096300e26011">⬇️ Download: </a> 11fb277388f19c112e777aa5bf04096300e26011</h3>
+            
+            
+            
+            
+        <div id="11fb277388f19c112e777aa5bf04096300e26011">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>11fb277388f19c112e777aa5bf04096300e26011</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">contentSize<span>&nbsp;</span><a href="http://schema.org/contentSize">[?]</a></th>
+            <td style='text-align:left'><span>241121888</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">alternateName<span>&nbsp;</span><a href="http://schema.org/alternateName">[?]</a></th>
+            <td style='text-align:left'><span>T59GLL_20220207T222541_B03_10m.pickle</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">sha1<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#sha1">[?]</a></th>
+            <td style='text-align:left'><span>11fb277388f19c112e777aa5bf04096300e26011</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">value<span>&nbsp;</span><a href="http://schema.org/value">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li>all_outputs: [object Object],[object Object],[object Object]</li>
+                        
+                        <li>all_outputs: [object Object],[object Object],[object Object]</li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="0603d808e81c126dadaa99fb586fa30e0f0411bf">⬇️ Download: </a> 0603d808e81c126dadaa99fb586fa30e0f0411bf</h3>
+            
+            
+            
+            
+        <div id="0603d808e81c126dadaa99fb586fa30e0f0411bf">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>0603d808e81c126dadaa99fb586fa30e0f0411bf</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">contentSize<span>&nbsp;</span><a href="http://schema.org/contentSize">[?]</a></th>
+            <td style='text-align:left'><span>241121888</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">alternateName<span>&nbsp;</span><a href="http://schema.org/alternateName">[?]</a></th>
+            <td style='text-align:left'><span>T59GLL_20220207T222541_B08_10m.pickle</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">sha1<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#sha1">[?]</a></th>
+            <td style='text-align:left'><span>0603d808e81c126dadaa99fb586fa30e0f0411bf</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">value<span>&nbsp;</span><a href="http://schema.org/value">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li>all_outputs: [object Object],[object Object],[object Object]</li>
+                        
+                        <li>all_outputs: [object Object],[object Object],[object Object]</li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="005d10def9470fd3947da333a45ad1133364d867">⬇️ Download: </a> 005d10def9470fd3947da333a45ad1133364d867</h3>
+            
+            
+            
+            
+        <div id="005d10def9470fd3947da333a45ad1133364d867">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>005d10def9470fd3947da333a45ad1133364d867</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">contentSize<span>&nbsp;</span><a href="http://schema.org/contentSize">[?]</a></th>
+            <td style='text-align:left'><span>482242690</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">alternateName<span>&nbsp;</span><a href="http://schema.org/alternateName">[?]</a></th>
+            <td style='text-align:left'><span>T59GLL_20220207T222541_GNDVI_10m.pickle</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">dateCreated<span>&nbsp;</span><a href="http://schema.org/dateCreated">[?]</a></th>
+            <td style='text-align:left'><span>2025-06-11T13:40:38.715080</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">exampleOfWork<span>&nbsp;</span><a href="http://schema.org/exampleOfWork">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#packed.cwl%23index_def.cwl/index_matrix">index_matrix</a></li>
+                        
+                        <li><a href="#packed.cwl%23tiff_gen.cwl/index_array">index_array</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">sha1<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#sha1">[?]</a></th>
+            <td style='text-align:left'><span>005d10def9470fd3947da333a45ad1133364d867</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">value<span>&nbsp;</span><a href="http://schema.org/value">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li>all_outputs: [object Object],[object Object],[object Object]</li>
+                        
+                        <li>all_outputs: [object Object],[object Object],[object Object]</li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">result<span>&nbsp;</span><a href="http://schema.org/result">[?]</a></th>
+            <td style='text-align:left'><a href="#%2340db2267-e782-4c8f-930b-d5f4c715c3f1">Run of workflow/packed.cwl#main/index_def</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">object<span>&nbsp;</span><a href="http://schema.org/object">[?]</a></th>
+            <td style='text-align:left'><a href="#%23b3d578b5-69d2-4a67-804d-c3afc52afd9e">Run of workflow/packed.cwl#main/tiff_gen</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="a32fad295ebe5cd057e9ab81c71307f52c2d73a8">⬇️ Download: </a> a32fad295ebe5cd057e9ab81c71307f52c2d73a8</h3>
+            
+            
+            
+            
+        <div id="a32fad295ebe5cd057e9ab81c71307f52c2d73a8">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>a32fad295ebe5cd057e9ab81c71307f52c2d73a8</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">contentSize<span>&nbsp;</span><a href="http://schema.org/contentSize">[?]</a></th>
+            <td style='text-align:left'><span>78643406</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">alternateName<span>&nbsp;</span><a href="http://schema.org/alternateName">[?]</a></th>
+            <td style='text-align:left'><span>T59GLL_20220207T222541_GNDVI_10m.tif</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">dateCreated<span>&nbsp;</span><a href="http://schema.org/dateCreated">[?]</a></th>
+            <td style='text-align:left'><span>2025-06-11T13:40:54.058608</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">exampleOfWork<span>&nbsp;</span><a href="http://schema.org/exampleOfWork">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#packed.cwl%23main/tiff">tiff</a></li>
+                        
+                        <li><a href="#packed.cwl%23tiff_gen.cwl/tiff">tiff</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">sha1<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#sha1">[?]</a></th>
+            <td style='text-align:left'><span>a32fad295ebe5cd057e9ab81c71307f52c2d73a8</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">result<span>&nbsp;</span><a href="http://schema.org/result">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#%23e0b50489-d010-4050-b137-731252385a35">Run of workflow/packed.cwl#main</a></li>
+                        
+                        <li><a href="#%23b3d578b5-69d2-4a67-804d-c3afc52afd9e">Run of workflow/packed.cwl#main/tiff_gen</a></li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="7385396b3c482511e1a72c579254d15ec7d95a00">⬇️ Download: </a> 7385396b3c482511e1a72c579254d15ec7d95a00</h3>
+            
+            
+            
+            
+        <div id="7385396b3c482511e1a72c579254d15ec7d95a00">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>7385396b3c482511e1a72c579254d15ec7d95a00</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">contentSize<span>&nbsp;</span><a href="http://schema.org/contentSize">[?]</a></th>
+            <td style='text-align:left'><span>12299</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">alternateName<span>&nbsp;</span><a href="http://schema.org/alternateName">[?]</a></th>
+            <td style='text-align:left'><span>index_def.py</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">sha1<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#sha1">[?]</a></th>
+            <td style='text-align:left'><span>7385396b3c482511e1a72c579254d15ec7d95a00</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">run of packed.cwl</a></li>
+                        
+                        <li><a href="#%23e851f185-9a32-44cd-a9e7-3ab04a402937">#e851f185-9a32-44cd-a9e7-3ab04a402937</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
+            <td style='text-align:left'><a href="#%23e851f185-9a32-44cd-a9e7-3ab04a402937">#e851f185-9a32-44cd-a9e7-3ab04a402937</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="2b8004eb3ecd3a71e3459ce42bbc332340134445">⬇️ Download: </a> 2b8004eb3ecd3a71e3459ce42bbc332340134445</h3>
+            
+            
+            
+            
+        <div id="2b8004eb3ecd3a71e3459ce42bbc332340134445">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>2b8004eb3ecd3a71e3459ce42bbc332340134445</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">contentSize<span>&nbsp;</span><a href="http://schema.org/contentSize">[?]</a></th>
+            <td style='text-align:left'><span>783</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">alternateName<span>&nbsp;</span><a href="http://schema.org/alternateName">[?]</a></th>
+            <td style='text-align:left'><span>file_handling.py</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">sha1<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#sha1">[?]</a></th>
+            <td style='text-align:left'><span>2b8004eb3ecd3a71e3459ce42bbc332340134445</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">run of packed.cwl</a></li>
+                        
+                        <li><a href="#%23e851f185-9a32-44cd-a9e7-3ab04a402937">#e851f185-9a32-44cd-a9e7-3ab04a402937</a></li>
+                        
+                        <li><a href="#%23911eb702-8a99-4b47-b5a8-6c082780e070">#911eb702-8a99-4b47-b5a8-6c082780e070</a></li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="8671ffbeef86c8f4d6f2de2900071e7c2f21077f">⬇️ Download: </a> 8671ffbeef86c8f4d6f2de2900071e7c2f21077f</h3>
+            
+            
+            
+            
+        <div id="8671ffbeef86c8f4d6f2de2900071e7c2f21077f">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>8671ffbeef86c8f4d6f2de2900071e7c2f21077f</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">contentSize<span>&nbsp;</span><a href="http://schema.org/contentSize">[?]</a></th>
+            <td style='text-align:left'><span>2112</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">alternateName<span>&nbsp;</span><a href="http://schema.org/alternateName">[?]</a></th>
+            <td style='text-align:left'><span>tiff_gen.py</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">sha1<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#sha1">[?]</a></th>
+            <td style='text-align:left'><span>8671ffbeef86c8f4d6f2de2900071e7c2f21077f</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">run of packed.cwl</a></li>
+                        
+                        <li><a href="#%23911eb702-8a99-4b47-b5a8-6c082780e070">#911eb702-8a99-4b47-b5a8-6c082780e070</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
+            <td style='text-align:left'><a href="#%23911eb702-8a99-4b47-b5a8-6c082780e070">#911eb702-8a99-4b47-b5a8-6c082780e070</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="primary-job.json">⬇️ Download: </a> input object document</h3>
+            
+            
+            
+            
+        <div id="primary-job.json">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>primary-job.json</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>input object document</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
+            <td style='text-align:left'><span>application/json</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3> Run of workflow/packed.cwl#main</h3>
+            
+            
+            
+            
+        <div id="#e0b50489-d010-4050-b137-731252385a35">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>#e0b50489-d010-4050-b137-731252385a35</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>Run of workflow/packed.cwl#main</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>CreateAction</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">endTime<span>&nbsp;</span><a href="http://schema.org/endTime">[?]</a></th>
+            <td style='text-align:left'><span>2025-06-11T13:40:54.180144</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">instrument<span>&nbsp;</span><a href="http://schema.org/instrument">[?]</a></th>
+            <td style='text-align:left'><a href="#packed.cwl">packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">object<span>&nbsp;</span><a href="http://schema.org/object">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li>bands: [object Object],[object Object]</li>
+                        
+                        <li>color: RdYlGn</li>
+                        
+                        <li>index: GNDVI</li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">result<span>&nbsp;</span><a href="http://schema.org/result">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li>all_outputs: [object Object],[object Object],[object Object]</li>
+                        
+                        <li><a href="#a32fad295ebe5cd057e9ab81c71307f52c2d73a8">a32fad295ebe5cd057e9ab81c71307f52c2d73a8</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">startTime<span>&nbsp;</span><a href="http://schema.org/startTime">[?]</a></th>
+            <td style='text-align:left'><span>2025-06-11T13:40:36.239067</span></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">mentions<span>&nbsp;</span><a href="http://schema.org/mentions">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">result<span>&nbsp;</span><a href="http://schema.org/result">[?]</a></th>
+            <td style='text-align:left'><a href="#%2388e3e0c3-f630-46f7-8f8e-fbdf25204e60">Run of cwltool 3.1.20250110105449</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3> #e851f185-9a32-44cd-a9e7-3ab04a402937</h3>
+            
+            
+            
+            
+        <div id="#e851f185-9a32-44cd-a9e7-3ab04a402937">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>#e851f185-9a32-44cd-a9e7-3ab04a402937</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>Collection</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">exampleOfWork<span>&nbsp;</span><a href="http://schema.org/exampleOfWork">[?]</a></th>
+            <td style='text-align:left'><a href="#packed.cwl%23index_def.cwl/index_def">index_def</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#7385396b3c482511e1a72c579254d15ec7d95a00">7385396b3c482511e1a72c579254d15ec7d95a00</a></li>
+                        
+                        <li><a href="#2b8004eb3ecd3a71e3459ce42bbc332340134445">2b8004eb3ecd3a71e3459ce42bbc332340134445</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
+            <td style='text-align:left'><a href="#7385396b3c482511e1a72c579254d15ec7d95a00">7385396b3c482511e1a72c579254d15ec7d95a00</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">mentions<span>&nbsp;</span><a href="http://schema.org/mentions">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">object<span>&nbsp;</span><a href="http://schema.org/object">[?]</a></th>
+            <td style='text-align:left'><a href="#%2340db2267-e782-4c8f-930b-d5f4c715c3f1">Run of workflow/packed.cwl#main/index_def</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3> #911eb702-8a99-4b47-b5a8-6c082780e070</h3>
+            
+            
+            
+            
+        <div id="#911eb702-8a99-4b47-b5a8-6c082780e070">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>#911eb702-8a99-4b47-b5a8-6c082780e070</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>Collection</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">exampleOfWork<span>&nbsp;</span><a href="http://schema.org/exampleOfWork">[?]</a></th>
+            <td style='text-align:left'><a href="#packed.cwl%23tiff_gen.cwl/tiff_gen">tiff_gen</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#8671ffbeef86c8f4d6f2de2900071e7c2f21077f">8671ffbeef86c8f4d6f2de2900071e7c2f21077f</a></li>
+                        
+                        <li><a href="#2b8004eb3ecd3a71e3459ce42bbc332340134445">2b8004eb3ecd3a71e3459ce42bbc332340134445</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
+            <td style='text-align:left'><a href="#8671ffbeef86c8f4d6f2de2900071e7c2f21077f">8671ffbeef86c8f4d6f2de2900071e7c2f21077f</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">mentions<span>&nbsp;</span><a href="http://schema.org/mentions">[?]</a></th>
+            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">object<span>&nbsp;</span><a href="http://schema.org/object">[?]</a></th>
+            <td style='text-align:left'><a href="#%23b3d578b5-69d2-4a67-804d-c3afc52afd9e">Run of workflow/packed.cwl#main/tiff_gen</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/></div>
+</div>
+
+
+
+
+
+</body>
+</html>
