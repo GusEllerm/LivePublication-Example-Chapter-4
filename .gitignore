@@ -43,7 +43,3 @@ batch_push.sh
 provenance_output/
 provenance_output.crate/
 workflow_inputs/Data/
-T59GLL_20220207T222541_B03_10m.pickle
-T59GLL_20220207T222541_B08_10m.pickle
-T59GLL_20220207T222541_GNDVI_10m.pickle
-T59GLL_20220207T222541_GNDVI_10m.tif
