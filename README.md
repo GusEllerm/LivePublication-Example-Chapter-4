@@ -2,7 +2,9 @@
 
 This repository demonstrates a **reproducible, transparent workflow execution** using the Common Workflow Language (CWL), including the **generation of a PROV-compliant Provenance Run Crate** and an interactive HTML website to inspect results.
 
-The example workflow calculates a vegetation index (e.g., GNDVI) from Sentinel-2 satellite bands using Python and CWL.
+The example workflow calculates a vegetation index (e.g., GNDVI) from Sentinel-2 satellite bands using Python and CWL. 
+
+![Workflow Diagram](workflow.png)
 
 ---
 
