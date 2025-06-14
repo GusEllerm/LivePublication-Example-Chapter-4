@@ -1,4 +1,3 @@
-
 # CWL Provenance RunCrate Demo
 
 This repository demonstrates a **reproducible, transparent workflow execution** using the Common Workflow Language (CWL), including the **generation of a PROV-compliant Provenance Run Crate** and an interactive HTML website to inspect results.
@@ -73,8 +72,9 @@ npm install ro-crate-html-js
 ```
 
 To compile the site, point the tool to the RO-Crate manifest:
+
 ```bash
-rochtml provenance_output.crate/ro-crate-metadata.json      
+rochtml provenance_output.crate/ro-crate-metadata.json  
 ```
 
 For further info, see the ro-crate-html-js github page: [ro-crate-html-js](https://github.com/UTS-eResearch/ro-crate-html-js)
@@ -97,6 +97,30 @@ Ensure Docker is installed and configured with sufficient memory. Some steps (e.
 - Check memory availability with `free -h`
 - Use `dmesg | grep -i kill` to diagnose OOM (out-of-memory) errors
 - If needed, configure swap or use a higher-memory instance
+
+---
+
+## 🛣️ Automate Data & Run Full Pipeline
+
+A script is provided to automate the full workflow:
+
+```bash
+./publish_pipeline.sh
+```
+
+This will:
+
+1. Delete old input data and outputs
+2. Download a new Sentinel-2 `.SAFE` product via the Copernicus STAC API
+3. Patch the CWL job file (`Workflow_inputs/GNDVI_10m.yaml`) with the new data
+4. Execute the CWL workflow and generate provenance
+5. Create a new version of the result on Zenodo using `zenodo_upload.py`
+
+To enable Zenodo uploads, create a `zenodo_token.py` file containing:
+
+```python
+token = "your_access_token_here"
+```
 
 ---
 

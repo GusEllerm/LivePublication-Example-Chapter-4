@@ -17,8 +17,6 @@ STAC_URL = "https://catalogue.dataspace.copernicus.eu/stac/collections/SENTINEL-
    
 BBOX = "165.438762,-46.987599,178.795400,-36.073371"
 
-# from creds import *
-
 def get_access_token(username: str, password: str) -> str:
     data = {
         "client_id": "cdse-public",
