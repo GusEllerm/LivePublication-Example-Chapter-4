@@ -144,6 +144,9 @@ def main():
     if not tif_file:
         print("No .tif file found in current directory.")
         return
+    
+    os.rename(tif_file, "GNDVI_10m_example.tif")
+    tif_file = "GNDVI_10m_example.tif"
 
     print(f"New draft deposition ID: {deposition_id}")
 
