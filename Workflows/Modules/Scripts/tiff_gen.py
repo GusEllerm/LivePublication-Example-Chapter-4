@@ -6,6 +6,8 @@ from file_handling import read_band_from_file
 
 # Turn logging on
 logging.getLogger().setLevel(logging.INFO)
+logging.info("tiff_gen module loaded")
+logging.info(f"Current working directory: {pathlib.Path.cwd()}")
 
 def main():
     parser = argparse.ArgumentParser(description="Creates TIFF images from index files. Different Color reliefs can be applied")
@@ -35,7 +37,7 @@ def main():
 ## Image generation
 def generate_tiff(index, color, recompute):
     logging.info('-'*80)
-    logging.info("Creating {}.tiff".format(index.stem))
+    logging.info("Creating {}.tif".format(index.stem))
     # Extract index information
     index = read_band_from_file(str(index))
     index_name, index_matrix, index_profile = index[0], index[1][0], index[2]
@@ -52,6 +54,7 @@ def generate_tiff(index, color, recompute):
         plt.title(index_name)
         plt.xlabel("Column #")
         plt.ylabel("Row #")
+        logging.info(f"Saving tiff image to {str(outfile)}")
         plt.savefig(outfile, dpi=800)
     else:
         logging.info("{} exists! Skipping computation ...".format(str(outfile)))

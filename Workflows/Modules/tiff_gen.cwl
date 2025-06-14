@@ -1,10 +1,20 @@
-cwlVersion: v1.2
+#!/usr/bin/env cwl-runner
+
+cwlVersion: v1.0
 class: CommandLineTool
 
 baseCommand: ["python3"]
 arguments: [$(inputs.tiff_gen)]
 
-requirements: []
+requirements:
+  InitialWorkDirRequirement:
+    listing:
+      - $(inputs.tiff_gen)
+      - $(inputs.tiff_gen.secondaryFiles[0])
+  DockerRequirement:
+    dockerPull: veg-index-container:v1.0
+  ResourceRequirement:
+    ramMin: 32000
 
 inputs:
   tiff_gen: 

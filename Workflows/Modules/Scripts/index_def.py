@@ -12,6 +12,9 @@ logging.getLogger().setLevel(logging.INFO)
 # Suppress divide by zero warning
 np.seterr(invalid='ignore')
 
+logging.info("index_def module loaded")
+logging.info(f"Current working directory: {pathlib.Path.cwd()}")
+
 # Define CLI hooks
 def main():
 

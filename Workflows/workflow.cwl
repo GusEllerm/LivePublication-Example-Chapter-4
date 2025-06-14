@@ -1,4 +1,6 @@
-cwlVersion: v1.2
+#!/usr/bin/env cwl-runner
+
+cwlVersion: v1.0
 
 requirements:
   MultipleInputFeatureRequirement: {}

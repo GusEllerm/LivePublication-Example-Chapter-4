@@ -1,8 +1,9 @@
+
 # CWL Provenance RunCrate Demo
 
 This repository demonstrates a **reproducible, transparent workflow execution** using the Common Workflow Language (CWL), including the **generation of a PROV-compliant Provenance Run Crate** and an interactive HTML website to inspect results.
 
-The example workflow calculates a vegetation index (e.g., GNDVI) from Sentinel-2 satellite bands using Python and CWL. 
+The example workflow calculates a vegetation index (e.g., GNDVI) from Sentinel-2 satellite bands using Python and CWL.
 
 ![Workflow Diagram](workflow.png)
 
@@ -12,13 +13,13 @@ The example workflow calculates a vegetation index (e.g., GNDVI) from Sentinel-2
 
 ```
 .
-├── Workflows/             	# CWL workflow 
-├── Workflows/Modules/          # CWL tool definitions
+├── Workflows/               # CWL workflow 
+├── Workflows/Modules/       # CWL tool definitions
 ├── Workflows/Modules/Scripts/  # Python scripts used in the workflow
-├── Workflow_inputs/       	# YAML job file
-├── Workflow_inputs/Data/     	# Example sentinal-2 data
-├── provenance_output/     	# provenance generated via `cwltool --provenance provenance_output Workflows/workflow.cwl Workflow_inputs/GNDVI_10m.yaml`  
-└── provenance_output.crate/    # Workflow Run Crate genearted via `runcrate convert provenance_output`   
+├── Workflow_inputs/         # YAML job file
+├── Workflow_inputs/Data/    # Example Sentinel-2 data
+├── provenance_output/       # Provenance generated via `cwltool --provenance provenance_output Workflows/workflow.cwl Workflow_inputs/GNDVI_10m.yaml`  
+└── provenance_output.crate/ # Workflow Run Crate generated via `runcrate convert provenance_output`   
 ```
 
 ---
@@ -76,6 +77,25 @@ To preview locally:
 ```bash
 open provenance_output/index.html
 ```
+
+---
+
+## 🐳 Docker Requirements
+
+Ensure Docker is installed and configured with sufficient memory. Some steps (e.g., TIFF generation) may require **up to 32 GB RAM**.
+
+### On macOS or Windows:
+
+- Open Docker Desktop
+- Go to **Settings** → **Resources**
+- Increase memory to **at least 32 GB**
+- Click **Apply & Restart**
+
+### On Linux:
+
+- Check memory availability with `free -h`
+- Use `dmesg | grep -i kill` to diagnose OOM (out-of-memory) errors
+- If needed, configure swap or use a higher-memory instance
 
 ---
 
