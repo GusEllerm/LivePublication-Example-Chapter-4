@@ -30,6 +30,41 @@ def create_new_version():
     new_deposition_id = int(new_draft_url.split("/")[-1])
     return new_deposition_id
 
+def get_incremented_version(deposition_id):
+    
+    # Retrieve the concept record for the deposition
+    deposition_url = f"{ZENODO_API_BASE}/deposit/depositions/{deposition_id}"
+    params = {"access_token": token}
+    response = requests.get(deposition_url, params=params)
+    response.raise_for_status()
+    conceptrecid = response.json().get("conceptrecid")
+
+    # Get the latest published version associated with the concept record
+    url = f"{ZENODO_API_BASE}/records"
+    query_params = {
+        "q": f"conceptrecid:{conceptrecid}",
+        "sort": "mostrecent",
+        "size": 1,
+        "access_token": token
+    }
+    records_response = requests.get(url, params=query_params)
+    records_response.raise_for_status()
+    hits = records_response.json().get("hits", {}).get("hits", [])
+    if hits:
+        metadata = hits[0].get("metadata", {})
+        current_version = metadata.get("version", "1.0.0")
+    else:
+        current_version = "1.0.0"
+
+    print(f"Current version from latest published record: {current_version}")
+    try:
+        major, minor, patch = map(int, current_version.split("."))
+        minor += 1
+        return f"{major}.{minor}.{patch}"
+    except Exception:
+        print("⚠️ Could not parse current version; defaulting to 1.0.0")
+        return "1.0.0"
+
 def update_metadata(deposition_id):
     url = f"{ZENODO_API_BASE}/deposit/depositions/{deposition_id}"
     params = {"access_token": token}
@@ -57,7 +92,7 @@ def update_metadata(deposition_id):
                     "resource_type": "software"
                 }
             ],
-            "version": "1.0.0",
+            "version": get_incremented_version(deposition_id),
             "language": "eng"
         }
     }
