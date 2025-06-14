@@ -44,3 +44,4 @@ provenance_output/
 provenance_output.crate/
 workflow_inputs/Data/
 
+zenodo_token.py
