@@ -69,14 +69,15 @@ runcrate convert provenance_output
 Install via npx (requires Node.js and npm):
 
 ```bash
-npx ro-crate-html-js --directory provenance_output
+npm install ro-crate-html-js
 ```
 
-To preview locally:
-
+To compile the site, point the tool to the RO-Crate manifest:
 ```bash
-open provenance_output/index.html
+rochtml provenance_output.crate/ro-crate-metadata.json      
 ```
+
+For further info, see the ro-crate-html-js github page: [ro-crate-html-js](https://github.com/UTS-eResearch/ro-crate-html-js)
 
 ---
 
