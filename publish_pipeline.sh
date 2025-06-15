@@ -20,7 +20,16 @@ cwltool --strict-memory-limit --provenance provenance_output Workflows/workflow.
 echo "📦 Converting to Provenance Run Crate..."
 runcrate convert provenance_output
 
-# Step 4: Generate the HTML website from the crate
+# Step 6: Run your Zenodo upload script
+echo "☁️ Uploading new version to Zenodo..."
+python zenodo_upload.py
+
+# Step 7: Generate the Interface Crate and zip it
+echo "🧬 Generating Interface Crate..."
+python interface_crate.py
+zip -r interface.crate.zip interface.crate
+
+# Step 4: Generate the HTML preview of the provenance crate
 echo "🌐 Generating HTML preview of the provenance crate..."
 rochtml provenance_output.crate/ro-crate-metadata.json
 
@@ -31,15 +40,6 @@ rochtml interface.crate/ro-crate-metadata.json
 # Step 5: Generate the templated website with navigation
 echo "🧱 Generating templated HTML site..."
 python docs/template_renderer.py
-
-# Step 6: Run your Zenodo upload script
-echo "☁️ Uploading new version to Zenodo..."
-python zenodo_upload.py
-
-# Step 7: Generate the Interface Crate and zip it
-echo "🧬 Generating Interface Crate..."
-python interface_crate.py
-zip -r interface.crate.zip interface.crate
 
 # Step 8: Commit and push to GitHub
 echo "📤 Committing and pushing to GitHub..."
