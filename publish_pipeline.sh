@@ -24,10 +24,13 @@ runcrate convert provenance_output
 echo "🌐 Generating HTML preview of the provenance crate..."
 rochtml provenance_output.crate/ro-crate-metadata.json
 
-# Step 5: Copy the preview HTML to your GitHub Pages docs/
-echo "📁 Copying preview HTML to docs/index.html..."
-mkdir -p docs
-cp provenance_output.crate/ro-crate-preview.html docs/index.html
+# Step 4.5: Generate HTML preview of the interface crate
+echo "🌐 Generating HTML preview of the interface crate..."
+rochtml interface.crate/ro-crate-metadata.json
+
+# Step 5: Generate the templated website with navigation
+echo "🧱 Generating templated HTML site..."
+python docs/template_renderer.py
 
 # Step 6: Run your Zenodo upload script
 echo "☁️ Uploading new version to Zenodo..."

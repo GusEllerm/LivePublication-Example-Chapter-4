@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Interface Crate</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    nav {
+      background: linear-gradient(to right, #e0e0e0, #f5f5f5);
+      padding: 12px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #333;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #007acc;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="provenance.html">Provenance Crate</a>
+    <a href="interface.html">Interface Crate</a>
+    <!-- Future -->
+    <!-- <a href="livepaper.html">LivePaper</a> -->
+  </nav>
+  <main>
+    
+
+<html>
+<head>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://w3id.org/ro/crate/1.1/context",
+  "@graph": [
+    {
+      "@id": "./",
+      "@type": "Dataset",
+      "datePublished": "2025-06-15T01:31:12+00:00",
+      "hasPart": [
+        {
+          "@id": "INSPIRE.xml"
+        },
+        {
+          "@id": "manifest.safe"
+        },
+        {
+          "@id": "MTD_MSIL2A.xml"
+        },
+        {
+          "@id": "S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217-ql.jpg"
+        },
+        {
+          "@id": "Dockerfile"
+        },
+        {
+          "@id": "provenance_output.crate/"
+        }
+      ],
+      "mainEntity": {
+        "@id": "#livepublication-interface"
+      },
+      "@reverse": {
+        "about": [
+          {
+            "@id": "ro-crate-metadata.json"
+          }
+        ]
+      },
+      "description": "Containerises the Experiment Infrastructure outputs for LivePublication",
+      "name": "LivePublication Experiment Interface Crate"
+    },
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "about": {
+        "@id": "./"
+      },
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.1"
+      }
+    },
+    {
+      "@id": "#livepublication-interface",
+      "@type": "Dataset",
+      "datePublished": "2025-06-15T01:31:12.436959+00:00",
+      "description": "This Dataset represents the outputs of the Experiment Infrastructure required by the LivePublication interface. It includes references to data produced by E1 (Data Producer), E2.1 (Workflow Infrastructure), E2.2 (Workflow Management System), and E3 (Experimental Results and Outcomes).",
+      "hasPart": [
+        {
+          "@id": "#E1-data-producer"
+        },
+        {
+          "@id": "#E2.1-workflow-infrastructure"
+        },
+        {
+          "@id": "#E2.2-wms"
+        },
+        {
+          "@id": "#E3-experimental-results"
+        }
+      ],
+      "name": "LivePublication Interface Outputs",
+      "@reverse": {
+        "mainEntity": [
+          {
+            "@id": "./"
+          }
+        ],
+        "isPartOf": [
+          {
+            "@id": "provenance_output.crate/"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://dataspace.copernicus.eu/",
+      "@type": "DataCatalog",
+      "description": "The official Copernicus Data Space Ecosystem portal providing access to Sentinel and Copernicus services data.",
+      "name": "Copernicus Data Space Ecosystem",
+      "publisher": {
+        "@id": "https://www.copernicus.eu/",
+        "@type": "Organization",
+        "name": "Copernicus Programme"
+      },
+      "url": "https://dataspace.copernicus.eu/",
+      "@reverse": {
+        "isPartOf": [
+          {
+            "@id": "https://download.dataspace.copernicus.eu/odata/v1/Products(002337ac-bec7-4dba-8565-30f97db7b864)/$value"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://download.dataspace.copernicus.eu/odata/v1/Products(002337ac-bec7-4dba-8565-30f97db7b864)/$value",
+      "@type": "Dataset",
+      "description": "Remote dataset hosted by the Copernicus Data Space Ecosystem.",
+      "identifier": "S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217.SAFE",
+      "isPartOf": {
+        "@id": "https://dataspace.copernicus.eu/",
+        "@type": "DataCatalog",
+        "name": "Copernicus Data Space Ecosystem"
+      },
+      "name": "Sentinel-2 Level-2A product: S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217.SAFE",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "#E1-data-producer"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#E1-data-producer",
+      "@type": "Dataset",
+      "description": "Metadata and references to acquired raw data products.",
+      "hasPart": [
+        {
+          "@id": "INSPIRE.xml"
+        },
+        {
+          "@id": "manifest.safe"
+        },
+        {
+          "@id": "MTD_MSIL2A.xml"
+        },
+        {
+          "@id": "S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217-ql.jpg"
+        },
+        {
+          "@id": "https://download.dataspace.copernicus.eu/odata/v1/Products(002337ac-bec7-4dba-8565-30f97db7b864)/$value"
+        }
+      ],
+      "name": "E1: Data Producer Output",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "#livepublication-interface"
+          }
+        ],
+        "about": [
+          {
+            "@id": "INSPIRE.xml"
+          },
+          {
+            "@id": "manifest.safe"
+          },
+          {
+            "@id": "MTD_MSIL2A.xml"
+          },
+          {
+            "@id": "S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217-ql.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "INSPIRE.xml",
+      "@type": "File",
+      "about": {
+        "@id": "#E1-data-producer"
+      },
+      "encodingFormat": "application/xml",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "#E1-data-producer"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "manifest.safe",
+      "@type": "File",
+      "about": {
+        "@id": "#E1-data-producer"
+      },
+      "encodingFormat": "application/xml",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "#E1-data-producer"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "MTD_MSIL2A.xml",
+      "@type": "File",
+      "about": {
+        "@id": "#E1-data-producer"
+      },
+      "encodingFormat": "application/xml",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "#E1-data-producer"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217-ql.jpg",
+      "@type": "File",
+      "about": {
+        "@id": "#E1-data-producer"
+      },
+      "encodingFormat": "image/jpeg",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "#E1-data-producer"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#E2.1-workflow-infrastructure",
+      "@type": "Dataset",
+      "description": "Description of hardware and software environments used.",
+      "hasPart": [
+        {
+          "@id": "Dockerfile"
+        },
+        {
+          "@id": "https://hub.docker.com/r/gusellerm/veg-index-container"
+        }
+      ],
+      "name": "E2.1: Workflow Infrastructure",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "#livepublication-interface"
+          }
+        ],
+        "about": [
+          {
+            "@id": "Dockerfile"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "Dockerfile",
+      "@type": "File",
+      "about": {
+        "@id": "#E2.1-workflow-infrastructure"
+      },
+      "description": "Defines the container environment for executing the CWL workflow.",
+      "encodingFormat": "text/x-dockerfile-config",
+      "name": "Workflow Dockerfile",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "#E2.1-workflow-infrastructure"
+          }
+        ],
+        "softwareRequirements": [
+          {
+            "@id": "https://hub.docker.com/r/gusellerm/veg-index-container"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://hub.docker.com/r/gusellerm/veg-index-container",
+      "@type": "SoftwareApplication",
+      "applicationCategory": "ContainerEnvironment",
+      "description": "Docker container used to execute the vegetation analysis workflow.",
+      "name": "Vegetation Index Container",
+      "softwareRequirements": {
+        "@id": "Dockerfile"
+      },
+      "softwareVersion": "sha256:77d2d32a93fe2d90f5a0057fb8b12a3967f179cb6110805aadea3302056508a5",
+      "url": "https://hub.docker.com/r/gusellerm/veg-index-container",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "#E2.1-workflow-infrastructure"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#E2.2-wms",
+      "@type": "Dataset",
+      "description": "Provenance of workflow execution including workflow steps and parameters.",
+      "hasPart": [
+        {
+          "@id": "provenance_output.crate/"
+        }
+      ],
+      "name": "E2.2: Workflow Management System",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "#livepublication-interface"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "provenance_output.crate/",
+      "@type": "Dataset",
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.1"
+      },
+      "description": "Nested RO-Crate containing workflow execution provenance.",
+      "isPartOf": {
+        "@id": "#livepublication-interface"
+      },
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "name": "Provenance Run Crate",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "./"
+          },
+          {
+            "@id": "#E2.2-wms"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#E3-experimental-results",
+      "@type": "Dataset",
+      "description": "Results of the executed workflow, such as figures and summary data products.",
+      "hasPart": [
+        {
+          "@id": "https://doi.org/10.5281/zenodo.15665401"
+        }
+      ],
+      "name": "E3: Experimental Results and Outcomes",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "#livepublication-interface"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "https://doi.org/10.5281/zenodo.15665401",
+      "@type": "Dataset",
+      "description": "Zenodo archive of results generated by the LivePublication Experiment Infrastructure.",
+      "distribution": [
+        {
+          "@id": "#zenodo-download-gndvi",
+          "@type": "DataDownload",
+          "contentUrl": "https://zenodo.org/records/15665401/files/GNDVI_10m_example.tif?download=1",
+          "encodingFormat": "image/tiff",
+          "name": "GNDVI 10m Example TIFF"
+        }
+      ],
+      "identifier": "10.5281/zenodo.15665401",
+      "name": "Vegetation Analysis Results",
+      "publisher": {
+        "@id": "https://zenodo.org/",
+        "@type": "Organization",
+        "name": "Zenodo"
+      },
+      "url": "https://doi.org/10.5281/zenodo.15665401",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "#E3-experimental-results"
+          }
+        ]
+      }
+    }
+  ]
+}
+</script>
+
+    
+<!-- script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script -->
+<script src="https://unpkg.com/ro-crate-html-js/dist/ro-crate-dynamic.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<meta charset='utf-8'/>
+<style>
+
+table.table {
+  padding-bottom: 300px;
+}
+</style>
+</head>
+
+
+<body>
+
+  <nav class="navbar">
+
+    <ul class="nav navbar-nav" >
+        <li ><a href="#"><span class="glyphicon glyphicon-home dataset_name">&nbsp;</span></a></li>
+    </ul>
+
+  </nav>
+<div class="container">
+<div class="jumbotron">
+<h4 class="citation"></h3>
+<h3 class="item_name"></h4>
+
+
+<a href="./ro-crate-metadata.json">⬇️🏷️ Download all the metadata for <span class='name'></span> in JSON-LD format</a>
+
+
+<div id="check"></div>
+
+
+</div>
+
+
+
+<div id="summary">
+<div class='all-meta'>
+           <div>
+            <h3> ./</h3>
+            
+            
+            
+            
+        <div id="./">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>./</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>Dataset</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">datePublished<span>&nbsp;</span><a href="http://schema.org/datePublished">[?]</a></th>
+            <td style='text-align:left'><span>2025-06-15T01:31:12+00:00</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#INSPIRE.xml">INSPIRE.xml</a></li>
+                        
+                        <li><a href="#manifest.safe">manifest.safe</a></li>
+                        
+                        <li><a href="#MTD_MSIL2A.xml">MTD_MSIL2A.xml</a></li>
+                        
+                        <li><a href="#S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217-ql.jpg">S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217-ql.jpg</a></li>
+                        
+                        <li><a href="#Dockerfile">Workflow Dockerfile</a></li>
+                        
+                        <li><a href="#provenance_output.crate/">Provenance Run Crate</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
+            <td style='text-align:left'><a href="#%23livepublication-interface">LivePublication Interface Outputs</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
+            <td style='text-align:left'><a href="#ro-crate-metadata.json">ro-crate-metadata.json</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="INSPIRE.xml">⬇️ Download: </a> INSPIRE.xml</h3>
+            
+            
+            
+            
+        <div id="INSPIRE.xml">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>INSPIRE.xml</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
+            <td style='text-align:left'><span>application/xml</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
+            <td style='text-align:left'><a href="#%23E1-data-producer">E1: Data Producer Output</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">./</a></li>
+                        
+                        <li><a href="#%23E1-data-producer">E1: Data Producer Output</a></li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="manifest.safe">⬇️ Download: </a> manifest.safe</h3>
+            
+            
+            
+            
+        <div id="manifest.safe">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>manifest.safe</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
+            <td style='text-align:left'><span>application/xml</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
+            <td style='text-align:left'><a href="#%23E1-data-producer">E1: Data Producer Output</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">./</a></li>
+                        
+                        <li><a href="#%23E1-data-producer">E1: Data Producer Output</a></li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="MTD_MSIL2A.xml">⬇️ Download: </a> MTD_MSIL2A.xml</h3>
+            
+            
+            
+            
+        <div id="MTD_MSIL2A.xml">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>MTD_MSIL2A.xml</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
+            <td style='text-align:left'><span>application/xml</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
+            <td style='text-align:left'><a href="#%23E1-data-producer">E1: Data Producer Output</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">./</a></li>
+                        
+                        <li><a href="#%23E1-data-producer">E1: Data Producer Output</a></li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217-ql.jpg">⬇️ Download: </a> S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217-ql.jpg</h3>
+            
+            <img width='100%' style='object-fit: contain' src='S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217-ql.jpg'/>
+            
+            
+        <div id="S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217-ql.jpg">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>S2B_MSIL2A_20180101T221549_N0500_R129_T60GVS_20230717T102217-ql.jpg</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
+            <td style='text-align:left'><span>image/jpeg</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
+            <td style='text-align:left'><a href="#%23E1-data-producer">E1: Data Producer Output</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">./</a></li>
+                        
+                        <li><a href="#%23E1-data-producer">E1: Data Producer Output</a></li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3><a href="Dockerfile">⬇️ Download: </a> Workflow Dockerfile</h3>
+            
+            
+            
+            
+        <div id="Dockerfile">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>Dockerfile</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>Workflow Dockerfile</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>File</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
+            <td style='text-align:left'><span>Defines the container environment for executing the CWL workflow.</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">encodingFormat<span>&nbsp;</span><a href="http://schema.org/encodingFormat">[?]</a></th>
+            <td style='text-align:left'><span>text/x-dockerfile-config</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
+            <td style='text-align:left'><a href="#%23E2.1-workflow-infrastructure">E2.1: Workflow Infrastructure</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">./</a></li>
+                        
+                        <li><a href="#%23E2.1-workflow-infrastructure">E2.1: Workflow Infrastructure</a></li>
+                        </ul></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">softwareRequirements<span>&nbsp;</span><a href="http://schema.org/softwareRequirements">[?]</a></th>
+            <td style='text-align:left'><a href="#https%3A//hub.docker.com/r/gusellerm/veg-index-container">Vegetation Index Container</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3> Provenance Run Crate</h3>
+            
+            
+            
+            
+        <div id="provenance_output.crate/">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>provenance_output.crate/</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>Provenance Run Crate</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>Dataset</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
+            <td style='text-align:left'><span>Nested RO-Crate containing workflow execution provenance.</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">isPartOf<span>&nbsp;</span><a href="http://schema.org/isPartOf">[?]</a></th>
+            <td style='text-align:left'><a href="#%23livepublication-interface">LivePublication Interface Outputs</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
+            <td style='text-align:left'><a href="https://w3id.org/ro/crate/1.1">https://w3id.org/ro/crate/1.1</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">license<span>&nbsp;</span><a href="http://schema.org/license">[?]</a></th>
+            <td style='text-align:left'><a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">./</a></li>
+                        
+                        <li><a href="#%23E2.2-wms">E2.2: Workflow Management System</a></li>
+                        </ul></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/>
+           <div>
+            <h3> LivePublication Interface Outputs</h3>
+            
+            
+            
+            
+        <div id="#livepublication-interface">
+            
+            <table class="table metadata table-striped" >
+                <tbody><tr>
+            <th style="text-align:left;" class="prop">@id</th>
+            <td style='text-align:left'><span>#livepublication-interface</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
+            <td style='text-align:left'><span>LivePublication Interface Outputs</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">@type</th>
+            <td style='text-align:left'><span>Dataset</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
+            <td style='text-align:left'><span>This Dataset represents the outputs of the Experiment Infrastructure required by the LivePublication interface. It includes references to data produced by E1 (Data Producer), E2.1 (Workflow Infrastructure), E2.2 (Workflow Management System), and E3 (Experimental Results and Outcomes).</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">datePublished<span>&nbsp;</span><a href="http://schema.org/datePublished">[?]</a></th>
+            <td style='text-align:left'><span>2025-06-15T01:31:12.436959+00:00</span></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
+            <td style='text-align:left'><ul>
+                        <li><a href="#%23E1-data-producer">E1: Data Producer Output</a></li>
+                        
+                        <li><a href="#%23E2.1-workflow-infrastructure">E2.1: Workflow Infrastructure</a></li>
+                        
+                        <li><a href="#%23E2.2-wms">E2.2: Workflow Management System</a></li>
+                        
+                        <li><a href="#%23E3-experimental-results">E3: Experimental Results and Outcomes</a></li>
+                        </ul></td>
+            </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
+            <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
+            <td style='text-align:left'><a href="#./">./</a></td>
+            </tr><tr>
+            <th style="text-align:left;" class="prop">isPartOf<span>&nbsp;</span><a href="http://schema.org/isPartOf">[?]</a></th>
+            <td style='text-align:left'><a href="#provenance_output.crate/">Provenance Run Crate</a></td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        </div>
+        <hr/><br/><br/></div>
+</div>
+
+
+
+
+
+</body>
+</html>
+
+  </main>
+</body>
+</html>
