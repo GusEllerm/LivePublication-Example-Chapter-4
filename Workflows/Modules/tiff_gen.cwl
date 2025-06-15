@@ -12,7 +12,7 @@ requirements:
       - $(inputs.tiff_gen)
       - $(inputs.tiff_gen.secondaryFiles[0])
   DockerRequirement:
-    dockerPull: veg-index-container:v1.0
+    dockerPull: gusellerm/veg-index-container:latest  
   ResourceRequirement:
     ramMin: 32000
 

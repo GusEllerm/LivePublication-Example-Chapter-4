@@ -13,7 +13,7 @@ requirements:
       - $(inputs.index_def)
       - $(inputs.index_def.secondaryFiles[0])  # Ensuring file_handling.py is staged
   DockerRequirement:
-    dockerPull: veg-index-container:v1.0
+    dockerPull: gusellerm/veg-index-container:latest  # Docker image for the workflow
   ResourceRequirement:
     ramMin: 32000  # Min RAM to execute the task
 

@@ -42,6 +42,7 @@ batch_push.sh
 
 provenance_output/
 provenance_output.crate/
+interface.crate/
 workflow_inputs/Data/
 
 zenodo_token.py
