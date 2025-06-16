@@ -1,4 +1,4 @@
-# CWL Provenance RunCrate Demo
+# LivePublication Example: Chapter 4
 
 This repository demonstrates a **reproducible, transparent workflow execution** using the Common Workflow Language (CWL), including the **generation of a PROV-compliant Provenance Run Crate** and an interactive HTML website to inspect results.
 
