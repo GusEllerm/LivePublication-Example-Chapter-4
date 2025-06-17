@@ -3,6 +3,12 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
+label: "Vegetation Index TIFF Generator"
+doc: |
+  This CWL tool converts a vegetation index matrix (in pickle format)
+  into a color-mapped GeoTIFF file. It dynamically loads a TIFF generation
+  script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
+
 baseCommand: ["python3"]
 arguments: [$(inputs.tiff_gen)]
 

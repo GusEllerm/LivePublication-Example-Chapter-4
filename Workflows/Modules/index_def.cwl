@@ -3,6 +3,12 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
+label: "Index Definition Tool"
+doc: |
+  This CWL tool computes a vegetation index matrix from provided spectral bands.
+  It dynamically loads an index definition script (index_def.py) which uses
+  auxiliary functions from file_handling.py.
+  
 baseCommand: ["python3"]
 arguments: [$(inputs.index_def)]
 

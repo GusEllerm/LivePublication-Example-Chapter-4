@@ -1,0 +1,229 @@
+```python exec
+# Interface connections for incoming interface.crate objects
+import json
+from pathlib import Path
+
+# Load the interface.crate
+crate_path = Path("interface.crate/ro-crate-metadata.json")
+with crate_path.open() as f:
+    interface_crate = json.load(f)
+
+# Index by @id for convenience
+graph = interface_crate["@graph"]
+by_id = {entry["@id"]: entry for entry in graph}
+```
+
+```python exec
+# Load metadata for E1: Data Producer Output
+import xml.etree.ElementTree as ET
+import re
+
+e1_data = by_id.get("#E1-data-producer", {})
+e1_files = e1_data.get("hasPart", [])
+e1_file_ids = [f["@id"] for f in e1_files if "@id" in f]
+
+# Representative image
+e1_thumbnail_id = next((f for f in e1_file_ids if f.endswith("-ql.jpg")), None)
+e1_thumbnail = f"interface.crate/{e1_thumbnail_id}" if e1_thumbnail_id else None
+
+
+
+# Find the MTD_MSIL2A.xml file among e1_files
+mtd_filename = "MTD_MSIL2A.xml"
+mtd_id = next((fid for fid in e1_file_ids if fid.endswith(mtd_filename)), None)
+mtd_path = Path("interface.crate") / mtd_id if mtd_id else None
+e1_metadata = {}
+
+def get_namespace(root):
+    m = re.match(r"\{(.*)\}", root.tag)
+    return {"n1": m.group(1)} if m else {}
+
+def extract_child_texts(parent, ns):
+    return {
+        child.tag.replace(f"{{{ns['n1']}}}", ""): child.text
+        for child in parent
+        if child.text is not None and child.text.strip()
+    }
+
+if mtd_path.exists():
+    tree = ET.parse(mtd_path)
+    root = tree.getroot()
+    ns = get_namespace(root)
+
+    # Helper: Find tag and extract key:value pairs
+    def extract_metadata(tag):
+        elem = root.find(f".//{tag}", ns)
+        return extract_child_texts(elem, ns) if elem is not None else {}
+
+
+    e1_product_info = extract_metadata("Product_Info")
+    e1_platform_info = extract_metadata("Datatake")
+    e1_image_quality = extract_metadata("Image_Content_QI")
+
+    from datetime import datetime
+
+    def parse_iso8601(dt_str):
+      try:
+        # Remove 'Z' if present and parse
+        dt_str = dt_str.rstrip("Z")
+        dt = datetime.fromisoformat(dt_str)
+        # Format as "YYYY-MM-DD HH:MM:SS"
+        return dt.strftime("%Y-%m-%d %H:%M:%S")
+      except Exception:
+        return dt_str  # fallback to original if parsing fails
+
+    e1_product_info_human = dict(e1_product_info)
+    e1_platform_info_human = dict(e1_platform_info)
+
+    for key in ["PRODUCT_START_TIME", "PRODUCT_STOP_TIME", "GENERATION_TIME"]:
+      if key in e1_product_info_human:
+        e1_product_info_human[key + "_HUMAN"] = parse_iso8601(e1_product_info_human[key])
+
+    for key in ["DATATAKE_SENSING_START"]:
+      for k in list(e1_platform_info_human.keys()):
+        e1_platform_info_human[k + "_HUMAN"] = parse_iso8601(e1_platform_info_human[k]) 
+
+    e1_metadata = {
+        "product_info": e1_product_info_human,
+        "platform_info": e1_platform_info_human,
+        "image_quality": e1_image_quality
+    }
+```
+
+```python exec
+# Load metadata for E2.1: Workflow Infrastructure
+e2_1_data = by_id.get("#E2.1-workflow-infrastructure", {})
+e2_1_parts = e2_1_data.get("hasPart", [])
+e2_1_dockerfile = next((f["@id"] for f in e2_1_parts if f["@id"] == "Dockerfile"), None)
+
+e2_1_dockerfile_content = None
+if e2_1_dockerfile:
+  dockerfile_path = Path("interface.crate") / e2_1_dockerfile
+  if dockerfile_path.exists():
+    with dockerfile_path.open() as f:
+      e2_1_dockerfile_content = f.read()
+
+e2_1_container_url = next((f["@id"] for f in e2_1_parts if "docker.com" in f["@id"]), None)
+```
+
+```python exec
+# --- NEW: Load the provenance_output.crate ---
+# Get the path to the nested crate from the E2.2 entry
+e22_wms = by_id.get("#E2.2-wms", {})
+provenance_crate_path = e22_wms.get("hasPart", [{}])[0].get("@id", None)
+
+# Load the nested provenance crate if the path is found
+provenance_data = {}
+if provenance_crate_path:
+    provenance_manifest = Path("interface.crate") / provenance_crate_path / "ro-crate-metadata.json"
+    if provenance_manifest.exists():
+        with provenance_manifest.open() as f:
+            provenance_data = json.load(f)
+
+
+provenance_graph = provenance_data["@graph"]
+provenance_by_id = {entry["@id"]: entry for entry in provenance_graph}
+workflow = next((e for e in provenance_graph if e.get("@type") == ["File", "SoftwareSourceCode", "ComputationalWorkflow", "HowTo"]), None)
+steps = sorted([e for e in provenance_graph if e.get("@type") == "ControlAction"], key=lambda x: x.get("position", 0))
+
+step_summaries = []
+for step in steps:
+    step_id = step.get("@id")
+    for e in provenance_graph:
+        if e.get("@id") == step.get("object").get("@id"):
+            tool_action = e
+
+    inputs = tool_action.get("object")
+    outputs = tool_action.get("result")
+    
+    for e in provenance_graph:
+        if e.get("@id") == step.get("instrument").get("@id"):
+            script = e
+
+    step_summaries.append({
+        "step_id": step_id,
+        "script": script,
+        "inputs": inputs,
+        "outputs": outputs
+    })
+    
+    print(step_summaries[0]["script"])  
+```
+
+```python exec
+# Extract E3 result info
+e3_dataset = by_id.get("#E3-experimental-results", {})
+zenodo_entry = e3_dataset.get("hasPart", [{}])[0].get("@id", None)
+```
+
+# Example LivePublication -- dynamic narratives that reflect experimental states
+
+some body text here
+
+## Computational Workflow
+
+::: for step in step_summaries
+
+### Step {{ step["script"]["@id"] }}
+
+{{ print(step) }}
+
+:::
+
+## Sentinel-2A Data Product Overview
+
+This publication uses a **{{ e1_platform_info_human["SPACECRAFT_NAME"] }}** {{ e1_product_info_human["PROCESSING_LEVEL"] }} product acquired during orbit {{ e1_platform_info_human["SENSING_ORBIT_NUMBER"] }} on {{ e1_platform_info_human["DATATAKE_SENSING_START_HUMAN"] }}.
+The dataset, identified by this [DOI]({{e1_product_info_human["PRODUCT_DOI"]}}), was processed using baseline **{{ e1_product_info_human["PROCESSING_BASELINE"] }}** (see [here](https://sentiwiki.copernicus.eu/web/s2-processing) for information on baseline processing algorithms) on {{ e1_product_info_human["GENERATION_TIME_HUMAN"] }}.
+
+## Data Alerts
+
+## Data Alerts
+
+```python exec
+# Create boolean flags for data Alerts
+data_alert_flags = {
+    "cloudy_pixels": float(e1_image_quality["CLOUDY_PIXEL_OVER_LAND_PERCENTAGE"]) > 50.0,
+    "very_cloudy_pixels": float(e1_image_quality["CLOUDY_PIXEL_OVER_LAND_PERCENTAGE"]) > 80.0,
+    "nodata_pixels": float(e1_image_quality["NODATA_PIXEL_PERCENTAGE"]) > 50.0,
+    "thin_cirrus": float(e1_image_quality["THIN_CIRRUS_PERCENTAGE"]) > 30.0,
+    "high_cloud_prob": float(e1_image_quality["HIGH_PROBA_CLOUDS_PERCENTAGE"]) > 25.0,
+    "medium_cloud_prob": float(e1_image_quality["MEDIUM_PROBA_CLOUDS_PERCENTAGE"]) > 25.0,
+    "saturated_pixels": float(e1_image_quality["SATURATED_DEFECTIVE_PIXEL_PERCENTAGE"]) > 0.1,
+    "cloud_shadow": float(e1_image_quality["CLOUD_SHADOW_PERCENTAGE"]) > 10.0,
+    "water_dominance": float(e1_image_quality["WATER_PERCENTAGE"]) > 50.0,
+    "low_vegetation": float(e1_image_quality["VEGETATION_PERCENTAGE"]) < 5.0
+}
+```
+
+
+The Sentinel-2A scene was assessed for conditions that may impact analysis reliability.
+
+DYNAMIC ALERTS PARAGRAPH
+
+Analysts should carefully consider these conditions before using this dataset in quantitative workflows.
+
+### Image Quality Summary
+
+| Property                            | Value                                                                                     |
+| ----------------------------------- | ----------------------------------------------------------------------------------------- |
+| **Cloudy Pixels Over Land**         | `round(float(e1_image_quality["CLOUDY_PIXEL_OVER_LAND_PERCENTAGE"]), 2)`{python exec}%    |
+| **No Data Pixels**                  | `round(float(e1_image_quality["NODATA_PIXEL_PERCENTAGE"]), 2)`{python exec}%              |
+| **Saturated/Defective Pixels**      | `round(float(e1_image_quality["SATURATED_DEFECTIVE_PIXEL_PERCENTAGE"]), 2)`{python exec}% |
+| **Dark Features**                   | `round(float(e1_image_quality["DARK_FEATURES_PERCENTAGE"]), 2)`{python exec}%             |
+| **Cloud Shadow**                    | `round(float(e1_image_quality["CLOUD_SHADOW_PERCENTAGE"]), 2)`{python exec}%              |
+| **Vegetation**                      | `round(float(e1_image_quality["VEGETATION_PERCENTAGE"]), 2)`{python exec}%                |
+| **Not Vegetated**                   | `round(float(e1_image_quality["NOT_VEGETATED_PERCENTAGE"]), 2)`{python exec}%             |
+| **Water**                           | `round(float(e1_image_quality["WATER_PERCENTAGE"]), 2)`{python exec}%                     |
+| **Unclassified**                    | `round(float(e1_image_quality["UNCLASSIFIED_PERCENTAGE"]), 2)`{python exec}%              |
+| **Medium Probability Clouds**       | `round(float(e1_image_quality["MEDIUM_PROBA_CLOUDS_PERCENTAGE"]), 2)`{python exec}%       |
+| **High Probability Clouds**         | `round(float(e1_image_quality["HIGH_PROBA_CLOUDS_PERCENTAGE"]), 2)`{python exec}%         |
+| **Thin Cirrus**                     | `round(float(e1_image_quality["THIN_CIRRUS_PERCENTAGE"]), 2)`{python exec}%               |
+| **Snow/Ice**                        | `round(float(e1_image_quality["SNOW_ICE_PERCENTAGE"]), 2)`{python exec}%                  |
+| **Radiative Transfer Accuracy**     | `e1_image_quality["RADIATIVE_TRANSFER_ACCURACY"]`{python exec}                            |
+| **Water Vapour Retrieval Accuracy** | `e1_image_quality["WATER_VAPOUR_RETRIEVAL_ACCURACY"]`{python exec}                        |
+| **AOT Retrieval Accuracy**          | `e1_image_quality["AOT_RETRIEVAL_ACCURACY"]`{python exec}                                 |
+| **AOT Retrieval Method**            | `e1_image_quality["AOT_RETRIEVAL_METHOD"]`{python exec}                                   |
+| **Granule Mean AOT**                | `e1_image_quality["GRANULE_MEAN_AOT"]`{python exec}                                       |
+| **Granule Mean Water Vapour**       | `e1_image_quality["GRANULE_MEAN_WV"]`{python exec}                                        |
+| **Ozone Source**                    | `e1_image_quality["OZONE_SOURCE"]`{python exec}                                           |
+| **Ozone Value**                     | `e1_image_quality["OZONE_VALUE"]`{python exec}                                            |

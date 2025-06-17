@@ -18,7 +18,7 @@ cwltool --strict-memory-limit --provenance provenance_output Workflows/workflow.
 
 # Step 3: Generate the Provenance Run Crate
 echo "📦 Converting to Provenance Run Crate..."
-runcrate convert provenance_output
+runcrate convert provenance_output --output provenance_output.crate
 
 # Step 6: Run your Zenodo upload script
 echo "☁️ Uploading new version to Zenodo..."

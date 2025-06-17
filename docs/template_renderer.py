@@ -2,6 +2,7 @@ import os
 from jinja2 import Environment, FileSystemLoader
 import json
 import re
+import html
 
 def update_description_and_name_in_preview(crate_html_path, new_description):
     with open(crate_html_path, "r", encoding="utf-8") as f:
@@ -12,8 +13,15 @@ def update_description_and_name_in_preview(crate_html_path, new_description):
     if not match:
         return
 
-    raw_json = match.group(1).strip()
-    decoded_json = json.loads(raw_json)
+    raw_json = html.unescape(match.group(1)).strip()
+    raw_json = re.sub(r'[\x00-\x1F\x7F]', '', raw_json)
+    try:
+        decoded_json = json.loads(raw_json)
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON-LD from {crate_html_path}:\n{e}")
+        print("Offending JSON snippet:")
+        print(raw_json[:500])
+        return
     for entity in decoded_json.get("@graph", []):
         if entity.get("@id") == "./":
             entity["description"] = new_description

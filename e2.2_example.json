@@ -1,0 +1,75 @@
+[
+  {
+    "step_id": "#57fa63a8-9250-4595-978b-477a751aea86",
+    "script": {
+      "@id": "packed.cwl#main/index_def",
+      "@type": "HowToStep",
+      "connection": [
+        {
+          "@id": "#884ef953-e4a7-4eea-9a95-f5d053fcc183"
+        },
+        {
+          "@id": "#a34b169e-cce5-46b2-96e9-799b94d78acc"
+        }
+      ],
+      "position": "0",
+      "workExample": {
+        "@id": "packed.cwl#index_def.cwl"
+      }
+    },
+    "inputs": [
+      {
+        "@id": "#pv-main/index_def/bands"
+      },
+      {
+        "@id": "#pv-main/index_def/index"
+      },
+      {
+        "@id": "#2f89e79c-b590-4bf0-9204-62248918e323"
+      }
+    ],
+    "outputs": [
+      {
+        "@id": "#pv-main/index_def/all_outputs"
+      },
+      {
+        "@id": "005d10def9470fd3947da333a45ad1133364d867"
+      }
+    ]
+  },
+  {
+    "step_id": "#57fa63a8-9250-4595-978b-477a751aea86",
+    "script": {
+      "@id": "packed.cwl#main/tiff_gen",
+      "@type": "HowToStep",
+      "connection": [
+        {
+          "@id": "#78be4e29-35f7-4a7a-ad0f-e481cbfebeab"
+        },
+        {
+          "@id": "#c48cf866-9e37-4a41-9876-253462977deb"
+        }
+      ],
+      "position": "1",
+      "workExample": {
+        "@id": "packed.cwl#tiff_gen.cwl"
+      }
+    },
+    "inputs": [
+      {
+        "@id": "#pv-main/tiff_gen/color"
+      },
+      {
+        "@id": "005d10def9470fd3947da333a45ad1133364d867"
+      },
+      {
+        "@id": "#4d933458-4d11-4a25-98c9-cd062205c46d"
+      }
+    ],
+    "outputs": [
+      {
+        "@id": "a32fad295ebe5cd057e9ab81c71307f52c2d73a8"
+      }
+    ]
+  }
+]
