@@ -9,6 +9,8 @@ find . -maxdepth 1 -name "*.pickle" -delete
 find . -maxdepth 1 -name "*.tif" -delete
 rm -rf interface.crate/ provenance_output/ provenance_output.crate/
 rm -f DNF_document.json dynamic_article.json
+rm -rf docs/publication/
+
 
 # Step 1: Download new Copernicus data and patch workflow inputs
 echo "🛰️ Downloading Copernicus data and patching workflow input..."
@@ -55,6 +57,11 @@ stencila convert dynamic_publication.smd DNF_document.json
 # Step 11: Render the DNF Document using the interface.crate
 echo "📑 Rendering DNF Document with interface.crate..."
 stencila render --no-save DNF_Document.json dynamic_article.json    
+
+# Step 12: Create exmaple presentation verisons of the rendered article
+echo "📊 Creating example presentation versions of the rendered article..."
+stencila convert dynamic_article.json  docs/publication/dynamic_article.html
+stencila convert dynamic_article.json docs/publication/dynamic_article.pdf
 
 # Step 11: Commit and push to GitHub
 echo "📤 Committing and pushing to GitHub..."
