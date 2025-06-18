@@ -11,11 +11,9 @@ import yaml
 import glob
 import shutil
 
-
-
 STAC_URL = "https://catalogue.dataspace.copernicus.eu/stac/collections/SENTINEL-2/items"
    
-BBOX = "165.438762,-46.987599,178.795400,-36.073371"
+BBOX = "6.301926,41.422467,22.843947,52.947502"
 
 def get_access_token(username: str, password: str) -> str:
     data = {
@@ -38,7 +36,7 @@ def get_access_token(username: str, password: str) -> str:
 
 
 
-def list_sentinel2_l2a(limit=5):
+def list_sentinel2_l2a(limit=100):
     query = f"{STAC_URL}?bbox={BBOX}&limit={limit}"
     response = requests.get(query)
     response.raise_for_status()
