@@ -7,6 +7,7 @@ echo "🧹 Cleaning project directory..."
 rm -rf Workflow_inputs/Data/*
 find . -maxdepth 1 -name "*.pickle" -delete
 find . -maxdepth 1 -name "*.tif" -delete
+rm -rf interface.crate/ provenance_output/ provenance_output.crate/
 
 # Step 1: Download new Copernicus data and patch workflow inputs
 echo "🛰️ Downloading Copernicus data and patching workflow input..."
@@ -19,6 +20,11 @@ cwltool --strict-memory-limit --provenance provenance_output Workflows/workflow.
 # Step 3: Generate the Provenance Run Crate
 echo "📦 Converting to Provenance Run Crate..."
 runcrate convert provenance_output --output provenance_output.crate
+
+# Step 4: Generate workflow preview image
+echo "🖼️ Generating CWL workflow diagram..."
+cwltool --print-dot provenance_output.crate/packed.cwl | dot -Tpng -o workflow_preview.png
+cp workflow_preview.png provenance_output.crate/workflow_preview.png
 
 # Step 6: Run your Zenodo upload script
 echo "☁️ Uploading new version to Zenodo..."

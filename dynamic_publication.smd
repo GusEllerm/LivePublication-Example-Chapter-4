@@ -1,4 +1,4 @@
-```python exec
+```python exec always
 # Interface connections for incoming interface.crate objects
 import json
 from pathlib import Path
@@ -26,7 +26,7 @@ def parse_iso8601(dt_str):
         return dt_str  # fallback to original if parsing fails
 ```
 
-```python exec
+```python exec always
 # Load metadata for E1: Data Producer Output
 import xml.etree.ElementTree as ET
 import re
@@ -96,7 +96,7 @@ if mtd_path.exists():
     }
 ```
 
-```python exec
+```python exec always
 # Load metadata for E2.1: Workflow Infrastructure
 e2_1_data = by_id.get("#E2.1-workflow-infrastructure", {})
 e2_1_parts = e2_1_data.get("hasPart", [])
@@ -112,7 +112,7 @@ if e2_1_dockerfile:
 e2_1_container_url = next((f["@id"] for f in e2_1_parts if "docker.com" in f["@id"]), None)
 ```
 
-```python exec
+```python exec always
 # --- NEW: Load the provenance_output.crate ---
 # Get the path to the nested crate from the E2.2 entry
 e22_wms = by_id.get("#E2.2-wms", {})
@@ -175,9 +175,10 @@ for step in steps:
         "Inputs": input_entities,
         "Outputs": output_entities,
     })
+
 ```
 
-```python exec
+```python exec always
 # Extract E3 result info
 e3_dataset = by_id.get("#E3-experimental-results", {})
 zenodo_entry = e3_dataset.get("hasPart", [{}])[0].get("@id", None)
@@ -191,15 +192,15 @@ some body text here
 
 ### Parameters
 
-::: for parameter in FormalParameters
+::: for parameter in `FormalParameters`{python exec}
 
-::::: if parameter["description"]
+::::: if `parameter.get("description")`{python exec}
 
-#### {{ parameter["name"] }}
+#### `parameter["name"]`{python exec}
 
-| **Description**                | **Type**                          |
-| ------------------------------ | --------------------------------- |
-| {{ parameter["description"] }} | {{ parameter["additionalType"] }} |
+| **Description**                         | **Type**                                   |
+| --------------------------------------- | ------------------------------------------ |
+| `parameter["description"]`{python exec} | `parameter["additionalType"]`{python exec} |
 
 :::::
 
@@ -209,22 +210,22 @@ some body text here
 
 ::: for step in step_summaries
 
-### Step {{ step["SoftwareApplication"]["name"] }}
+### Step `step["SoftwareApplication"]["name"]`{python exec}
 
-This step, **{{ step["CreateAction"]["name"] }}**, uses the tool _{{ step["SoftwareApplication"]["name"] }}_.
+This step, **`step["CreateAction"]["name"]`{python exec}**, uses the tool _`step["SoftwareApplication"]["name"]`{python exec}_.
 
-{{ step["SoftwareApplication"]["description"] }}
+`step["SoftwareApplication"]["description"]`{python exec}
 
-It was executed from **{{ step["CreateAction"]["startTime"] }}** to **{{ step["CreateAction"]["endTime"] }}**,
-using the container image **{{ step["ContainerImage"]["name"] }}**.
+It was executed from **`step["CreateAction"]["startTime"]`{python exec}** to **`step["CreateAction"]["endTime"]`{python exec}**,
+using the container image **`step["ContainerImage"]["name"]`{python exec}**.
 
 #### Inputs
 
 ::::: for input in step["Inputs"]
 
-| Name                                                     | Reference                           |
-| -------------------------------------------------------- | ----------------------------------- |
-| {{ input["name"] if "name" in input else input["@id"] }} | {{ input["exampleOfWork"]["@id"] }} |
+| Name                                                              | Reference                                    |
+| ----------------------------------------------------------------- | -------------------------------------------- |
+| `input["name"] if "name" in input else input["@id"]`{python exec} | `", ".join(e["@id"] if isinstance(e, dict) and "@id" in e else str(e) for e in (input["exampleOfWork"] if isinstance(input["exampleOfWork"], list) else [input["exampleOfWork"]]))`{python exec} |
 
 :::::
 
@@ -232,9 +233,9 @@ using the container image **{{ step["ContainerImage"]["name"] }}**.
 
 ::::: for output in step["Outputs"]
 
-| Name                                                        | Reference                            |
-| ----------------------------------------------------------- | ------------------------------------ |
-| {{ output["name"] if "name" in output else output["@id"] }} | {{ output["exampleOfWork"]["@id"] }} |
+| Name                                                                 | Reference                                     |
+| -------------------------------------------------------------------- | --------------------------------------------- |
+| `output["name"] if "name" in output else output["@id"]`{python exec} | `", ".join(e["@id"] if isinstance(e, dict) and "@id" in e else str(e) for e in (output["exampleOfWork"] if isinstance(output["exampleOfWork"], list) else [output["exampleOfWork"]]))`{python exec} |
 
 :::::
 
@@ -242,12 +243,12 @@ using the container image **{{ step["ContainerImage"]["name"] }}**.
 
 ## Sentinel-2A Data Product Overview
 
-This publication uses a **{{ e1_platform_info_human["SPACECRAFT_NAME"] }}** {{ e1_product_info_human["PROCESSING_LEVEL"] }} product acquired during orbit {{ e1_platform_info_human["SENSING_ORBIT_NUMBER"] }} on {{ e1_platform_info_human["DATATAKE_SENSING_START_HUMAN"] }}.
-The dataset, identified by this [DOI]({{e1_product_info_human["PRODUCT_DOI"]}}), was processed using baseline **{{ e1_product_info_human["PROCESSING_BASELINE"] }}** (see [here](https://sentiwiki.copernicus.eu/web/s2-processing) for information on baseline processing algorithms) on {{ e1_product_info_human["GENERATION_TIME_HUMAN"] }}.
+This publication uses a **`e1_platform_info_human["SPACECRAFT_NAME"]`{python exec}** `e1_product_info_human["PROCESSING_LEVEL"]`{python exec} product acquired during orbit `e1_platform_info_human["SENSING_ORBIT_NUMBER"]`{python exec} on `e1_platform_info_human["DATATAKE_SENSING_START_HUMAN"]`{python exec}.
+The dataset, identified by this [DOI](`e1_product_info_human["PRODUCT_DOI"]`{python exec}), was processed using baseline **`e1_product_info_human["PROCESSING_BASELINE"]`{python exec}** (see [here](https://sentiwiki.copernicus.eu/web/s2-processing) for information on baseline processing algorithms) on `e1_product_info_human["GENERATION_TIME_HUMAN"]`{python exec}.
 
 ## Data Alerts
 
-```python exec
+```python exec always
 # Create boolean flags for data Alerts
 data_alert_flags = {
     "cloudy_pixels": float(e1_image_quality["CLOUDY_PIXEL_OVER_LAND_PERCENTAGE"]) > 50.0,
@@ -278,39 +279,39 @@ if len(active_ranked_flags) == 1:
 
 The Sentinel-2A scene was assessed for conditions that may impact analysis reliability.
 
-::: for flag in active_ranked_flags
+::: for flag in `active_ranked_flags`{python exec}
 
-::::: if flag == "cloudy_pixels"
+::::: if `flag == "cloudy_pixels"`{python exec}
 
 A large proportion of the land surface is cloud-covered ({{ e1_image_quality["CLOUDY_PIXEL_OVER_LAND_PERCENTAGE"] }}%), which may significantly distort GNDVI signals.
 
 :::::
 
-::::: if flag == "thin_cirrus"
+::::: if `flag == "thin_cirrus"`{python exec}
 
 Thin cirrus clouds are present ({{ e1_image_quality["THIN_CIRRUS_PERCENTAGE"] }}%), potentially elevating NIR values and distorting vegetation estimates.
 
 :::::
 
-::::: if flag == "cloud_shadow"
+::::: if `flag == "cloud_shadow"`{python exec}
 
 Cloud shadows affect part of the scene ({{ e1_image_quality["CLOUD_SHADOW_PERCENTAGE"] }}%), possibly reducing GNDVI by lowering NIR reflectance.
 
 :::::
 
-::::: if flag == "saturated_pixels"
+::::: if `flag == "saturated_pixels"`{python exec}
 
 Saturation has been detected in {{ e1_image_quality["SATURATED_DEFECTIVE_PIXEL_PERCENTAGE"] }}% of pixels, indicating possible data corruption in bright areas.
 
 :::::
 
-::::: if flag == "low_vegetation"
+::::: if `flag == "low_vegetation"`{python exec}
 
 Vegetation coverage is low ({{ e1_image_quality["VEGETATION_PERCENTAGE"] }}%), which can make GNDVI more sensitive to atmospheric noise or edge effects.
 
 :::::
 
-::::: if flag == "no_op"
+::::: if `flag == "no_op"`{python exec}
 
 :::::
 

@@ -77,7 +77,7 @@
           "@id": "https://w3id.org/workflowhub/workflow-ro-crate/1.0"
         }
       ],
-      "datePublished": "2025-06-17T22:07:44+00:00",
+      "datePublished": "2025-06-18T21:04:27+00:00",
       "description": "Represents the provenance of the CWL workflow execution",
       "hasPart": [
         {
@@ -120,13 +120,13 @@
       },
       "mentions": [
         {
-          "@id": "#dd5a1e79-83ce-4cb4-8f17-5a53885b78ff"
+          "@id": "#c35f3f88-1498-4490-931b-95cbb33ac67b"
         },
         {
-          "@id": "#3459c38f-3f6a-4946-bb2e-09e66a9e6225"
+          "@id": "#0f3558d9-27f7-429d-82e2-89cbe5800d78"
         },
         {
-          "@id": "#09ec8bde-7d2b-440b-8a86-1c219ef2b6be"
+          "@id": "#ca31db4f-2eb5-4259-987f-34f08d91febd"
         }
       ],
       "name": "Workflow Provenance Record (CWL Execution)",
@@ -218,12 +218,15 @@
       ],
       "connection": [
         {
-          "@id": "#d70fc3f9-99f8-419e-b6d0-d249301dc130"
+          "@id": "#0fe319a9-4860-4bac-bae2-3eec821a3a30"
         },
         {
-          "@id": "#c11fcb85-777c-4a13-be5d-0a69f578ae2f"
+          "@id": "#550d1e45-beae-481c-b451-afcf3e481dad"
         }
       ],
+      "description": "A CWL workflow for computing a vegetation index (e.g., NDVI, GNDVI)
+from Sentinel-2 band inputs and generating a color-mapped GeoTIFF.
+",
       "hasPart": [
         {
           "@id": "packed.cwl#index_def.cwl"
@@ -243,7 +246,7 @@
           "@id": "packed.cwl#main/index"
         }
       ],
-      "name": "packed.cwl",
+      "name": "Vegetation Index Workflow",
       "output": [
         {
           "@id": "packed.cwl#main/all_outputs"
@@ -276,7 +279,7 @@
         ],
         "instrument": [
           {
-            "@id": "#dd5a1e79-83ce-4cb4-8f17-5a53885b78ff"
+            "@id": "#c35f3f88-1498-4490-931b-95cbb33ac67b"
           }
         ]
       }
@@ -305,6 +308,7 @@
       "@id": "packed.cwl#main/bands",
       "@type": "FormalParameter",
       "additionalType": "File",
+      "description": "A list of spectral band raster files (e.g., B03, B08) for the index calculation.",
       "multipleValues": "True",
       "name": "bands",
       "@reverse": {
@@ -315,7 +319,7 @@
         ],
         "sourceParameter": [
           {
-            "@id": "#f3ec4b61-32c8-47e7-b6fb-e4bcb2238da0"
+            "@id": "#2f4d8cc7-46d7-4167-b34b-28a6f440a7e7"
           }
         ],
         "exampleOfWork": [
@@ -329,6 +333,7 @@
       "@id": "packed.cwl#main/color",
       "@type": "FormalParameter",
       "additionalType": "Text",
+      "description": "The name of the matplotlib-compatible color map for the output TIFF.",
       "name": "color",
       "@reverse": {
         "input": [
@@ -338,7 +343,7 @@
         ],
         "sourceParameter": [
           {
-            "@id": "#d6cad665-dc39-4972-8d2a-68b34620d67d"
+            "@id": "#1249265a-98ee-444c-ba6f-69a47f371e93"
           }
         ],
         "exampleOfWork": [
@@ -352,6 +357,7 @@
       "@id": "packed.cwl#main/index",
       "@type": "FormalParameter",
       "additionalType": "Text",
+      "description": "The name of the vegetation index to compute (e.g., NDVI, GNDVI)",
       "name": "index",
       "@reverse": {
         "input": [
@@ -361,7 +367,7 @@
         ],
         "sourceParameter": [
           {
-            "@id": "#08cf61ec-4b8a-44ec-9b45-016e95abf586"
+            "@id": "#02537c51-2f8e-4bf6-8e3c-4958ac905ba4"
           }
         ],
         "exampleOfWork": [
@@ -375,6 +381,7 @@
       "@id": "packed.cwl#main/all_outputs",
       "@type": "FormalParameter",
       "additionalType": "File",
+      "description": "All intermediate and final pickle outputs from the index computation.",
       "multipleValues": "True",
       "name": "all_outputs",
       "@reverse": {
@@ -385,7 +392,7 @@
         ],
         "targetParameter": [
           {
-            "@id": "#d70fc3f9-99f8-419e-b6d0-d249301dc130"
+            "@id": "#0fe319a9-4860-4bac-bae2-3eec821a3a30"
           }
         ],
         "exampleOfWork": [
@@ -399,6 +406,7 @@
       "@id": "packed.cwl#main/tiff",
       "@type": "FormalParameter",
       "additionalType": "File",
+      "description": "The final TIFF image output with the vegetation index and color map applied.",
       "name": "tiff",
       "@reverse": {
         "output": [
@@ -408,7 +416,7 @@
         ],
         "targetParameter": [
           {
-            "@id": "#c11fcb85-777c-4a13-be5d-0a69f578ae2f"
+            "@id": "#550d1e45-beae-481c-b451-afcf3e481dad"
           }
         ],
         "exampleOfWork": [
@@ -423,10 +431,10 @@
       "@type": "HowToStep",
       "connection": [
         {
-          "@id": "#f3ec4b61-32c8-47e7-b6fb-e4bcb2238da0"
+          "@id": "#2f4d8cc7-46d7-4167-b34b-28a6f440a7e7"
         },
         {
-          "@id": "#08cf61ec-4b8a-44ec-9b45-016e95abf586"
+          "@id": "#02537c51-2f8e-4bf6-8e3c-4958ac905ba4"
         }
       ],
       "position": "0",
@@ -441,7 +449,7 @@
         ],
         "instrument": [
           {
-            "@id": "#f47bb26c-5e4f-490a-82f0-f24a978f69e3"
+            "@id": "#60e3a3be-57c1-44ed-91c1-afae8a62c41c"
           }
         ]
       }
@@ -487,7 +495,7 @@ auxiliary functions from file_handling.py.
         ],
         "instrument": [
           {
-            "@id": "#ff63ccb5-2919-4206-8ed7-3be1b16bc732"
+            "@id": "#b6a63b17-9762-4f2d-9717-17628ab801b3"
           }
         ]
       }
@@ -506,7 +514,7 @@ auxiliary functions from file_handling.py.
         ],
         "targetParameter": [
           {
-            "@id": "#f3ec4b61-32c8-47e7-b6fb-e4bcb2238da0"
+            "@id": "#2f4d8cc7-46d7-4167-b34b-28a6f440a7e7"
           }
         ],
         "exampleOfWork": [
@@ -529,7 +537,7 @@ auxiliary functions from file_handling.py.
         ],
         "targetParameter": [
           {
-            "@id": "#08cf61ec-4b8a-44ec-9b45-016e95abf586"
+            "@id": "#02537c51-2f8e-4bf6-8e3c-4958ac905ba4"
           }
         ],
         "exampleOfWork": [
@@ -543,7 +551,7 @@ auxiliary functions from file_handling.py.
       "@id": "packed.cwl#index_def.cwl/index_def",
       "@type": "FormalParameter",
       "additionalType": "File",
-      "defaultValue": "<cwl_utils.parser.cwl_v1_0.File object at 0x107b06d20>",
+      "defaultValue": "<cwl_utils.parser.cwl_v1_0.File object at 0x108ee42f0>",
       "name": "index_def",
       "@reverse": {
         "input": [
@@ -553,7 +561,7 @@ auxiliary functions from file_handling.py.
         ],
         "exampleOfWork": [
           {
-            "@id": "#3459c38f-3f6a-4946-bb2e-09e66a9e6225"
+            "@id": "#0f3558d9-27f7-429d-82e2-89cbe5800d78"
           }
         ]
       }
@@ -572,7 +580,7 @@ auxiliary functions from file_handling.py.
         ],
         "sourceParameter": [
           {
-            "@id": "#d70fc3f9-99f8-419e-b6d0-d249301dc130"
+            "@id": "#0fe319a9-4860-4bac-bae2-3eec821a3a30"
           }
         ],
         "exampleOfWork": [
@@ -595,7 +603,7 @@ auxiliary functions from file_handling.py.
         ],
         "sourceParameter": [
           {
-            "@id": "#80b90e97-83f8-4960-bc74-95e7d018a641"
+            "@id": "#97cb7fa7-3545-421b-9383-80e1369f0d14"
           }
         ],
         "exampleOfWork": [
@@ -610,10 +618,10 @@ auxiliary functions from file_handling.py.
       "@type": "HowToStep",
       "connection": [
         {
-          "@id": "#d6cad665-dc39-4972-8d2a-68b34620d67d"
+          "@id": "#1249265a-98ee-444c-ba6f-69a47f371e93"
         },
         {
-          "@id": "#80b90e97-83f8-4960-bc74-95e7d018a641"
+          "@id": "#97cb7fa7-3545-421b-9383-80e1369f0d14"
         }
       ],
       "position": "1",
@@ -628,7 +636,7 @@ auxiliary functions from file_handling.py.
         ],
         "instrument": [
           {
-            "@id": "#3fdfee07-c805-48e3-a825-565fe4d65882"
+            "@id": "#82a43d77-ac66-433a-84a5-5b56239012f5"
           }
         ]
       }
@@ -671,7 +679,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
         ],
         "instrument": [
           {
-            "@id": "#e39d6c60-57bc-4be0-9f8e-1b0fe0fc0d0a"
+            "@id": "#f84f13c0-4927-4693-a346-384bfe680941"
           }
         ]
       }
@@ -689,7 +697,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
         ],
         "targetParameter": [
           {
-            "@id": "#d6cad665-dc39-4972-8d2a-68b34620d67d"
+            "@id": "#1249265a-98ee-444c-ba6f-69a47f371e93"
           }
         ],
         "exampleOfWork": [
@@ -712,7 +720,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
         ],
         "targetParameter": [
           {
-            "@id": "#80b90e97-83f8-4960-bc74-95e7d018a641"
+            "@id": "#97cb7fa7-3545-421b-9383-80e1369f0d14"
           }
         ],
         "exampleOfWork": [
@@ -726,7 +734,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@id": "packed.cwl#tiff_gen.cwl/tiff_gen",
       "@type": "FormalParameter",
       "additionalType": "File",
-      "defaultValue": "<cwl_utils.parser.cwl_v1_0.File object at 0x107b07980>",
+      "defaultValue": "<cwl_utils.parser.cwl_v1_0.File object at 0x10a121c10>",
       "name": "tiff_gen",
       "@reverse": {
         "input": [
@@ -736,7 +744,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
         ],
         "exampleOfWork": [
           {
-            "@id": "#09ec8bde-7d2b-440b-8a86-1c219ef2b6be"
+            "@id": "#ca31db4f-2eb5-4259-987f-34f08d91febd"
           }
         ]
       }
@@ -754,7 +762,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
         ],
         "sourceParameter": [
           {
-            "@id": "#c11fcb85-777c-4a13-be5d-0a69f578ae2f"
+            "@id": "#550d1e45-beae-481c-b451-afcf3e481dad"
           }
         ],
         "exampleOfWork": [
@@ -765,7 +773,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       }
     },
     {
-      "@id": "#f3ec4b61-32c8-47e7-b6fb-e4bcb2238da0",
+      "@id": "#2f4d8cc7-46d7-4167-b34b-28a6f440a7e7",
       "@type": "ParameterConnection",
       "sourceParameter": {
         "@id": "packed.cwl#main/bands"
@@ -782,7 +790,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       }
     },
     {
-      "@id": "#08cf61ec-4b8a-44ec-9b45-016e95abf586",
+      "@id": "#02537c51-2f8e-4bf6-8e3c-4958ac905ba4",
       "@type": "ParameterConnection",
       "sourceParameter": {
         "@id": "packed.cwl#main/index"
@@ -799,7 +807,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       }
     },
     {
-      "@id": "#d6cad665-dc39-4972-8d2a-68b34620d67d",
+      "@id": "#1249265a-98ee-444c-ba6f-69a47f371e93",
       "@type": "ParameterConnection",
       "sourceParameter": {
         "@id": "packed.cwl#main/color"
@@ -816,7 +824,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       }
     },
     {
-      "@id": "#80b90e97-83f8-4960-bc74-95e7d018a641",
+      "@id": "#97cb7fa7-3545-421b-9383-80e1369f0d14",
       "@type": "ParameterConnection",
       "sourceParameter": {
         "@id": "packed.cwl#index_def.cwl/index_matrix"
@@ -833,7 +841,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       }
     },
     {
-      "@id": "#d70fc3f9-99f8-419e-b6d0-d249301dc130",
+      "@id": "#0fe319a9-4860-4bac-bae2-3eec821a3a30",
       "@type": "ParameterConnection",
       "sourceParameter": {
         "@id": "packed.cwl#index_def.cwl/all_outputs"
@@ -850,7 +858,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       }
     },
     {
-      "@id": "#c11fcb85-777c-4a13-be5d-0a69f578ae2f",
+      "@id": "#550d1e45-beae-481c-b451-afcf3e481dad",
       "@type": "ParameterConnection",
       "sourceParameter": {
         "@id": "packed.cwl#tiff_gen.cwl/tiff"
@@ -867,41 +875,41 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       }
     },
     {
-      "@id": "#99e7a476-f066-431a-93a0-0d31f9e98c5d",
+      "@id": "#d23bcd0f-0106-4300-9cc9-627fd917691b",
       "@type": "SoftwareApplication",
       "name": "cwltool 3.1.20250110105449",
       "@reverse": {
         "instrument": [
           {
-            "@id": "#f656a121-0649-48df-b16c-0aa6d8a8b1c3"
+            "@id": "#4a8ab7c4-3d80-4bc6-a3ea-220d154827ed"
           }
         ]
       }
     },
     {
-      "@id": "#f656a121-0649-48df-b16c-0aa6d8a8b1c3",
+      "@id": "#4a8ab7c4-3d80-4bc6-a3ea-220d154827ed",
       "@type": "OrganizeAction",
       "instrument": {
-        "@id": "#99e7a476-f066-431a-93a0-0d31f9e98c5d"
+        "@id": "#d23bcd0f-0106-4300-9cc9-627fd917691b"
       },
       "name": "Run of cwltool 3.1.20250110105449",
       "object": [
         {
-          "@id": "#f47bb26c-5e4f-490a-82f0-f24a978f69e3"
+          "@id": "#60e3a3be-57c1-44ed-91c1-afae8a62c41c"
         },
         {
-          "@id": "#3fdfee07-c805-48e3-a825-565fe4d65882"
+          "@id": "#82a43d77-ac66-433a-84a5-5b56239012f5"
         }
       ],
       "result": {
-        "@id": "#dd5a1e79-83ce-4cb4-8f17-5a53885b78ff"
+        "@id": "#c35f3f88-1498-4490-931b-95cbb33ac67b"
       },
-      "startTime": "2025-06-18T10:06:28.598174"
+      "startTime": "2025-06-19T09:03:11.214875"
     },
     {
-      "@id": "#dd5a1e79-83ce-4cb4-8f17-5a53885b78ff",
+      "@id": "#c35f3f88-1498-4490-931b-95cbb33ac67b",
       "@type": "CreateAction",
-      "endTime": "2025-06-18T10:07:42.790679",
+      "endTime": "2025-06-19T09:04:26.623232",
       "instrument": {
         "@id": "packed.cwl"
       },
@@ -925,7 +933,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
           "@id": "9972fb0134cd7e38d406a1c0556eb1f7242cfe17"
         }
       ],
-      "startTime": "2025-06-18T10:06:28.598220",
+      "startTime": "2025-06-19T09:03:11.214921",
       "@reverse": {
         "mentions": [
           {
@@ -934,7 +942,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
         ],
         "result": [
           {
-            "@id": "#f656a121-0649-48df-b16c-0aa6d8a8b1c3"
+            "@id": "#4a8ab7c4-3d80-4bc6-a3ea-220d154827ed"
           }
         ]
       }
@@ -1001,7 +1009,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@reverse": {
         "object": [
           {
-            "@id": "#dd5a1e79-83ce-4cb4-8f17-5a53885b78ff"
+            "@id": "#c35f3f88-1498-4490-931b-95cbb33ac67b"
           }
         ]
       }
@@ -1017,7 +1025,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@reverse": {
         "object": [
           {
-            "@id": "#dd5a1e79-83ce-4cb4-8f17-5a53885b78ff"
+            "@id": "#c35f3f88-1498-4490-931b-95cbb33ac67b"
           }
         ]
       }
@@ -1033,7 +1041,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@reverse": {
         "object": [
           {
-            "@id": "#dd5a1e79-83ce-4cb4-8f17-5a53885b78ff"
+            "@id": "#c35f3f88-1498-4490-931b-95cbb33ac67b"
           }
         ]
       }
@@ -1087,13 +1095,13 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@type": "File",
       "alternateName": "T58GEQ_20150928T224906_GNDVI_10m.pickle",
       "contentSize": "482242690",
-      "dateCreated": "2025-06-18T10:07:11.815960",
+      "dateCreated": "2025-06-19T09:03:54.458154",
       "exampleOfWork": [
         {
-          "@id": "packed.cwl#index_def.cwl/index_matrix"
+          "@id": "packed.cwl#tiff_gen.cwl/index_array"
         },
         {
-          "@id": "packed.cwl#tiff_gen.cwl/index_array"
+          "@id": "packed.cwl#index_def.cwl/index_matrix"
         }
       ],
       "sha1": "ae2efdfd61277178c678d5220aa9195802956fc2",
@@ -1113,12 +1121,12 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
         ],
         "result": [
           {
-            "@id": "#ff63ccb5-2919-4206-8ed7-3be1b16bc732"
+            "@id": "#b6a63b17-9762-4f2d-9717-17628ab801b3"
           }
         ],
         "object": [
           {
-            "@id": "#e39d6c60-57bc-4be0-9f8e-1b0fe0fc0d0a"
+            "@id": "#f84f13c0-4927-4693-a346-384bfe680941"
           }
         ]
       }
@@ -1126,7 +1134,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
     {
       "@id": "#pv-main/all_outputs",
       "@type": "PropertyValue",
-      "dateCreated": "2025-06-18T10:07:42.790544",
+      "dateCreated": "2025-06-19T09:04:26.623092",
       "exampleOfWork": {
         "@id": "packed.cwl#main/all_outputs"
       },
@@ -1145,7 +1153,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@reverse": {
         "result": [
           {
-            "@id": "#dd5a1e79-83ce-4cb4-8f17-5a53885b78ff"
+            "@id": "#c35f3f88-1498-4490-931b-95cbb33ac67b"
           }
         ]
       }
@@ -1155,13 +1163,13 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@type": "File",
       "alternateName": "T58GEQ_20150928T224906_GNDVI_10m.tif",
       "contentSize": "78643406",
-      "dateCreated": "2025-06-18T10:07:42.739980",
+      "dateCreated": "2025-06-19T09:04:26.576775",
       "exampleOfWork": [
         {
-          "@id": "packed.cwl#main/tiff"
+          "@id": "packed.cwl#tiff_gen.cwl/tiff"
         },
         {
-          "@id": "packed.cwl#tiff_gen.cwl/tiff"
+          "@id": "packed.cwl#main/tiff"
         }
       ],
       "sha1": "9972fb0134cd7e38d406a1c0556eb1f7242cfe17",
@@ -1173,21 +1181,21 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
         ],
         "result": [
           {
-            "@id": "#dd5a1e79-83ce-4cb4-8f17-5a53885b78ff"
+            "@id": "#c35f3f88-1498-4490-931b-95cbb33ac67b"
           },
           {
-            "@id": "#e39d6c60-57bc-4be0-9f8e-1b0fe0fc0d0a"
+            "@id": "#f84f13c0-4927-4693-a346-384bfe680941"
           }
         ]
       }
     },
     {
-      "@id": "#ff63ccb5-2919-4206-8ed7-3be1b16bc732",
+      "@id": "#b6a63b17-9762-4f2d-9717-17628ab801b3",
       "@type": "CreateAction",
       "containerImage": {
-        "@id": "#13aed6a9-e995-4390-8d2a-dc569660e6bd"
+        "@id": "#94078b54-5364-4ca5-85cf-5a8c5b9057aa"
       },
-      "endTime": "2025-06-18T10:07:11.815948",
+      "endTime": "2025-06-19T09:03:54.458135",
       "instrument": {
         "@id": "packed.cwl#index_def.cwl"
       },
@@ -1200,7 +1208,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
           "@id": "#pv-main/index_def/index"
         },
         {
-          "@id": "#3459c38f-3f6a-4946-bb2e-09e66a9e6225"
+          "@id": "#0f3558d9-27f7-429d-82e2-89cbe5800d78"
         }
       ],
       "result": [
@@ -1211,29 +1219,29 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
           "@id": "ae2efdfd61277178c678d5220aa9195802956fc2"
         }
       ],
-      "startTime": "2025-06-18T10:06:28.909785",
+      "startTime": "2025-06-19T09:03:11.523130",
       "@reverse": {
         "object": [
           {
-            "@id": "#f47bb26c-5e4f-490a-82f0-f24a978f69e3"
+            "@id": "#60e3a3be-57c1-44ed-91c1-afae8a62c41c"
           }
         ]
       }
     },
     {
-      "@id": "#f47bb26c-5e4f-490a-82f0-f24a978f69e3",
+      "@id": "#60e3a3be-57c1-44ed-91c1-afae8a62c41c",
       "@type": "ControlAction",
       "instrument": {
         "@id": "packed.cwl#main/index_def"
       },
       "name": "orchestrate index_def.cwl",
       "object": {
-        "@id": "#ff63ccb5-2919-4206-8ed7-3be1b16bc732"
+        "@id": "#b6a63b17-9762-4f2d-9717-17628ab801b3"
       },
       "@reverse": {
         "object": [
           {
-            "@id": "#f656a121-0649-48df-b16c-0aa6d8a8b1c3"
+            "@id": "#4a8ab7c4-3d80-4bc6-a3ea-220d154827ed"
           }
         ]
       }
@@ -1256,7 +1264,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@reverse": {
         "object": [
           {
-            "@id": "#ff63ccb5-2919-4206-8ed7-3be1b16bc732"
+            "@id": "#b6a63b17-9762-4f2d-9717-17628ab801b3"
           }
         ]
       }
@@ -1272,7 +1280,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@reverse": {
         "object": [
           {
-            "@id": "#ff63ccb5-2919-4206-8ed7-3be1b16bc732"
+            "@id": "#b6a63b17-9762-4f2d-9717-17628ab801b3"
           }
         ]
       }
@@ -1289,18 +1297,18 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
             "@id": "./"
           },
           {
-            "@id": "#3459c38f-3f6a-4946-bb2e-09e66a9e6225"
+            "@id": "#0f3558d9-27f7-429d-82e2-89cbe5800d78"
           }
         ],
         "mainEntity": [
           {
-            "@id": "#3459c38f-3f6a-4946-bb2e-09e66a9e6225"
+            "@id": "#0f3558d9-27f7-429d-82e2-89cbe5800d78"
           }
         ]
       }
     },
     {
-      "@id": "#3459c38f-3f6a-4946-bb2e-09e66a9e6225",
+      "@id": "#0f3558d9-27f7-429d-82e2-89cbe5800d78",
       "@type": "Collection",
       "exampleOfWork": {
         "@id": "packed.cwl#index_def.cwl/index_def"
@@ -1324,7 +1332,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
         ],
         "object": [
           {
-            "@id": "#ff63ccb5-2919-4206-8ed7-3be1b16bc732"
+            "@id": "#b6a63b17-9762-4f2d-9717-17628ab801b3"
           }
         ]
       }
@@ -1341,10 +1349,10 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
             "@id": "./"
           },
           {
-            "@id": "#3459c38f-3f6a-4946-bb2e-09e66a9e6225"
+            "@id": "#0f3558d9-27f7-429d-82e2-89cbe5800d78"
           },
           {
-            "@id": "#09ec8bde-7d2b-440b-8a86-1c219ef2b6be"
+            "@id": "#ca31db4f-2eb5-4259-987f-34f08d91febd"
           }
         ]
       }
@@ -1352,7 +1360,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
     {
       "@id": "#pv-main/index_def/all_outputs",
       "@type": "PropertyValue",
-      "dateCreated": "2025-06-18T10:07:11.815960",
+      "dateCreated": "2025-06-19T09:03:54.458154",
       "exampleOfWork": {
         "@id": "packed.cwl#index_def.cwl/all_outputs"
       },
@@ -1371,13 +1379,13 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@reverse": {
         "result": [
           {
-            "@id": "#ff63ccb5-2919-4206-8ed7-3be1b16bc732"
+            "@id": "#b6a63b17-9762-4f2d-9717-17628ab801b3"
           }
         ]
       }
     },
     {
-      "@id": "#13aed6a9-e995-4390-8d2a-dc569660e6bd",
+      "@id": "#94078b54-5364-4ca5-85cf-5a8c5b9057aa",
       "@type": "ContainerImage",
       "additionalType": {
         "@id": "https://w3id.org/ro/terms/workflow-run#DockerImage"
@@ -1388,18 +1396,18 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@reverse": {
         "containerImage": [
           {
-            "@id": "#ff63ccb5-2919-4206-8ed7-3be1b16bc732"
+            "@id": "#b6a63b17-9762-4f2d-9717-17628ab801b3"
           }
         ]
       }
     },
     {
-      "@id": "#e39d6c60-57bc-4be0-9f8e-1b0fe0fc0d0a",
+      "@id": "#f84f13c0-4927-4693-a346-384bfe680941",
       "@type": "CreateAction",
       "containerImage": {
-        "@id": "#dfb0133b-df66-44a1-8f62-8c1291e36573"
+        "@id": "#3ba1c11b-2b05-4477-8971-88ee1725125b"
       },
-      "endTime": "2025-06-18T10:07:42.739938",
+      "endTime": "2025-06-19T09:04:26.576762",
       "instrument": {
         "@id": "packed.cwl#tiff_gen.cwl"
       },
@@ -1412,7 +1420,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
           "@id": "ae2efdfd61277178c678d5220aa9195802956fc2"
         },
         {
-          "@id": "#09ec8bde-7d2b-440b-8a86-1c219ef2b6be"
+          "@id": "#ca31db4f-2eb5-4259-987f-34f08d91febd"
         }
       ],
       "result": [
@@ -1420,29 +1428,29 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
           "@id": "9972fb0134cd7e38d406a1c0556eb1f7242cfe17"
         }
       ],
-      "startTime": "2025-06-18T10:07:12.288432",
+      "startTime": "2025-06-19T09:03:54.983841",
       "@reverse": {
         "object": [
           {
-            "@id": "#3fdfee07-c805-48e3-a825-565fe4d65882"
+            "@id": "#82a43d77-ac66-433a-84a5-5b56239012f5"
           }
         ]
       }
     },
     {
-      "@id": "#3fdfee07-c805-48e3-a825-565fe4d65882",
+      "@id": "#82a43d77-ac66-433a-84a5-5b56239012f5",
       "@type": "ControlAction",
       "instrument": {
         "@id": "packed.cwl#main/tiff_gen"
       },
       "name": "orchestrate tiff_gen.cwl",
       "object": {
-        "@id": "#e39d6c60-57bc-4be0-9f8e-1b0fe0fc0d0a"
+        "@id": "#f84f13c0-4927-4693-a346-384bfe680941"
       },
       "@reverse": {
         "object": [
           {
-            "@id": "#f656a121-0649-48df-b16c-0aa6d8a8b1c3"
+            "@id": "#4a8ab7c4-3d80-4bc6-a3ea-220d154827ed"
           }
         ]
       }
@@ -1458,7 +1466,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@reverse": {
         "object": [
           {
-            "@id": "#e39d6c60-57bc-4be0-9f8e-1b0fe0fc0d0a"
+            "@id": "#f84f13c0-4927-4693-a346-384bfe680941"
           }
         ]
       }
@@ -1475,18 +1483,18 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
             "@id": "./"
           },
           {
-            "@id": "#09ec8bde-7d2b-440b-8a86-1c219ef2b6be"
+            "@id": "#ca31db4f-2eb5-4259-987f-34f08d91febd"
           }
         ],
         "mainEntity": [
           {
-            "@id": "#09ec8bde-7d2b-440b-8a86-1c219ef2b6be"
+            "@id": "#ca31db4f-2eb5-4259-987f-34f08d91febd"
           }
         ]
       }
     },
     {
-      "@id": "#09ec8bde-7d2b-440b-8a86-1c219ef2b6be",
+      "@id": "#ca31db4f-2eb5-4259-987f-34f08d91febd",
       "@type": "Collection",
       "exampleOfWork": {
         "@id": "packed.cwl#tiff_gen.cwl/tiff_gen"
@@ -1510,13 +1518,13 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
         ],
         "object": [
           {
-            "@id": "#e39d6c60-57bc-4be0-9f8e-1b0fe0fc0d0a"
+            "@id": "#f84f13c0-4927-4693-a346-384bfe680941"
           }
         ]
       }
     },
     {
-      "@id": "#dfb0133b-df66-44a1-8f62-8c1291e36573",
+      "@id": "#3ba1c11b-2b05-4477-8971-88ee1725125b",
       "@type": "ContainerImage",
       "additionalType": {
         "@id": "https://w3id.org/ro/terms/workflow-run#DockerImage"
@@ -1527,7 +1535,7 @@ script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
       "@reverse": {
         "containerImage": [
           {
-            "@id": "#e39d6c60-57bc-4be0-9f8e-1b0fe0fc0d0a"
+            "@id": "#f84f13c0-4927-4693-a346-384bfe680941"
           }
         ]
       }
@@ -1572,17 +1580,17 @@ table.table {
   <nav class="navbar">
 
     <ul class="nav navbar-nav" >
-        <li ><a href="#"><span class="glyphicon glyphicon-home dataset_name">&nbsp;run of packed.cwl</span></a></li>
+        <li ><a href="#"><span class="glyphicon glyphicon-home dataset_name">&nbsp;run of Vegetation Index Workflow</span></a></li>
     </ul>
 
   </nav>
 <div class="container">
 <div class="jumbotron">
 <h4 class="citation"></h3>
-<h3 class="item_name">run of packed.cwl</h4>
+<h3 class="item_name">run of Vegetation Index Workflow</h4>
 
 
-<a href="./ro-crate-metadata.json">⬇️🏷️ Download all the metadata for <span class='name'>run of packed.cwl</span> in JSON-LD format</a>
+<a href="./ro-crate-metadata.json">⬇️🏷️ Download all the metadata for <span class='name'>run of Vegetation Index Workflow</span> in JSON-LD format</a>
 
 
 <div id="check"></div>
@@ -1595,7 +1603,7 @@ table.table {
 <div id="summary">
 <div class='all-meta'>
            <div>
-            <h3> run of packed.cwl</h3>
+            <h3> run of Vegetation Index Workflow</h3>
             
             
             
@@ -1608,16 +1616,16 @@ table.table {
             <td style='text-align:left'><span>./</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>run of packed.cwl</span></td>
+            <td style='text-align:left'><span>run of Vegetation Index Workflow</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">@type</th>
             <td style='text-align:left'><span>Dataset</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
-            <td style='text-align:left'><span>run of packed.cwl</span></td>
+            <td style='text-align:left'><span>run of Vegetation Index Workflow</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">datePublished<span>&nbsp;</span><a href="http://schema.org/datePublished">[?]</a></th>
-            <td style='text-align:left'><span>2025-06-17T22:07:44+00:00</span></td>
+            <td style='text-align:left'><span>2025-06-18T21:04:27+00:00</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
             <td style='text-align:left'><ul>
@@ -1632,7 +1640,7 @@ table.table {
             </tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#packed.cwl">packed.cwl</a></li>
+                        <li><a href="#packed.cwl">Vegetation Index Workflow</a></li>
                         
                         <li><a href="#34d39b7a06191596eab3ece87dcf17ae45e3e96b">34d39b7a06191596eab3ece87dcf17ae45e3e96b</a></li>
                         
@@ -1659,15 +1667,15 @@ table.table {
             <td style='text-align:left'><span>notspecified</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
-            <td style='text-align:left'><a href="#packed.cwl">packed.cwl</a></td>
+            <td style='text-align:left'><a href="#packed.cwl">Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">mentions<span>&nbsp;</span><a href="http://schema.org/mentions">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#%23dd5a1e79-83ce-4cb4-8f17-5a53885b78ff">Run of workflow/packed.cwl#main</a></li>
+                        <li><a href="#%23c35f3f88-1498-4490-931b-95cbb33ac67b">Run of workflow/packed.cwl#main</a></li>
                         
-                        <li><a href="#%233459c38f-3f6a-4946-bb2e-09e66a9e6225">#3459c38f-3f6a-4946-bb2e-09e66a9e6225</a></li>
+                        <li><a href="#%230f3558d9-27f7-429d-82e2-89cbe5800d78">#0f3558d9-27f7-429d-82e2-89cbe5800d78</a></li>
                         
-                        <li><a href="#%2309ec8bde-7d2b-440b-8a86-1c219ef2b6be">#09ec8bde-7d2b-440b-8a86-1c219ef2b6be</a></li>
+                        <li><a href="#%23ca31db4f-2eb5-4259-987f-34f08d91febd">#ca31db4f-2eb5-4259-987f-34f08d91febd</a></li>
                         </ul></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">about<span>&nbsp;</span><a href="http://schema.org/about">[?]</a></th>
@@ -1701,7 +1709,7 @@ table.table {
             <td style='text-align:left'><span>0.1</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -1731,7 +1739,7 @@ table.table {
             <td style='text-align:left'><span>0.1</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -1761,7 +1769,7 @@ table.table {
             <td style='text-align:left'><span>0.1</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -1792,7 +1800,7 @@ table.table {
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">conformsTo<span>&nbsp;</span><a href="http://purl.org/dc/terms/conformsTo">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#./">run of packed.cwl</a></li>
+                        <li><a href="#./">run of Vegetation Index Workflow</a></li>
                         
                         <li><a href="#ro-crate-metadata.json">ro-crate-metadata.json</a></li>
                         </ul></td>
@@ -1803,7 +1811,7 @@ table.table {
         </div>
         <hr/><br/><br/>
            <div>
-            <h3><a href="packed.cwl">⬇️ Download: </a> packed.cwl</h3>
+            <h3><a href="packed.cwl">⬇️ Download: </a> Vegetation Index Workflow</h3>
             
             
             
@@ -1816,7 +1824,7 @@ table.table {
             <td style='text-align:left'><span>packed.cwl</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
-            <td style='text-align:left'><span>packed.cwl</span></td>
+            <td style='text-align:left'><span>Vegetation Index Workflow</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">@type</th>
             <td style='text-align:left'><ul>
@@ -1829,11 +1837,16 @@ table.table {
                         <li><span>HowTo</span></li>
                         </ul></td>
             </tr><tr>
+            <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
+            <td style='text-align:left'><span>A CWL workflow for computing a vegetation index (e.g., NDVI, GNDVI)
+from Sentinel-2 band inputs and generating a color-mapped GeoTIFF.
+</span></td>
+            </tr><tr>
             <th style="text-align:left;" class="prop">connection<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#connection">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#%23d70fc3f9-99f8-419e-b6d0-d249301dc130">#d70fc3f9-99f8-419e-b6d0-d249301dc130</a></li>
+                        <li><a href="#%230fe319a9-4860-4bac-bae2-3eec821a3a30">#0fe319a9-4860-4bac-bae2-3eec821a3a30</a></li>
                         
-                        <li><a href="#%23c11fcb85-777c-4a13-be5d-0a69f578ae2f">#c11fcb85-777c-4a13-be5d-0a69f578ae2f</a></li>
+                        <li><a href="#%23550d1e45-beae-481c-b451-afcf3e481dad">#550d1e45-beae-481c-b451-afcf3e481dad</a></li>
                         </ul></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
@@ -1870,13 +1883,13 @@ table.table {
                         </ul></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">instrument<span>&nbsp;</span><a href="http://schema.org/instrument">[?]</a></th>
-            <td style='text-align:left'><a href="#%23dd5a1e79-83ce-4cb4-8f17-5a53885b78ff">Run of workflow/packed.cwl#main</a></td>
+            <td style='text-align:left'><a href="#%23c35f3f88-1498-4490-931b-95cbb33ac67b">Run of workflow/packed.cwl#main</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -1909,7 +1922,7 @@ table.table {
             <td style='text-align:left'><span>34d39b7a06191596eab3ece87dcf17ae45e3e96b</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">value<span>&nbsp;</span><a href="http://schema.org/value">[?]</a></th>
             <td style='text-align:left'><ul>
@@ -1949,7 +1962,7 @@ table.table {
             <td style='text-align:left'><span>0efd11e6e4d5d1ba5f3e84096873207adbb3e2be</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">value<span>&nbsp;</span><a href="http://schema.org/value">[?]</a></th>
             <td style='text-align:left'><ul>
@@ -1989,7 +2002,7 @@ table.table {
             <td style='text-align:left'><span>6a23df2ed8b7d78b98e87b97a7898e298b845d56</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">value<span>&nbsp;</span><a href="http://schema.org/value">[?]</a></th>
             <td style='text-align:left'><ul>
@@ -2029,7 +2042,7 @@ table.table {
             <td style='text-align:left'><span>cca7528795d8ec0853a5598ec92a3b99a358ca53</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">value<span>&nbsp;</span><a href="http://schema.org/value">[?]</a></th>
             <td style='text-align:left'><ul>
@@ -2066,20 +2079,20 @@ table.table {
             <td style='text-align:left'><span>T58GEQ_20150928T224906_GNDVI_10m.pickle</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">dateCreated<span>&nbsp;</span><a href="http://schema.org/dateCreated">[?]</a></th>
-            <td style='text-align:left'><span>2025-06-18T10:07:11.815960</span></td>
+            <td style='text-align:left'><span>2025-06-19T09:03:54.458154</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">exampleOfWork<span>&nbsp;</span><a href="http://schema.org/exampleOfWork">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#packed.cwl%23index_def.cwl/index_matrix">index_matrix</a></li>
-                        
                         <li><a href="#packed.cwl%23tiff_gen.cwl/index_array">index_array</a></li>
+                        
+                        <li><a href="#packed.cwl%23index_def.cwl/index_matrix">index_matrix</a></li>
                         </ul></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">sha1<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#sha1">[?]</a></th>
             <td style='text-align:left'><span>ae2efdfd61277178c678d5220aa9195802956fc2</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">value<span>&nbsp;</span><a href="http://schema.org/value">[?]</a></th>
             <td style='text-align:left'><ul>
@@ -2089,10 +2102,10 @@ table.table {
                         </ul></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">result<span>&nbsp;</span><a href="http://schema.org/result">[?]</a></th>
-            <td style='text-align:left'><a href="#%23ff63ccb5-2919-4206-8ed7-3be1b16bc732">Run of workflow/packed.cwl#main/index_def</a></td>
+            <td style='text-align:left'><a href="#%23b6a63b17-9762-4f2d-9717-17628ab801b3">Run of workflow/packed.cwl#main/index_def</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">object<span>&nbsp;</span><a href="http://schema.org/object">[?]</a></th>
-            <td style='text-align:left'><a href="#%23e39d6c60-57bc-4be0-9f8e-1b0fe0fc0d0a">Run of workflow/packed.cwl#main/tiff_gen</a></td>
+            <td style='text-align:left'><a href="#%23f84f13c0-4927-4693-a346-384bfe680941">Run of workflow/packed.cwl#main/tiff_gen</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -2122,26 +2135,26 @@ table.table {
             <td style='text-align:left'><span>T58GEQ_20150928T224906_GNDVI_10m.tif</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">dateCreated<span>&nbsp;</span><a href="http://schema.org/dateCreated">[?]</a></th>
-            <td style='text-align:left'><span>2025-06-18T10:07:42.739980</span></td>
+            <td style='text-align:left'><span>2025-06-19T09:04:26.576775</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">exampleOfWork<span>&nbsp;</span><a href="http://schema.org/exampleOfWork">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#packed.cwl%23main/tiff">tiff</a></li>
-                        
                         <li><a href="#packed.cwl%23tiff_gen.cwl/tiff">tiff</a></li>
+                        
+                        <li><a href="#packed.cwl%23main/tiff">tiff</a></li>
                         </ul></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">sha1<span>&nbsp;</span><a href="https://w3id.org/ro/terms/workflow-run#sha1">[?]</a></th>
             <td style='text-align:left'><span>9972fb0134cd7e38d406a1c0556eb1f7242cfe17</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">result<span>&nbsp;</span><a href="http://schema.org/result">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#%23dd5a1e79-83ce-4cb4-8f17-5a53885b78ff">Run of workflow/packed.cwl#main</a></li>
+                        <li><a href="#%23c35f3f88-1498-4490-931b-95cbb33ac67b">Run of workflow/packed.cwl#main</a></li>
                         
-                        <li><a href="#%23e39d6c60-57bc-4be0-9f8e-1b0fe0fc0d0a">Run of workflow/packed.cwl#main/tiff_gen</a></li>
+                        <li><a href="#%23f84f13c0-4927-4693-a346-384bfe680941">Run of workflow/packed.cwl#main/tiff_gen</a></li>
                         </ul></td>
             </tr></tbody>
             </table>
@@ -2176,13 +2189,13 @@ table.table {
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#./">run of packed.cwl</a></li>
+                        <li><a href="#./">run of Vegetation Index Workflow</a></li>
                         
-                        <li><a href="#%233459c38f-3f6a-4946-bb2e-09e66a9e6225">#3459c38f-3f6a-4946-bb2e-09e66a9e6225</a></li>
+                        <li><a href="#%230f3558d9-27f7-429d-82e2-89cbe5800d78">#0f3558d9-27f7-429d-82e2-89cbe5800d78</a></li>
                         </ul></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
-            <td style='text-align:left'><a href="#%233459c38f-3f6a-4946-bb2e-09e66a9e6225">#3459c38f-3f6a-4946-bb2e-09e66a9e6225</a></td>
+            <td style='text-align:left'><a href="#%230f3558d9-27f7-429d-82e2-89cbe5800d78">#0f3558d9-27f7-429d-82e2-89cbe5800d78</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -2216,11 +2229,11 @@ table.table {
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#./">run of packed.cwl</a></li>
+                        <li><a href="#./">run of Vegetation Index Workflow</a></li>
                         
-                        <li><a href="#%233459c38f-3f6a-4946-bb2e-09e66a9e6225">#3459c38f-3f6a-4946-bb2e-09e66a9e6225</a></li>
+                        <li><a href="#%230f3558d9-27f7-429d-82e2-89cbe5800d78">#0f3558d9-27f7-429d-82e2-89cbe5800d78</a></li>
                         
-                        <li><a href="#%2309ec8bde-7d2b-440b-8a86-1c219ef2b6be">#09ec8bde-7d2b-440b-8a86-1c219ef2b6be</a></li>
+                        <li><a href="#%23ca31db4f-2eb5-4259-987f-34f08d91febd">#ca31db4f-2eb5-4259-987f-34f08d91febd</a></li>
                         </ul></td>
             </tr></tbody>
             </table>
@@ -2255,13 +2268,13 @@ table.table {
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#./">run of packed.cwl</a></li>
+                        <li><a href="#./">run of Vegetation Index Workflow</a></li>
                         
-                        <li><a href="#%2309ec8bde-7d2b-440b-8a86-1c219ef2b6be">#09ec8bde-7d2b-440b-8a86-1c219ef2b6be</a></li>
+                        <li><a href="#%23ca31db4f-2eb5-4259-987f-34f08d91febd">#ca31db4f-2eb5-4259-987f-34f08d91febd</a></li>
                         </ul></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">mainEntity<span>&nbsp;</span><a href="http://schema.org/mainEntity">[?]</a></th>
-            <td style='text-align:left'><a href="#%2309ec8bde-7d2b-440b-8a86-1c219ef2b6be">#09ec8bde-7d2b-440b-8a86-1c219ef2b6be</a></td>
+            <td style='text-align:left'><a href="#%23ca31db4f-2eb5-4259-987f-34f08d91febd">#ca31db4f-2eb5-4259-987f-34f08d91febd</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -2291,7 +2304,7 @@ table.table {
             <td style='text-align:left'><span>application/json</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -2304,12 +2317,12 @@ table.table {
             
             
             
-        <div id="#dd5a1e79-83ce-4cb4-8f17-5a53885b78ff">
+        <div id="#c35f3f88-1498-4490-931b-95cbb33ac67b">
             
             <table class="table metadata table-striped" >
                 <tbody><tr>
             <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>#dd5a1e79-83ce-4cb4-8f17-5a53885b78ff</span></td>
+            <td style='text-align:left'><span>#c35f3f88-1498-4490-931b-95cbb33ac67b</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">name<span>&nbsp;</span><a href="http://schema.org/name">[?]</a></th>
             <td style='text-align:left'><span>Run of workflow/packed.cwl#main</span></td>
@@ -2318,10 +2331,10 @@ table.table {
             <td style='text-align:left'><span>CreateAction</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">endTime<span>&nbsp;</span><a href="http://schema.org/endTime">[?]</a></th>
-            <td style='text-align:left'><span>2025-06-18T10:07:42.790679</span></td>
+            <td style='text-align:left'><span>2025-06-19T09:04:26.623232</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">instrument<span>&nbsp;</span><a href="http://schema.org/instrument">[?]</a></th>
-            <td style='text-align:left'><a href="#packed.cwl">packed.cwl</a></td>
+            <td style='text-align:left'><a href="#packed.cwl">Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">object<span>&nbsp;</span><a href="http://schema.org/object">[?]</a></th>
             <td style='text-align:left'><ul>
@@ -2340,13 +2353,13 @@ table.table {
                         </ul></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">startTime<span>&nbsp;</span><a href="http://schema.org/startTime">[?]</a></th>
-            <td style='text-align:left'><span>2025-06-18T10:06:28.598220</span></td>
+            <td style='text-align:left'><span>2025-06-19T09:03:11.214921</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">mentions<span>&nbsp;</span><a href="http://schema.org/mentions">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">result<span>&nbsp;</span><a href="http://schema.org/result">[?]</a></th>
-            <td style='text-align:left'><a href="#%23f656a121-0649-48df-b16c-0aa6d8a8b1c3">Run of cwltool 3.1.20250110105449</a></td>
+            <td style='text-align:left'><a href="#%234a8ab7c4-3d80-4bc6-a3ea-220d154827ed">Run of cwltool 3.1.20250110105449</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -2354,17 +2367,17 @@ table.table {
         </div>
         <hr/><br/><br/>
            <div>
-            <h3> #3459c38f-3f6a-4946-bb2e-09e66a9e6225</h3>
+            <h3> #0f3558d9-27f7-429d-82e2-89cbe5800d78</h3>
             
             
             
             
-        <div id="#3459c38f-3f6a-4946-bb2e-09e66a9e6225">
+        <div id="#0f3558d9-27f7-429d-82e2-89cbe5800d78">
             
             <table class="table metadata table-striped" >
                 <tbody><tr>
             <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>#3459c38f-3f6a-4946-bb2e-09e66a9e6225</span></td>
+            <td style='text-align:left'><span>#0f3558d9-27f7-429d-82e2-89cbe5800d78</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">@type</th>
             <td style='text-align:left'><span>Collection</span></td>
@@ -2383,10 +2396,10 @@ table.table {
             <td style='text-align:left'><a href="#76f2432820b05c1457ac626a212a60af1a35a9c6">76f2432820b05c1457ac626a212a60af1a35a9c6</a></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">mentions<span>&nbsp;</span><a href="http://schema.org/mentions">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">object<span>&nbsp;</span><a href="http://schema.org/object">[?]</a></th>
-            <td style='text-align:left'><a href="#%23ff63ccb5-2919-4206-8ed7-3be1b16bc732">Run of workflow/packed.cwl#main/index_def</a></td>
+            <td style='text-align:left'><a href="#%23b6a63b17-9762-4f2d-9717-17628ab801b3">Run of workflow/packed.cwl#main/index_def</a></td>
             </tr></tbody>
             </table>
         </div>
@@ -2394,17 +2407,17 @@ table.table {
         </div>
         <hr/><br/><br/>
            <div>
-            <h3> #09ec8bde-7d2b-440b-8a86-1c219ef2b6be</h3>
+            <h3> #ca31db4f-2eb5-4259-987f-34f08d91febd</h3>
             
             
             
             
-        <div id="#09ec8bde-7d2b-440b-8a86-1c219ef2b6be">
+        <div id="#ca31db4f-2eb5-4259-987f-34f08d91febd">
             
             <table class="table metadata table-striped" >
                 <tbody><tr>
             <th style="text-align:left;" class="prop">@id</th>
-            <td style='text-align:left'><span>#09ec8bde-7d2b-440b-8a86-1c219ef2b6be</span></td>
+            <td style='text-align:left'><span>#ca31db4f-2eb5-4259-987f-34f08d91febd</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">@type</th>
             <td style='text-align:left'><span>Collection</span></td>
@@ -2423,10 +2436,10 @@ table.table {
             <td style='text-align:left'><a href="#5fee7410019c2714448c9c76f9cfe0bc039388d6">5fee7410019c2714448c9c76f9cfe0bc039388d6</a></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">mentions<span>&nbsp;</span><a href="http://schema.org/mentions">[?]</a></th>
-            <td style='text-align:left'><a href="#./">run of packed.cwl</a></td>
+            <td style='text-align:left'><a href="#./">run of Vegetation Index Workflow</a></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">object<span>&nbsp;</span><a href="http://schema.org/object">[?]</a></th>
-            <td style='text-align:left'><a href="#%23e39d6c60-57bc-4be0-9f8e-1b0fe0fc0d0a">Run of workflow/packed.cwl#main/tiff_gen</a></td>
+            <td style='text-align:left'><a href="#%23f84f13c0-4927-4693-a346-384bfe680941">Run of workflow/packed.cwl#main/tiff_gen</a></td>
             </tr></tbody>
             </table>
         </div>
