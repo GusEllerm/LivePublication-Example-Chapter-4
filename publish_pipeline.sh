@@ -8,6 +8,7 @@ rm -rf Workflow_inputs/Data/*
 find . -maxdepth 1 -name "*.pickle" -delete
 find . -maxdepth 1 -name "*.tif" -delete
 rm -rf interface.crate/ provenance_output/ provenance_output.crate/
+rm -f DNF_document.json dynamic_article.json
 
 # Step 1: Download new Copernicus data and patch workflow inputs
 echo "🛰️ Downloading Copernicus data and patching workflow input..."
@@ -26,28 +27,36 @@ echo "🖼️ Generating CWL workflow diagram..."
 cwltool --print-dot provenance_output.crate/packed.cwl | dot -Tpng -o workflow_preview.png
 cp workflow_preview.png provenance_output.crate/workflow_preview.png
 
-# Step 6: Run your Zenodo upload script
+# Step 5: Run your Zenodo upload script
 echo "☁️ Uploading new version to Zenodo..."
 python zenodo_upload.py
 
-# Step 7: Generate the Interface Crate and zip it
+# Step 6: Generate the Interface Crate and zip it
 echo "🧬 Generating Interface Crate..."
 python interface_crate.py
 zip -r interface.crate.zip interface.crate
 
-# Step 4: Generate the HTML preview of the provenance crate
+# Step 7: Generate the HTML preview of the provenance crate
 echo "🌐 Generating HTML preview of the provenance crate..."
 rochtml provenance_output.crate/ro-crate-metadata.json
 
-# Step 4.5: Generate HTML preview of the interface crate
+# Step 8: Generate HTML preview of the interface crate
 echo "🌐 Generating HTML preview of the interface crate..."
 rochtml interface.crate/ro-crate-metadata.json
 
-# Step 5: Generate the templated website with navigation
+# Step 9: Generate the templated website with navigation
 echo "🧱 Generating templated HTML site..."
 python docs/template_renderer.py
 
-# Step 8: Commit and push to GitHub
+# Step 10: Generate the DNF Document from the dynamic_publication.smd specification
+echo "📄 Generating DNF Document..."
+stencila convert dynamic_publication.smd DNF_document.json
+
+# Step 11: Render the DNF Document using the interface.crate
+echo "📑 Rendering DNF Document with interface.crate..."
+stencila render --no-save DNF_Document.json dynamic_article.json    
+
+# Step 11: Commit and push to GitHub
 echo "📤 Committing and pushing to GitHub..."
 git add .
 git commit -m "Automated publish: new CWL run, crate, and Zenodo version"

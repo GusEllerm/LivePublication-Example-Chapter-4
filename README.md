@@ -1,135 +1,160 @@
-# LivePublication Example: Chapter 4
 
-This repository demonstrates a **reproducible, transparent workflow execution** using the Common Workflow Language (CWL), including the **generation of a PROV-compliant Provenance Run Crate** and an interactive HTML website to inspect results.
+# **LivePublication Example: Chapter 4**
 
-The example workflow calculates a vegetation index (e.g., GNDVI) from Sentinel-2 satellite bands using Python and CWL.
+This repository demonstrates a **reproducible, transparent, and publishable computational workflow** using the Common Workflow Language (CWL) and the **LivePublication Framework**. It integrates three core components:
 
-![Workflow Diagram](workflow.png)
+- **Experiment Infrastructure**: Automated data ingestion and CWL workflow execution
+- **Interface**: Generation of standardised provenance and metadata crates
+- **LivePaper**: Rendering a dynamic, data-responsive publication using a DNF (Dynamic Narrative Framework)
+  - Uses the [Stencila engine](https://github.com/stencila/stencila)
+
+The example workflow calculates the GNDVI vegetation index from Sentinel-2 satellite imagery and renders a corresponding LivePublication article.
+
+![Workflow Diagram](workflow_preview.png)
 
 ---
 
-## 📦 Contents
+## 📦 Directory Structure
 
 ```
 .
-├── Workflows/               # CWL workflow 
-├── Workflows/Modules/       # CWL tool definitions
-├── Workflows/Modules/Scripts/  # Python scripts used in the workflow
-├── Workflow_inputs/         # YAML job file
-├── Workflow_inputs/Data/    # Example Sentinel-2 data
-├── provenance_output/       # Provenance generated via `cwltool --provenance provenance_output Workflows/workflow.cwl Workflow_inputs/GNDVI_10m.yaml`  
-└── provenance_output.crate/ # Workflow Run Crate generated via `runcrate convert provenance_output`   
+├── Workflows/                     # CWL workflow definitions
+├── Workflows/Modules/            # Individual CWL tool definitions
+├── Workflows/Modules/Scripts/   # Python scripts for vegetation index analysis
+├── Workflow_inputs/              # CWL input job file(s)
+├── Workflow_inputs/Data/         # Sentinel-2 .SAFE data
+├── provenance_output/            # Provenance output from CWL
+├── provenance_output.crate/      # Workflow Run Crate (RO-Crate with provenance)
+├── interface.crate/              # Interface Crate for rendering publications
+├── docs/                         # Templated HTML site renderer
+├── DNF_document.json             # Data-driven article definition (DNF)
+├── dynamic_article.json          # Fully rendered LivePublication article
 ```
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/<your-username>/<repo-name>.git
 cd <repo-name>
 ```
 
-### 2. Create and activate a Python environment
+### 2. Set Up Your Environment
+
+Create and activate a Python virtual environment:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install cwltool rocrate runcrate
+pip install cwltool rocrate runcrate stencila
 ```
 
----
-
-## 🔁 Run the CWL Workflow
+Install the HTML preview tool:
 
 ```bash
-cwltool --provenance provenance_output Workflows/workflow.cwl Workflow_inputs/GNDVI_10m.yaml
-```
-
-This will:
-
-- Run the CWL workflow
-- Generate a provenance directory at `provenance_output/`
-
----
-
-## 🔄 Convert to Workflow Run Crate
-
-```bash
-runcrate convert provenance_output
+npm install -g ro-crate-html-js
 ```
 
 ---
 
-## 🌐 Create Crate Website
+## 🛣️ Run the Full LivePublication Pipeline
 
-Install via npx (requires Node.js and npm):
-
-```bash
-npm install ro-crate-html-js
-```
-
-To compile the site, point the tool to the RO-Crate manifest:
-
-```bash
-rochtml provenance_output.crate/ro-crate-metadata.json  
-```
-
-For further info, see the ro-crate-html-js github page: [ro-crate-html-js](https://github.com/UTS-eResearch/ro-crate-html-js)
-
----
-
-## 🐳 Docker Requirements
-
-Ensure Docker is installed and configured with sufficient memory. Some steps (e.g., TIFF generation) may require **up to 32 GB RAM**.
-
-### On macOS or Windows:
-
-- Open Docker Desktop
-- Go to **Settings** → **Resources**
-- Increase memory to **at least 32 GB**
-- Click **Apply & Restart**
-
-### On Linux:
-
-- Check memory availability with `free -h`
-- Use `dmesg | grep -i kill` to diagnose OOM (out-of-memory) errors
-- If needed, configure swap or use a higher-memory instance
-
----
-
-## 🛣️ Automate Data & Run Full Pipeline
-
-A script is provided to automate the full workflow:
+To run the complete LivePublication process—from data retrieval to rendered publication—execute:
 
 ```bash
 ./publish_pipeline.sh
 ```
 
-This will:
+This script will:
 
-1. Delete old input data and outputs
-2. Download a new Sentinel-2 `.SAFE` product via the Copernicus STAC API
-3. Patch the CWL job file (`Workflow_inputs/GNDVI_10m.yaml`) with the new data
-4. Execute the CWL workflow and generate provenance
-5. Create a new version of the result on Zenodo using `zenodo_upload.py`
+1. 🧹 Clean the project directory of prior outputs
+2. 🛰️ Download new Sentinel-2 data using `copernicus_data.py`
+3. ▶️ Execute the CWL workflow with provenance tracking
+4. 📦 Convert the output into a **Provenance Run Crate**
+5. 🖼️ Generate a workflow diagram and embed it into the crate
+6. ☁️ Upload results to Zenodo (optional; requires token)
+7. 🧬 Generate the **Interface Crate**
+8. 🌐 Generate HTML previews of the crates (via `rochtml`)
+9. 🧱 Build the templated website from metadata and results
+10. 📄 Convert the `.smd` DNF specification into a **DNF Document**
+11. 📑 Render the **DNF Document** into a publication-ready article
+12. 📤 Commit and push the update to GitHub
 
-To enable Zenodo uploads, create a `zenodo_token.py` file containing:
+---
+
+## 🧪 Run Workflow Manually (Advanced)
+
+### Run the Workflow with Provenance
+
+```bash
+cwltool --provenance provenance_output Workflows/workflow.cwl Workflow_inputs/GNDVI_10m.yaml
+```
+
+### Convert to a Workflow Run Crate
+
+```bash
+runcrate convert provenance_output --output provenance_output.crate
+```
+
+### Generate Workflow Diagram
+
+```bash
+cwltool --print-dot provenance_output.crate/packed.cwl | dot -Tpng -o workflow_preview.png
+cp workflow_preview.png provenance_output.crate/workflow_preview.png
+```
+
+### Generate HTML Crate Preview
+
+```bash
+rochtml provenance_output.crate/ro-crate-metadata.json
+rochtml interface.crate/ro-crate-metadata.json
+```
+
+### Render the DNF Publication
+
+```bash
+stencila convert dynamic_publication.smd DNF_document.json
+stencila render --no-save DNF_document.json dynamic_article.json
+```
+
+---
+
+## 🐳 Docker Requirements
+
+Ensure Docker is installed and has **at least 32 GB RAM** configured:
+
+### On macOS or Windows:
+
+- Docker Desktop → **Settings** → **Resources** → **Memory**
+- Set to **32 GB** and click **Apply & Restart**
+
+### On Linux:
+
+- Check memory: `free -h`
+- Diagnose OOM errors: `dmesg | grep -i kill`
+
+---
+
+## ☁️ Zenodo Integration (Optional)
+
+To enable automatic uploads, create a file `zenodo_token.py` with:
 
 ```python
-token = "your_access_token_here"
+token = "your_zenodo_access_token"
 ```
 
 ---
 
 ## 📚 References
 
-- [Common Workflow Language](https://www.commonwl.org/)
+- [Common Workflow Language (CWL)](https://www.commonwl.org/)
 - [RO-Crate](https://www.researchobject.org/ro-crate/)
 - [runcrate](https://github.com/ResearchObject/runcrate)
-- [ro-crate-html-js](https://www.npmjs.com/package/ro-crate-html-js)
+- [ro-crate-html-js](https://github.com/UTS-eResearch/ro-crate-html-js)
+- [Stencila](https://github.com/stencila)
 
 ---
 

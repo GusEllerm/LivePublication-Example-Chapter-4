@@ -190,6 +190,9 @@ some body text here
 
 ## Computational Workflow
 
+![Workflow Preview](interface.crate/provenance_output.crate/workflow_preview.png)
+
+
 ### Parameters
 
 ::: for parameter in `FormalParameters`{python exec}

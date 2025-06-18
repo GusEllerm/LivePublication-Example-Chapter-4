@@ -1,0 +1,2043 @@
+{
+  "$schema": "https://stencila.org/v2.1.0/Article.schema.json",
+  "@context": "https://stencila.org/v2.1.0/context.jsonld",
+  "type": "Article",
+  "content": [
+    {
+      "type": "CodeChunk",
+      "executionMode": "Always",
+      "code": {
+        "string": "# Interface connections for incoming interface.crate objects\nimport json\nfrom pathlib import Path\n\n# Load the interface.crate\ncrate_path = Path(\"interface.crate/ro-crate-metadata.json\")\nwith crate_path.open() as f:\n    interface_crate = json.load(f)\n\n# Index by @id for convenience\ngraph = interface_crate[\"@graph\"]\nby_id = {entry[\"@id\"]: entry for entry in graph}\n\n# A quick helper to create readable dates\nfrom datetime import datetime\n\ndef parse_iso8601(dt_str):\n    try:\n        # Remove 'Z' if present and parse\n        dt_str = dt_str.rstrip(\"Z\")\n        dt = datetime.fromisoformat(dt_str)\n        # Format as \"YYYY-MM-DD HH:MM:SS\"\n        return dt.strftime(\"%Y-%m-%d %H:%M:%S\")\n    except Exception:\n        return dt_str  # fallback to original if parsing fails"
+      },
+      "programmingLanguage": "python"
+    },
+    {
+      "type": "CodeChunk",
+      "executionMode": "Always",
+      "code": {
+        "string": "# Load metadata for E1: Data Producer Output\nimport xml.etree.ElementTree as ET\nimport re\n\ne1_data = by_id.get(\"#E1-data-producer\", {})\ne1_files = e1_data.get(\"hasPart\", [])\ne1_file_ids = [f[\"@id\"] for f in e1_files if \"@id\" in f]\n\n# Representative image\ne1_thumbnail_id = next((f for f in e1_file_ids if f.endswith(\"-ql.jpg\")), None)\ne1_thumbnail = f\"interface.crate/{e1_thumbnail_id}\" if e1_thumbnail_id else None\n\n# Find the MTD_MSIL2A.xml file among e1_files\nmtd_filename = \"MTD_MSIL2A.xml\"\nmtd_id = next((fid for fid in e1_file_ids if fid.endswith(mtd_filename)), None)\nmtd_path = Path(\"interface.crate\") / mtd_id if mtd_id else None\ne1_metadata = {}\n\ndef get_namespace(root):\n    m = re.match(r\"\\{(.*)\\}\", root.tag)\n    return {\"n1\": m.group(1)} if m else {}\n\ndef extract_child_texts(parent, ns):\n    return {\n        child.tag.replace(f\"{{{ns['n1']}}}\", \"\"): child.text\n        for child in parent\n        if child.text is not None and child.text.strip()\n    }\n\nif mtd_path.exists():\n    tree = ET.parse(mtd_path)\n    root = tree.getroot()\n    ns = get_namespace(root)\n\n    # Helper: Find tag and extract key:value pairs\n    def extract_metadata(tag):\n        elem = root.find(f\".//{tag}\", ns)\n        return extract_child_texts(elem, ns) if elem is not None else {}\n\n\n    e1_product_info = extract_metadata(\"Product_Info\")\n    e1_platform_info = extract_metadata(\"Datatake\")\n    e1_image_quality = extract_metadata(\"Image_Content_QI\")\n\n    # Round all float values in e1_image_quality to two decimal places (if possible)\n    for k, v in e1_image_quality.items():\n        try:\n            e1_image_quality[k] = round(float(v), 2)\n        except (ValueError, TypeError):\n            pass\n\n    e1_product_info_human = dict(e1_product_info)\n    e1_platform_info_human = dict(e1_platform_info)\n\n    for key in [\"PRODUCT_START_TIME\", \"PRODUCT_STOP_TIME\", \"GENERATION_TIME\"]:\n      if key in e1_product_info_human:\n        e1_product_info_human[key + \"_HUMAN\"] = parse_iso8601(e1_product_info_human[key])\n\n    for key in [\"DATATAKE_SENSING_START\"]:\n      for k in list(e1_platform_info_human.keys()):\n        e1_platform_info_human[k + \"_HUMAN\"] = parse_iso8601(e1_platform_info_human[k]) \n\n    e1_metadata = {\n        \"product_info\": e1_product_info_human,\n        \"platform_info\": e1_platform_info_human,\n        \"image_quality\": e1_image_quality\n    }"
+      },
+      "programmingLanguage": "python"
+    },
+    {
+      "type": "CodeChunk",
+      "executionMode": "Always",
+      "code": {
+        "string": "# Load metadata for E2.1: Workflow Infrastructure\ne2_1_data = by_id.get(\"#E2.1-workflow-infrastructure\", {})\ne2_1_parts = e2_1_data.get(\"hasPart\", [])\ne2_1_dockerfile = next((f[\"@id\"] for f in e2_1_parts if f[\"@id\"] == \"Dockerfile\"), None)\n\ne2_1_dockerfile_content = None\nif e2_1_dockerfile:\n  dockerfile_path = Path(\"interface.crate\") / e2_1_dockerfile\n  if dockerfile_path.exists():\n    with dockerfile_path.open() as f:\n      e2_1_dockerfile_content = f.read()\n\ne2_1_container_url = next((f[\"@id\"] for f in e2_1_parts if \"docker.com\" in f[\"@id\"]), None)"
+      },
+      "programmingLanguage": "python"
+    },
+    {
+      "type": "CodeChunk",
+      "executionMode": "Always",
+      "code": {
+        "string": "# --- NEW: Load the provenance_output.crate ---\n# Get the path to the nested crate from the E2.2 entry\ne22_wms = by_id.get(\"#E2.2-wms\", {})\nprovenance_crate_path = e22_wms.get(\"hasPart\", [{}])[0].get(\"@id\", None)\n\n# Load the nested provenance crate if the path is found\nprovenance_data = {}\nif provenance_crate_path:\n    provenance_manifest = Path(\"interface.crate\") / provenance_crate_path / \"ro-crate-metadata.json\"\n    if provenance_manifest.exists():\n        with provenance_manifest.open() as f:\n            provenance_data = json.load(f)\n\n\nprovenance_graph = provenance_data[\"@graph\"]\nprovenance_by_id = {entry[\"@id\"]: entry for entry in provenance_graph}\nworkflow = next((e for e in provenance_graph if e.get(\"@type\") == [\"File\", \"SoftwareSourceCode\", \"ComputationalWorkflow\", \"HowTo\"]), None)\nsteps = sorted([e for e in provenance_graph if e.get(\"@type\") == \"ControlAction\"], key=lambda x: x.get(\"position\", 0))\n\nFormalParameters = [e for e in provenance_graph if e.get(\"@type\") == \"FormalParameter\"]\n\nstep_summaries = []\nfor step in steps:\n    for e in provenance_graph:\n        if e.get(\"@id\") == step.get(\"object\").get(\"@id\"):\n            create_action = e\n\n    inputs = create_action.get(\"object\")\n    outputs = create_action.get(\"result\")\n\n    input_entities = []\n    output_entities = []\n\n    for e in provenance_graph:\n        for input in inputs:\n            if input.get(\"@id\") == e.get(\"@id\"):\n                input_entities.append(e)\n\n    for e in provenance_graph:\n        for output in outputs:\n            if output.get(\"@id\") == e.get(\"@id\"):\n                output_entities.append(e)\n    \n    for e in provenance_graph:\n        if create_action.get(\"instrument\").get(\"@id\") == e.get(\"@id\"):\n            softwareApplication = e\n            \n    for e in provenance_graph:\n        if create_action.get(\"containerImage\").get(\"@id\") == e.get(\"@id\"):\n            ContainerImage = e\n\n    # replace the startTime and endTime with human-readable format\n    create_action[\"startTime\"] = parse_iso8601(create_action[\"startTime\"])\n    create_action[\"endTime\"] = parse_iso8601(create_action[\"endTime\"]) \n    \n    step_summaries.append({\n        \"CreateAction\": create_action,\n        \"SoftwareApplication\": softwareApplication,\n        \"ContainerImage\": ContainerImage,\n        \"Inputs\": input_entities,\n        \"Outputs\": output_entities,\n    })\n"
+      },
+      "programmingLanguage": "python"
+    },
+    {
+      "type": "CodeChunk",
+      "executionMode": "Always",
+      "code": {
+        "string": "# Extract E3 result info\ne3_dataset = by_id.get(\"#E3-experimental-results\", {})\nzenodo_entry = e3_dataset.get(\"hasPart\", [{}])[0].get(\"@id\", None)"
+      },
+      "programmingLanguage": "python"
+    },
+    {
+      "type": "Heading",
+      "level": 1,
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "Example LivePublication -- dynamic narratives that reflect experimental states"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Paragraph",
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "some body text here"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Heading",
+      "level": 2,
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "Computational Workflow"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Paragraph",
+      "content": [
+        {
+          "type": "ImageObject",
+          "contentUrl": "interface.crate/provenance_output.crate/workflow_preview.png",
+          "caption": [
+            {
+              "type": "Text",
+              "value": {
+                "string": "Workflow Preview"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Heading",
+      "level": 3,
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "Parameters"
+          }
+        }
+      ]
+    },
+    {
+      "type": "ForBlock",
+      "code": {
+        "string": "FormalParameters"
+      },
+      "programmingLanguage": "python",
+      "variable": "parameter",
+      "content": [
+        {
+          "type": "IfBlock",
+          "clauses": [
+            {
+              "type": "IfBlockClause",
+              "code": {
+                "string": "parameter.get(\"description\")"
+              },
+              "programmingLanguage": "python",
+              "content": [
+                {
+                  "type": "Heading",
+                  "level": 4,
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "parameter[\"name\"]"
+                      },
+                      "programmingLanguage": "python"
+                    }
+                  ]
+                },
+                {
+                  "type": "Table",
+                  "rows": [
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        {
+                          "type": "TableCell",
+                          "content": [
+                            {
+                              "type": "Paragraph",
+                              "content": [
+                                {
+                                  "type": "Strong",
+                                  "content": [
+                                    {
+                                      "type": "Text",
+                                      "value": {
+                                        "string": "Description"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "TableCell",
+                          "content": [
+                            {
+                              "type": "Paragraph",
+                              "content": [
+                                {
+                                  "type": "Strong",
+                                  "content": [
+                                    {
+                                      "type": "Text",
+                                      "value": {
+                                        "string": "Type"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "rowType": "HeaderRow"
+                    },
+                    {
+                      "type": "TableRow",
+                      "cells": [
+                        {
+                          "type": "TableCell",
+                          "content": [
+                            {
+                              "type": "Paragraph",
+                              "content": [
+                                {
+                                  "type": "CodeExpression",
+                                  "code": {
+                                    "string": "parameter[\"description\"]"
+                                  },
+                                  "programmingLanguage": "python"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "TableCell",
+                          "content": [
+                            {
+                              "type": "Paragraph",
+                              "content": [
+                                {
+                                  "type": "CodeExpression",
+                                  "code": {
+                                    "string": "parameter[\"additionalType\"]"
+                                  },
+                                  "programmingLanguage": "python"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Heading",
+      "level": 3,
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "Steps"
+          }
+        }
+      ]
+    },
+    {
+      "type": "ForBlock",
+      "code": {
+        "string": "step_summaries"
+      },
+      "variable": "step",
+      "content": [
+        {
+          "type": "Heading",
+          "level": 3,
+          "content": [
+            {
+              "type": "Text",
+              "value": {
+                "string": "Step "
+              }
+            },
+            {
+              "type": "CodeExpression",
+              "code": {
+                "string": "step[\"SoftwareApplication\"][\"name\"]"
+              },
+              "programmingLanguage": "python"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            {
+              "type": "Text",
+              "value": {
+                "string": "This step, "
+              }
+            },
+            {
+              "type": "Strong",
+              "content": [
+                {
+                  "type": "CodeExpression",
+                  "code": {
+                    "string": "step[\"CreateAction\"][\"name\"]"
+                  },
+                  "programmingLanguage": "python"
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "value": {
+                "string": ", uses the tool "
+              }
+            },
+            {
+              "type": "Emphasis",
+              "content": [
+                {
+                  "type": "CodeExpression",
+                  "code": {
+                    "string": "step[\"SoftwareApplication\"][\"name\"]"
+                  },
+                  "programmingLanguage": "python"
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "value": {
+                "string": "."
+              }
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            {
+              "type": "CodeExpression",
+              "code": {
+                "string": "step[\"SoftwareApplication\"][\"description\"]"
+              },
+              "programmingLanguage": "python"
+            }
+          ]
+        },
+        {
+          "type": "Paragraph",
+          "content": [
+            {
+              "type": "Text",
+              "value": {
+                "string": "It was executed from "
+              }
+            },
+            {
+              "type": "Strong",
+              "content": [
+                {
+                  "type": "CodeExpression",
+                  "code": {
+                    "string": "step[\"CreateAction\"][\"startTime\"]"
+                  },
+                  "programmingLanguage": "python"
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "value": {
+                "string": " to "
+              }
+            },
+            {
+              "type": "Strong",
+              "content": [
+                {
+                  "type": "CodeExpression",
+                  "code": {
+                    "string": "step[\"CreateAction\"][\"endTime\"]"
+                  },
+                  "programmingLanguage": "python"
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "value": {
+                "string": ",\nusing the container image "
+              }
+            },
+            {
+              "type": "Strong",
+              "content": [
+                {
+                  "type": "CodeExpression",
+                  "code": {
+                    "string": "step[\"ContainerImage\"][\"name\"]"
+                  },
+                  "programmingLanguage": "python"
+                }
+              ]
+            },
+            {
+              "type": "Text",
+              "value": {
+                "string": "."
+              }
+            }
+          ]
+        },
+        {
+          "type": "Heading",
+          "level": 4,
+          "content": [
+            {
+              "type": "Text",
+              "value": {
+                "string": "Inputs"
+              }
+            }
+          ]
+        },
+        {
+          "type": "ForBlock",
+          "code": {
+            "string": "step[\"Inputs\"]"
+          },
+          "variable": "input",
+          "content": [
+            {
+              "type": "Table",
+              "rows": [
+                {
+                  "type": "TableRow",
+                  "cells": [
+                    {
+                      "type": "TableCell",
+                      "content": [
+                        {
+                          "type": "Paragraph",
+                          "content": [
+                            {
+                              "type": "Text",
+                              "value": {
+                                "string": "Name"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "TableCell",
+                      "content": [
+                        {
+                          "type": "Paragraph",
+                          "content": [
+                            {
+                              "type": "Text",
+                              "value": {
+                                "string": "Reference"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "rowType": "HeaderRow"
+                },
+                {
+                  "type": "TableRow",
+                  "cells": [
+                    {
+                      "type": "TableCell",
+                      "content": [
+                        {
+                          "type": "Paragraph",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "input[\"name\"] if \"name\" in input else input[\"@id\"]"
+                              },
+                              "programmingLanguage": "python"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "TableCell",
+                      "content": [
+                        {
+                          "type": "Paragraph",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "\", \".join(e[\"@id\"] if isinstance(e, dict) and \"@id\" in e else str(e) for e in (input[\"exampleOfWork\"] if isinstance(input[\"exampleOfWork\"], list) else [input[\"exampleOfWork\"]]))"
+                              },
+                              "programmingLanguage": "python"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Heading",
+          "level": 4,
+          "content": [
+            {
+              "type": "Text",
+              "value": {
+                "string": "Outputs"
+              }
+            }
+          ]
+        },
+        {
+          "type": "ForBlock",
+          "code": {
+            "string": "step[\"Outputs\"]"
+          },
+          "variable": "output",
+          "content": [
+            {
+              "type": "Table",
+              "rows": [
+                {
+                  "type": "TableRow",
+                  "cells": [
+                    {
+                      "type": "TableCell",
+                      "content": [
+                        {
+                          "type": "Paragraph",
+                          "content": [
+                            {
+                              "type": "Text",
+                              "value": {
+                                "string": "Name"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "TableCell",
+                      "content": [
+                        {
+                          "type": "Paragraph",
+                          "content": [
+                            {
+                              "type": "Text",
+                              "value": {
+                                "string": "Reference"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "rowType": "HeaderRow"
+                },
+                {
+                  "type": "TableRow",
+                  "cells": [
+                    {
+                      "type": "TableCell",
+                      "content": [
+                        {
+                          "type": "Paragraph",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "output[\"name\"] if \"name\" in output else output[\"@id\"]"
+                              },
+                              "programmingLanguage": "python"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "TableCell",
+                      "content": [
+                        {
+                          "type": "Paragraph",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "\", \".join(e[\"@id\"] if isinstance(e, dict) and \"@id\" in e else str(e) for e in (output[\"exampleOfWork\"] if isinstance(output[\"exampleOfWork\"], list) else [output[\"exampleOfWork\"]]))"
+                              },
+                              "programmingLanguage": "python"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Heading",
+      "level": 2,
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "Sentinel-2A Data Product Overview"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Paragraph",
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "This publication uses a "
+          }
+        },
+        {
+          "type": "Strong",
+          "content": [
+            {
+              "type": "CodeExpression",
+              "code": {
+                "string": "e1_platform_info_human[\"SPACECRAFT_NAME\"]"
+              },
+              "programmingLanguage": "python"
+            }
+          ]
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": " "
+          }
+        },
+        {
+          "type": "CodeExpression",
+          "code": {
+            "string": "e1_product_info_human[\"PROCESSING_LEVEL\"]"
+          },
+          "programmingLanguage": "python"
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": " product acquired during orbit "
+          }
+        },
+        {
+          "type": "CodeExpression",
+          "code": {
+            "string": "e1_platform_info_human[\"SENSING_ORBIT_NUMBER\"]"
+          },
+          "programmingLanguage": "python"
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": " on "
+          }
+        },
+        {
+          "type": "CodeExpression",
+          "code": {
+            "string": "e1_platform_info_human[\"DATATAKE_SENSING_START_HUMAN\"]"
+          },
+          "programmingLanguage": "python"
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": ".\nThe dataset, identified by this [DOI]("
+          }
+        },
+        {
+          "type": "CodeExpression",
+          "code": {
+            "string": "e1_product_info_human[\"PRODUCT_DOI\"]"
+          },
+          "programmingLanguage": "python"
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": "), was processed using baseline "
+          }
+        },
+        {
+          "type": "Strong",
+          "content": [
+            {
+              "type": "CodeExpression",
+              "code": {
+                "string": "e1_product_info_human[\"PROCESSING_BASELINE\"]"
+              },
+              "programmingLanguage": "python"
+            }
+          ]
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": " (see "
+          }
+        },
+        {
+          "type": "Link",
+          "content": [
+            {
+              "type": "Text",
+              "value": {
+                "string": "here"
+              }
+            }
+          ],
+          "target": "https://sentiwiki.copernicus.eu/web/s2-processing"
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": " for information on baseline processing algorithms) on "
+          }
+        },
+        {
+          "type": "CodeExpression",
+          "code": {
+            "string": "e1_product_info_human[\"GENERATION_TIME_HUMAN\"]"
+          },
+          "programmingLanguage": "python"
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": "."
+          }
+        }
+      ]
+    },
+    {
+      "type": "Heading",
+      "level": 2,
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "Data Alerts"
+          }
+        }
+      ]
+    },
+    {
+      "type": "CodeChunk",
+      "executionMode": "Always",
+      "code": {
+        "string": "# Create boolean flags for data Alerts\ndata_alert_flags = {\n    \"cloudy_pixels\": float(e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]) > 50.0,\n    \"thin_cirrus\": float(e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]) > 30.0,\n    \"saturated_pixels\": float(e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]) > 0.1,\n    \"cloud_shadow\": float(e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]) > 10.0,\n    \"low_vegetation\": float(e1_image_quality[\"VEGETATION_PERCENTAGE\"]) < 5.0\n}\n\n# Ranked list of all flags\npriority_order = [\n    \"cloudy_pixels\",\n    \"thin_cirrus\",\n    \"cloud_shadow\",\n    \"saturated_pixels\",\n    \"low_vegetation\"\n]\n\n\nactive_ranked_flags = [flag for flag in priority_order if data_alert_flags.get(flag)]\n\n# Workaround: ensure it's at least 2 items so the loop will execute\nif len(active_ranked_flags) == 1:\n    active_ranked_flags.append(\"no_op\")\n\n# You can also define a narrative for \"no_op\" that renders nothing"
+      },
+      "programmingLanguage": "python"
+    },
+    {
+      "type": "Paragraph",
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "The Sentinel-2A scene was assessed for conditions that may impact analysis reliability."
+          }
+        }
+      ]
+    },
+    {
+      "type": "ForBlock",
+      "code": {
+        "string": "active_ranked_flags"
+      },
+      "programmingLanguage": "python",
+      "variable": "flag",
+      "content": [
+        {
+          "type": "IfBlock",
+          "clauses": [
+            {
+              "type": "IfBlockClause",
+              "code": {
+                "string": "flag == \"cloudy_pixels\""
+              },
+              "programmingLanguage": "python",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "A large proportion of the land surface is cloud-covered ("
+                      }
+                    },
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "docsql"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%), which may significantly distort GNDVI signals."
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "IfBlock",
+          "clauses": [
+            {
+              "type": "IfBlockClause",
+              "code": {
+                "string": "flag == \"thin_cirrus\""
+              },
+              "programmingLanguage": "python",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "Thin cirrus clouds are present ("
+                      }
+                    },
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "docsql"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%), potentially elevating NIR values and distorting vegetation estimates."
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "IfBlock",
+          "clauses": [
+            {
+              "type": "IfBlockClause",
+              "code": {
+                "string": "flag == \"cloud_shadow\""
+              },
+              "programmingLanguage": "python",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "Cloud shadows affect part of the scene ("
+                      }
+                    },
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "docsql"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%), possibly reducing GNDVI by lowering NIR reflectance."
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "IfBlock",
+          "clauses": [
+            {
+              "type": "IfBlockClause",
+              "code": {
+                "string": "flag == \"saturated_pixels\""
+              },
+              "programmingLanguage": "python",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "Saturation has been detected in "
+                      }
+                    },
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "docsql"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "% of pixels, indicating possible data corruption in bright areas."
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "IfBlock",
+          "clauses": [
+            {
+              "type": "IfBlockClause",
+              "code": {
+                "string": "flag == \"low_vegetation\""
+              },
+              "programmingLanguage": "python",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "Vegetation coverage is low ("
+                      }
+                    },
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"VEGETATION_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "docsql"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%), which can make GNDVI more sensitive to atmospheric noise or edge effects."
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "IfBlock",
+          "clauses": [
+            {
+              "type": "IfBlockClause",
+              "code": {
+                "string": "flag == \"no_op\""
+              },
+              "programmingLanguage": "python",
+              "content": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Paragraph",
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "Analysts should carefully consider these conditions before using this dataset in quantitative workflows."
+          }
+        }
+      ]
+    },
+    {
+      "type": "Heading",
+      "level": 3,
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "Image Quality Summary"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Table",
+      "rows": [
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "Property"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "Value"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "rowType": "HeaderRow"
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Cloudy Pixels Over Land"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "No Data Pixels"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"NODATA_PIXEL_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Saturated/Defective Pixels"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Dark Features"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"DARK_FEATURES_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Cloud Shadow"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Vegetation"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"VEGETATION_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Not Vegetated"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"NOT_VEGETATED_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Water"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"WATER_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Unclassified"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"UNCLASSIFIED_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Medium Probability Clouds"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"MEDIUM_PROBA_CLOUDS_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "High Probability Clouds"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"HIGH_PROBA_CLOUDS_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Thin Cirrus"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Snow/Ice"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"SNOW_ICE_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Radiative Transfer Accuracy"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"RADIATIVE_TRANSFER_ACCURACY\"]"
+                      },
+                      "programmingLanguage": "python"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Water Vapour Retrieval Accuracy"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"WATER_VAPOUR_RETRIEVAL_ACCURACY\"]"
+                      },
+                      "programmingLanguage": "python"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "AOT Retrieval Accuracy"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"AOT_RETRIEVAL_ACCURACY\"]"
+                      },
+                      "programmingLanguage": "python"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "AOT Retrieval Method"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"AOT_RETRIEVAL_METHOD\"]"
+                      },
+                      "programmingLanguage": "python"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Granule Mean AOT"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"GRANULE_MEAN_AOT\"]"
+                      },
+                      "programmingLanguage": "python"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Granule Mean Water Vapour"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"GRANULE_MEAN_WV\"]"
+                      },
+                      "programmingLanguage": "python"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Ozone Source"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"OZONE_SOURCE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "Text",
+                          "value": {
+                            "string": "Ozone Value"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"OZONE_VALUE\"]"
+                      },
+                      "programmingLanguage": "python"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
