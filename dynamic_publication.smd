@@ -11,6 +11,19 @@ with crate_path.open() as f:
 # Index by @id for convenience
 graph = interface_crate["@graph"]
 by_id = {entry["@id"]: entry for entry in graph}
+
+# A quick helper to create readable dates
+from datetime import datetime
+
+def parse_iso8601(dt_str):
+    try:
+        # Remove 'Z' if present and parse
+        dt_str = dt_str.rstrip("Z")
+        dt = datetime.fromisoformat(dt_str)
+        # Format as "YYYY-MM-DD HH:MM:SS"
+        return dt.strftime("%Y-%m-%d %H:%M:%S")
+    except Exception:
+        return dt_str  # fallback to original if parsing fails
 ```
 
 ```python exec
@@ -25,8 +38,6 @@ e1_file_ids = [f["@id"] for f in e1_files if "@id" in f]
 # Representative image
 e1_thumbnail_id = next((f for f in e1_file_ids if f.endswith("-ql.jpg")), None)
 e1_thumbnail = f"interface.crate/{e1_thumbnail_id}" if e1_thumbnail_id else None
-
-
 
 # Find the MTD_MSIL2A.xml file among e1_files
 mtd_filename = "MTD_MSIL2A.xml"
@@ -60,17 +71,12 @@ if mtd_path.exists():
     e1_platform_info = extract_metadata("Datatake")
     e1_image_quality = extract_metadata("Image_Content_QI")
 
-    from datetime import datetime
-
-    def parse_iso8601(dt_str):
-      try:
-        # Remove 'Z' if present and parse
-        dt_str = dt_str.rstrip("Z")
-        dt = datetime.fromisoformat(dt_str)
-        # Format as "YYYY-MM-DD HH:MM:SS"
-        return dt.strftime("%Y-%m-%d %H:%M:%S")
-      except Exception:
-        return dt_str  # fallback to original if parsing fails
+    # Round all float values in e1_image_quality to two decimal places (if possible)
+    for k, v in e1_image_quality.items():
+        try:
+            e1_image_quality[k] = round(float(v), 2)
+        except (ValueError, TypeError):
+            pass
 
     e1_product_info_human = dict(e1_product_info)
     e1_platform_info_human = dict(e1_platform_info)
@@ -126,28 +132,49 @@ provenance_by_id = {entry["@id"]: entry for entry in provenance_graph}
 workflow = next((e for e in provenance_graph if e.get("@type") == ["File", "SoftwareSourceCode", "ComputationalWorkflow", "HowTo"]), None)
 steps = sorted([e for e in provenance_graph if e.get("@type") == "ControlAction"], key=lambda x: x.get("position", 0))
 
+FormalParameters = [e for e in provenance_graph if e.get("@type") == "FormalParameter"]
+
 step_summaries = []
 for step in steps:
-    step_id = step.get("@id")
     for e in provenance_graph:
         if e.get("@id") == step.get("object").get("@id"):
-            tool_action = e
+            create_action = e
 
-    inputs = tool_action.get("object")
-    outputs = tool_action.get("result")
+    inputs = create_action.get("object")
+    outputs = create_action.get("result")
+
+    input_entities = []
+    output_entities = []
+
+    for e in provenance_graph:
+        for input in inputs:
+            if input.get("@id") == e.get("@id"):
+                input_entities.append(e)
+
+    for e in provenance_graph:
+        for output in outputs:
+            if output.get("@id") == e.get("@id"):
+                output_entities.append(e)
     
     for e in provenance_graph:
-        if e.get("@id") == step.get("instrument").get("@id"):
-            script = e
+        if create_action.get("instrument").get("@id") == e.get("@id"):
+            softwareApplication = e
+            
+    for e in provenance_graph:
+        if create_action.get("containerImage").get("@id") == e.get("@id"):
+            ContainerImage = e
 
-    step_summaries.append({
-        "step_id": step_id,
-        "script": script,
-        "inputs": inputs,
-        "outputs": outputs
-    })
+    # replace the startTime and endTime with human-readable format
+    create_action["startTime"] = parse_iso8601(create_action["startTime"])
+    create_action["endTime"] = parse_iso8601(create_action["endTime"]) 
     
-    print(step_summaries[0]["script"])  
+    step_summaries.append({
+        "CreateAction": create_action,
+        "SoftwareApplication": softwareApplication,
+        "ContainerImage": ContainerImage,
+        "Inputs": input_entities,
+        "Outputs": output_entities,
+    })
 ```
 
 ```python exec
@@ -162,11 +189,54 @@ some body text here
 
 ## Computational Workflow
 
+### Parameters
+
+::: for parameter in FormalParameters
+
+::::: if parameter["description"]
+
+#### {{ parameter["name"] }}
+
+| **Description**                | **Type**                          |
+| ------------------------------ | --------------------------------- |
+| {{ parameter["description"] }} | {{ parameter["additionalType"] }} |
+
+:::::
+
+:::
+
+### Steps
+
 ::: for step in step_summaries
 
-### Step {{ step["script"]["@id"] }}
+### Step {{ step["SoftwareApplication"]["name"] }}
 
-{{ print(step) }}
+This step, **{{ step["CreateAction"]["name"] }}**, uses the tool _{{ step["SoftwareApplication"]["name"] }}_.
+
+{{ step["SoftwareApplication"]["description"] }}
+
+It was executed from **{{ step["CreateAction"]["startTime"] }}** to **{{ step["CreateAction"]["endTime"] }}**,
+using the container image **{{ step["ContainerImage"]["name"] }}**.
+
+#### Inputs
+
+::::: for input in step["Inputs"]
+
+| Name                                                     | Reference                           |
+| -------------------------------------------------------- | ----------------------------------- |
+| {{ input["name"] if "name" in input else input["@id"] }} | {{ input["exampleOfWork"]["@id"] }} |
+
+:::::
+
+#### Outputs
+
+::::: for output in step["Outputs"]
+
+| Name                                                        | Reference                            |
+| ----------------------------------------------------------- | ------------------------------------ |
+| {{ output["name"] if "name" in output else output["@id"] }} | {{ output["exampleOfWork"]["@id"] }} |
+
+:::::
 
 :::
 
@@ -177,53 +247,99 @@ The dataset, identified by this [DOI]({{e1_product_info_human["PRODUCT_DOI"]}}),
 
 ## Data Alerts
 
-## Data Alerts
-
 ```python exec
 # Create boolean flags for data Alerts
 data_alert_flags = {
     "cloudy_pixels": float(e1_image_quality["CLOUDY_PIXEL_OVER_LAND_PERCENTAGE"]) > 50.0,
-    "very_cloudy_pixels": float(e1_image_quality["CLOUDY_PIXEL_OVER_LAND_PERCENTAGE"]) > 80.0,
-    "nodata_pixels": float(e1_image_quality["NODATA_PIXEL_PERCENTAGE"]) > 50.0,
     "thin_cirrus": float(e1_image_quality["THIN_CIRRUS_PERCENTAGE"]) > 30.0,
-    "high_cloud_prob": float(e1_image_quality["HIGH_PROBA_CLOUDS_PERCENTAGE"]) > 25.0,
-    "medium_cloud_prob": float(e1_image_quality["MEDIUM_PROBA_CLOUDS_PERCENTAGE"]) > 25.0,
     "saturated_pixels": float(e1_image_quality["SATURATED_DEFECTIVE_PIXEL_PERCENTAGE"]) > 0.1,
     "cloud_shadow": float(e1_image_quality["CLOUD_SHADOW_PERCENTAGE"]) > 10.0,
-    "water_dominance": float(e1_image_quality["WATER_PERCENTAGE"]) > 50.0,
     "low_vegetation": float(e1_image_quality["VEGETATION_PERCENTAGE"]) < 5.0
 }
-```
 
+# Ranked list of all flags
+priority_order = [
+    "cloudy_pixels",
+    "thin_cirrus",
+    "cloud_shadow",
+    "saturated_pixels",
+    "low_vegetation"
+]
+
+
+active_ranked_flags = [flag for flag in priority_order if data_alert_flags.get(flag)]
+
+# Workaround: ensure it's at least 2 items so the loop will execute
+if len(active_ranked_flags) == 1:
+    active_ranked_flags.append("no_op")
+
+# You can also define a narrative for "no_op" that renders nothing
+```
 
 The Sentinel-2A scene was assessed for conditions that may impact analysis reliability.
 
-DYNAMIC ALERTS PARAGRAPH
+::: for flag in active_ranked_flags
+
+::::: if flag == "cloudy_pixels"
+
+A large proportion of the land surface is cloud-covered ({{ e1_image_quality["CLOUDY_PIXEL_OVER_LAND_PERCENTAGE"] }}%), which may significantly distort GNDVI signals.
+
+:::::
+
+::::: if flag == "thin_cirrus"
+
+Thin cirrus clouds are present ({{ e1_image_quality["THIN_CIRRUS_PERCENTAGE"] }}%), potentially elevating NIR values and distorting vegetation estimates.
+
+:::::
+
+::::: if flag == "cloud_shadow"
+
+Cloud shadows affect part of the scene ({{ e1_image_quality["CLOUD_SHADOW_PERCENTAGE"] }}%), possibly reducing GNDVI by lowering NIR reflectance.
+
+:::::
+
+::::: if flag == "saturated_pixels"
+
+Saturation has been detected in {{ e1_image_quality["SATURATED_DEFECTIVE_PIXEL_PERCENTAGE"] }}% of pixels, indicating possible data corruption in bright areas.
+
+:::::
+
+::::: if flag == "low_vegetation"
+
+Vegetation coverage is low ({{ e1_image_quality["VEGETATION_PERCENTAGE"] }}%), which can make GNDVI more sensitive to atmospheric noise or edge effects.
+
+:::::
+
+::::: if flag == "no_op"
+
+:::::
+
+:::
 
 Analysts should carefully consider these conditions before using this dataset in quantitative workflows.
 
 ### Image Quality Summary
 
-| Property                            | Value                                                                                     |
-| ----------------------------------- | ----------------------------------------------------------------------------------------- |
-| **Cloudy Pixels Over Land**         | `round(float(e1_image_quality["CLOUDY_PIXEL_OVER_LAND_PERCENTAGE"]), 2)`{python exec}%    |
-| **No Data Pixels**                  | `round(float(e1_image_quality["NODATA_PIXEL_PERCENTAGE"]), 2)`{python exec}%              |
-| **Saturated/Defective Pixels**      | `round(float(e1_image_quality["SATURATED_DEFECTIVE_PIXEL_PERCENTAGE"]), 2)`{python exec}% |
-| **Dark Features**                   | `round(float(e1_image_quality["DARK_FEATURES_PERCENTAGE"]), 2)`{python exec}%             |
-| **Cloud Shadow**                    | `round(float(e1_image_quality["CLOUD_SHADOW_PERCENTAGE"]), 2)`{python exec}%              |
-| **Vegetation**                      | `round(float(e1_image_quality["VEGETATION_PERCENTAGE"]), 2)`{python exec}%                |
-| **Not Vegetated**                   | `round(float(e1_image_quality["NOT_VEGETATED_PERCENTAGE"]), 2)`{python exec}%             |
-| **Water**                           | `round(float(e1_image_quality["WATER_PERCENTAGE"]), 2)`{python exec}%                     |
-| **Unclassified**                    | `round(float(e1_image_quality["UNCLASSIFIED_PERCENTAGE"]), 2)`{python exec}%              |
-| **Medium Probability Clouds**       | `round(float(e1_image_quality["MEDIUM_PROBA_CLOUDS_PERCENTAGE"]), 2)`{python exec}%       |
-| **High Probability Clouds**         | `round(float(e1_image_quality["HIGH_PROBA_CLOUDS_PERCENTAGE"]), 2)`{python exec}%         |
-| **Thin Cirrus**                     | `round(float(e1_image_quality["THIN_CIRRUS_PERCENTAGE"]), 2)`{python exec}%               |
-| **Snow/Ice**                        | `round(float(e1_image_quality["SNOW_ICE_PERCENTAGE"]), 2)`{python exec}%                  |
-| **Radiative Transfer Accuracy**     | `e1_image_quality["RADIATIVE_TRANSFER_ACCURACY"]`{python exec}                            |
-| **Water Vapour Retrieval Accuracy** | `e1_image_quality["WATER_VAPOUR_RETRIEVAL_ACCURACY"]`{python exec}                        |
-| **AOT Retrieval Accuracy**          | `e1_image_quality["AOT_RETRIEVAL_ACCURACY"]`{python exec}                                 |
-| **AOT Retrieval Method**            | `e1_image_quality["AOT_RETRIEVAL_METHOD"]`{python exec}                                   |
-| **Granule Mean AOT**                | `e1_image_quality["GRANULE_MEAN_AOT"]`{python exec}                                       |
-| **Granule Mean Water Vapour**       | `e1_image_quality["GRANULE_MEAN_WV"]`{python exec}                                        |
-| **Ozone Source**                    | `e1_image_quality["OZONE_SOURCE"]`{python exec}                                           |
-| **Ozone Value**                     | `e1_image_quality["OZONE_VALUE"]`{python exec}                                            |
+| Property                            | Value                                                                    |
+| ----------------------------------- | ------------------------------------------------------------------------ |
+| **Cloudy Pixels Over Land**         | `e1_image_quality["CLOUDY_PIXEL_OVER_LAND_PERCENTAGE"]`{python exec}%    |
+| **No Data Pixels**                  | `e1_image_quality["NODATA_PIXEL_PERCENTAGE"]`{python exec}%              |
+| **Saturated/Defective Pixels**      | `e1_image_quality["SATURATED_DEFECTIVE_PIXEL_PERCENTAGE"]`{python exec}% |
+| **Dark Features**                   | `e1_image_quality["DARK_FEATURES_PERCENTAGE"]`{python exec}%             |
+| **Cloud Shadow**                    | `e1_image_quality["CLOUD_SHADOW_PERCENTAGE"]`{python exec}%              |
+| **Vegetation**                      | `e1_image_quality["VEGETATION_PERCENTAGE"]`{python exec}%                |
+| **Not Vegetated**                   | `e1_image_quality["NOT_VEGETATED_PERCENTAGE"]`{python exec}%             |
+| **Water**                           | `e1_image_quality["WATER_PERCENTAGE"]`{python exec}%                     |
+| **Unclassified**                    | `e1_image_quality["UNCLASSIFIED_PERCENTAGE"]`{python exec}%              |
+| **Medium Probability Clouds**       | `e1_image_quality["MEDIUM_PROBA_CLOUDS_PERCENTAGE"]`{python exec}%       |
+| **High Probability Clouds**         | `e1_image_quality["HIGH_PROBA_CLOUDS_PERCENTAGE"]`{python exec}%         |
+| **Thin Cirrus**                     | `e1_image_quality["THIN_CIRRUS_PERCENTAGE"]`{python exec}%               |
+| **Snow/Ice**                        | `e1_image_quality["SNOW_ICE_PERCENTAGE"]`{python exec}%                  |
+| **Radiative Transfer Accuracy**     | `e1_image_quality["RADIATIVE_TRANSFER_ACCURACY"]`{python exec}           |
+| **Water Vapour Retrieval Accuracy** | `e1_image_quality["WATER_VAPOUR_RETRIEVAL_ACCURACY"]`{python exec}       |
+| **AOT Retrieval Accuracy**          | `e1_image_quality["AOT_RETRIEVAL_ACCURACY"]`{python exec}                |
+| **AOT Retrieval Method**            | `e1_image_quality["AOT_RETRIEVAL_METHOD"]`{python exec}                  |
+| **Granule Mean AOT**                | `e1_image_quality["GRANULE_MEAN_AOT"]`{python exec}                      |
+| **Granule Mean Water Vapour**       | `e1_image_quality["GRANULE_MEAN_WV"]`{python exec}                       |
+| **Ozone Source**                    | `e1_image_quality["OZONE_SOURCE"]`{python exec}                          |
+| **Ozone Value**                     | `e1_image_quality["OZONE_VALUE"]`{python exec}                           |
