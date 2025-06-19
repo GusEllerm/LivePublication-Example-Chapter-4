@@ -29,6 +29,8 @@ def update_description_and_name_in_preview(crate_html_path, new_description):
                 entity["name"] = "Workflow Provenance Record (CWL Execution)"
             elif "interface.crate" in crate_html_path:
                 entity["name"] = "LivePublication Experiment Interface Crate"
+            elif "publication.crate" in crate_html_path:
+                entity["name"] = "LivePublication Crate"
             break
 
     updated_json_str = json.dumps(decoded_json, indent=2)
@@ -65,6 +67,11 @@ if __name__ == "__main__":
             "input": "provenance_output.crate/ro-crate-preview.html",
             "output": "docs/index.html",
             "title": "Provenance Crate"
+        },
+        {
+            "input": "publication.crate/ro-crate-preview.html",
+            "output": "docs/publication.html",
+            "title": "LivePublication Crate"
         }
     ]
 
@@ -74,6 +81,8 @@ if __name__ == "__main__":
                 update_description_and_name_in_preview(crate["input"], "Represents the provenance of the CWL workflow execution")
             elif "interface.crate" in crate["input"]:
                 update_description_and_name_in_preview(crate["input"], "Containerises the Experiment Infrastructure outputs for LivePublication")
+            elif "publication.crate" in crate["input"]:
+                update_description_and_name_in_preview(crate["input"], "A complete and reproducible LivePublication instance including data, workflow, and narrative.")
             render_crate_page(crate["input"], crate["output"], crate["title"])
         else:
             print(f"Warning: {crate['input']} does not exist.")

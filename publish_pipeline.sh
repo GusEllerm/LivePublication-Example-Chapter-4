@@ -8,6 +8,8 @@ rm -rf Workflow_inputs/Data/*
 find . -maxdepth 1 -name "*.pickle" -delete
 find . -maxdepth 1 -name "*.tif" -delete
 rm -rf interface.crate/ provenance_output/ provenance_output.crate/
+rm -rf publication.crate/
+rm -f publication.crate.zip
 rm -f DNF_document.json dynamic_article.json
 rm -rf docs/publication/
 
@@ -62,6 +64,14 @@ stencila render --no-save DNF_Document.json dynamic_article.json
 echo "📊 Creating example presentation versions of the rendered article..."
 stencila convert dynamic_article.json  docs/publication/dynamic_article.html
 stencila convert dynamic_article.json docs/publication/dynamic_article.pdf
+
+# Step 13: Generate the Publication Crate
+echo "📦 Generating the Publication Crate..."
+python publication_crate.py
+
+# Step 14: Generate HTML preview for the Publication Crate
+echo "🌐 Generating HTML preview for the Publication Crate..."
+rochtml publication.crate/ro-crate-metadata.json
 
 # Step 11: Commit and push to GitHub
 echo "📤 Committing and pushing to GitHub..."

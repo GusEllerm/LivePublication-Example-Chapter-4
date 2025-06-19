@@ -258,11 +258,13 @@ data_alert_flags = {
     "thin_cirrus": float(e1_image_quality["THIN_CIRRUS_PERCENTAGE"]) > 30.0,
     "saturated_pixels": float(e1_image_quality["SATURATED_DEFECTIVE_PIXEL_PERCENTAGE"]) > 0.1,
     "cloud_shadow": float(e1_image_quality["CLOUD_SHADOW_PERCENTAGE"]) > 10.0,
-    "low_vegetation": float(e1_image_quality["VEGETATION_PERCENTAGE"]) < 5.0
+    "low_vegetation": float(e1_image_quality["VEGETATION_PERCENTAGE"]) < 5.0,
+    "low_data": float(e1_image_quality["NODATA_PIXEL_PERCENTAGE"]) > 10.0,
 }
 
 # Ranked list of all flags
 priority_order = [
+    "low_data",
     "cloudy_pixels",
     "thin_cirrus",
     "cloud_shadow",
@@ -273,16 +275,23 @@ priority_order = [
 
 active_ranked_flags = [flag for flag in priority_order if data_alert_flags.get(flag)]
 
+active_flags_len = len(active_ranked_flags)
+
 # Workaround: ensure it's at least 2 items so the loop will execute
 if len(active_ranked_flags) == 1:
     active_ranked_flags.append("no_op")
 
-# You can also define a narrative for "no_op" that renders nothing
 ```
 
-The Sentinel-2A scene was assessed for conditions that may impact analysis reliability.
+The Sentinel-2A scene was assessed for conditions that may impact analysis reliability. There are currently **`active_flags_len`{python exec}** active data quality flags:
 
 ::: for flag in `active_ranked_flags`{python exec}
+
+::::: if `flag == "low_data"`{python exec}
+
+A significant portion of the scene contains no data ({{ e1_image_quality["NODATA_PIXEL_PERCENTAGE"] }}%), which may limit the reliability of GNDVI calculations.
+
+:::::
 
 ::::: if `flag == "cloudy_pixels"`{python exec}
 

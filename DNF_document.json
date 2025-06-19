@@ -764,7 +764,7 @@
       "type": "CodeChunk",
       "executionMode": "Always",
       "code": {
-        "string": "# Create boolean flags for data Alerts\ndata_alert_flags = {\n    \"cloudy_pixels\": float(e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]) > 50.0,\n    \"thin_cirrus\": float(e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]) > 30.0,\n    \"saturated_pixels\": float(e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]) > 0.1,\n    \"cloud_shadow\": float(e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]) > 10.0,\n    \"low_vegetation\": float(e1_image_quality[\"VEGETATION_PERCENTAGE\"]) < 5.0\n}\n\n# Ranked list of all flags\npriority_order = [\n    \"cloudy_pixels\",\n    \"thin_cirrus\",\n    \"cloud_shadow\",\n    \"saturated_pixels\",\n    \"low_vegetation\"\n]\n\n\nactive_ranked_flags = [flag for flag in priority_order if data_alert_flags.get(flag)]\n\n# Workaround: ensure it's at least 2 items so the loop will execute\nif len(active_ranked_flags) == 1:\n    active_ranked_flags.append(\"no_op\")\n\n# You can also define a narrative for \"no_op\" that renders nothing"
+        "string": "# Create boolean flags for data Alerts\ndata_alert_flags = {\n    \"cloudy_pixels\": float(e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]) > 50.0,\n    \"thin_cirrus\": float(e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]) > 30.0,\n    \"saturated_pixels\": float(e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]) > 0.1,\n    \"cloud_shadow\": float(e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]) > 10.0,\n    \"low_vegetation\": float(e1_image_quality[\"VEGETATION_PERCENTAGE\"]) < 5.0,\n    \"low_data\": float(e1_image_quality[\"NODATA_PIXEL_PERCENTAGE\"]) > 10.0,\n}\n\n# Ranked list of all flags\npriority_order = [\n    \"low_data\",\n    \"cloudy_pixels\",\n    \"thin_cirrus\",\n    \"cloud_shadow\",\n    \"saturated_pixels\",\n    \"low_vegetation\"\n]\n\n\nactive_ranked_flags = [flag for flag in priority_order if data_alert_flags.get(flag)]\n\nactive_flags_len = len(active_ranked_flags)\n\n# Workaround: ensure it's at least 2 items so the loop will execute\nif len(active_ranked_flags) == 1:\n    active_ranked_flags.append(\"no_op\")\n"
       },
       "programmingLanguage": "python"
     },
@@ -774,7 +774,25 @@
         {
           "type": "Text",
           "value": {
-            "string": "The Sentinel-2A scene was assessed for conditions that may impact analysis reliability."
+            "string": "The Sentinel-2A scene was assessed for conditions that may impact analysis reliability. There are currently "
+          }
+        },
+        {
+          "type": "Strong",
+          "content": [
+            {
+              "type": "CodeExpression",
+              "code": {
+                "string": "active_flags_len"
+              },
+              "programmingLanguage": "python"
+            }
+          ]
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": " active data quality flags:"
           }
         }
       ]
@@ -787,6 +805,44 @@
       "programmingLanguage": "python",
       "variable": "flag",
       "content": [
+        {
+          "type": "IfBlock",
+          "clauses": [
+            {
+              "type": "IfBlockClause",
+              "code": {
+                "string": "flag == \"low_data\""
+              },
+              "programmingLanguage": "python",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "A significant portion of the scene contains no data ("
+                      }
+                    },
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"NODATA_PIXEL_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "docsql"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%), which may limit the reliability of GNDVI calculations."
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
         {
           "type": "IfBlock",
           "clauses": [
