@@ -48,32 +48,32 @@ rochtml provenance_output.crate/ro-crate-metadata.json
 echo "🌐 Generating HTML preview of the interface crate..."
 rochtml interface.crate/ro-crate-metadata.json
 
-# Step 9: Generate the templated website with navigation
-echo "🧱 Generating templated HTML site..."
-python docs/template_renderer.py
-
-# Step 10: Generate the DNF Document from the dynamic_publication.smd specification
+# Step 9: Generate the DNF Document from the dynamic_publication.smd specification
 echo "📄 Generating DNF Document..."
 stencila convert dynamic_publication.smd DNF_document.json
 
-# Step 11: Render the DNF Document using the interface.crate
+# Step 10: Render the DNF Document using the interface.crate
 echo "📑 Rendering DNF Document with interface.crate..."
 stencila render --no-save DNF_Document.json dynamic_article.json    
 
-# Step 12: Create exmaple presentation verisons of the rendered article
+# Step 11: Create exmaple presentation verisons of the rendered article
 echo "📊 Creating example presentation versions of the rendered article..."
 stencila convert dynamic_article.json  docs/publication/dynamic_article.html
 stencila convert dynamic_article.json docs/publication/dynamic_article.pdf
 
-# Step 13: Generate the Publication Crate
+# Step 12: Generate the Publication Crate
 echo "📦 Generating the Publication Crate..."
 python publication_crate.py
 
-# Step 14: Generate HTML preview for the Publication Crate
+# Step 13: Generate HTML preview for the Publication Crate
 echo "🌐 Generating HTML preview for the Publication Crate..."
 rochtml publication.crate/ro-crate-metadata.json
 
-# Step 11: Commit and push to GitHub
+# Step 14: Generate the templated website with navigation
+echo "🧱 Generating templated HTML site..."
+python docs/template_renderer.py
+
+# Step 15: Commit and push to GitHub
 echo "📤 Committing and pushing to GitHub..."
 git add .
 git commit -m "Automated publish: new CWL run, crate, and Zenodo version"
