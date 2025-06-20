@@ -231,6 +231,17 @@ def create_publication_crate(crate_name: str):
 
     print(f"RO-Crate written to {crate_name}")
 
+    import zipfile
+
+    zip_path = f"{crate_name}.zip"
+    with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, _, files in os.walk(crate_name):
+            for file in files:
+                file_path = os.path.join(root, file)
+                arcname = os.path.relpath(file_path, crate_name)
+                zipf.write(file_path, arcname)
+    print(f"RO-Crate zipped to {zip_path}")
+
 if __name__ == "__main__":
     crate_name = "publication.crate"
     if os.path.exists(crate_name):

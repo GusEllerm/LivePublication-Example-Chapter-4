@@ -25,6 +25,7 @@ cwltool --strict-memory-limit --provenance provenance_output Workflows/workflow.
 # Step 3: Generate the Provenance Run Crate
 echo "📦 Converting to Provenance Run Crate..."
 runcrate convert provenance_output --output provenance_output.crate
+zip -r provenance_output.crate.zip provenance_output.crate
 
 # Step 4: Generate workflow preview image
 echo "🖼️ Generating CWL workflow diagram..."
@@ -38,12 +39,10 @@ python zenodo_upload.py
 # Step 6: Generate the Interface Crate and zip it
 echo "🧬 Generating Interface Crate..."
 python interface_crate.py
-zip -r interface.crate.zip interface.crate
 
 # Step 7: Generate the HTML preview of the provenance crate
 echo "🌐 Generating HTML preview of the provenance crate..."
 rochtml provenance_output.crate/ro-crate-metadata.json
-zip -r provenance_output.crate.zip provenance_output.crate
 
 # Step 8: Generate HTML preview of the interface crate
 echo "🌐 Generating HTML preview of the interface crate..."
@@ -65,7 +64,6 @@ stencila convert DNF_Evaluated_Document.json docs/publication/research_article.m
 # Step 12: Generate the Publication Crate
 echo "📦 Generating the Publication Crate..."
 python publication_crate.py
-zip -r publication.crate.zip publication.crate
 
 # Step 13: Generate HTML preview for the Publication Crate
 echo "🌐 Generating HTML preview for the Publication Crate..."
