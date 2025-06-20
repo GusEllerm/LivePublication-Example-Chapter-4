@@ -43,6 +43,7 @@ zip -r interface.crate.zip interface.crate
 # Step 7: Generate the HTML preview of the provenance crate
 echo "🌐 Generating HTML preview of the provenance crate..."
 rochtml provenance_output.crate/ro-crate-metadata.json
+zip -r provenance_output.crate.zip provenance_output.crate
 
 # Step 8: Generate HTML preview of the interface crate
 echo "🌐 Generating HTML preview of the interface crate..."
