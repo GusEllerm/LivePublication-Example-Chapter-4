@@ -4,3 +4,4 @@ provenance_output filter=lfs diff=lfs merge=lfs -text
 provenance_output.crate.zip filter=lfs diff=lfs merge=lfs -text
 interface.crate.zip filter=lfs diff=lfs merge=lfs -text
 publication.crate.zip filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
