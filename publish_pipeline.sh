@@ -9,9 +9,9 @@ find . -maxdepth 1 -name "*.pickle" -delete
 find . -maxdepth 1 -name "*.tif" -delete
 rm -rf interface.crate/ provenance_output/ provenance_output.crate/
 rm -rf publication.crate/
-rm -f publication.crate.zip
 rm -f DNF_document.json dynamic_article.json
 rm -rf docs/publication/
+find . -maxdepth 1 -name "*.zip" -delete
 
 
 # Step 1: Download new Copernicus data and patch workflow inputs
@@ -25,7 +25,7 @@ cwltool --strict-memory-limit --provenance provenance_output Workflows/workflow.
 # Step 3: Generate the Provenance Run Crate
 echo "📦 Converting to Provenance Run Crate..."
 runcrate convert provenance_output --output provenance_output.crate
-zip -r provenance_output.crate.zip provenance_output.crate
+zip -r provenance_output.crate.zip provenance_output.crate -x "*.zip"
 
 # Step 4: Generate workflow preview image
 echo "🖼️ Generating CWL workflow diagram..."
@@ -60,6 +60,8 @@ stencila render --no-save DNF_Document.json DNF_Evaluated_Document.json
 echo "📊 Creating example presentation versions of the rendered article..."
 stencila convert DNF_Evaluated_Document.json  docs/publication/research_article.html
 stencila convert DNF_Evaluated_Document.json docs/publication/research_article.md
+mkdir -p docs/interface.crate/provenance_output.crate
+cp workflow_preview.png docs/interface.crate/provenance_output.crate/workflow_preview.png
 
 # Step 12: Generate the Publication Crate
 echo "📦 Generating the Publication Crate..."
