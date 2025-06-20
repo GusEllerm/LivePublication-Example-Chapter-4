@@ -236,18 +236,6 @@ def create_interface_crate(output_dir: str):
 
     # Write the RO-Crate to the specified output directory
     crate.write(output_dir)
-    print(f"RO-Crate written to {output_dir}")
-
-    import zipfile
-
-    zip_path = f"{output_dir}.zip"
-    with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
-        for root, _, files in os.walk(output_dir):
-            for file in files:
-                file_path = os.path.join(root, file)
-                arcname = os.path.relpath(file_path, output_dir)
-                zipf.write(file_path, arcname)
-    print(f"RO-Crate zipped to {zip_path}")
 
 
 if __name__ == "__main__":

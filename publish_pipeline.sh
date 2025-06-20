@@ -64,6 +64,7 @@ stencila convert DNF_Evaluated_Document.json docs/publication/research_article.m
 # Step 12: Generate the Publication Crate
 echo "📦 Generating the Publication Crate..."
 python publication_crate.py
+zip -r publication.crate.zip publication.crate
 
 # Step 13: Generate HTML preview for the Publication Crate
 echo "🌐 Generating HTML preview for the Publication Crate..."
