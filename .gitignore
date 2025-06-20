@@ -46,6 +46,7 @@ interface.crate/
 publication.crate/
 workflow_inputs/Data/
 *.pickle
+*.tif
 
 zenodo_token.py
 copernicus_token.py
