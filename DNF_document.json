@@ -1,6 +1,6 @@
 {
-  "$schema": "https://stencila.org/v2.1.0/Article.schema.json",
-  "@context": "https://stencila.org/v2.1.0/context.jsonld",
+  "$schema": "https://stencila.org/v2.2.0/Article.schema.json",
+  "@context": "https://stencila.org/v2.2.0/context.jsonld",
   "type": "Article",
   "content": [
     {
@@ -130,11 +130,16 @@
                   "level": 4,
                   "content": [
                     {
-                      "type": "CodeExpression",
-                      "code": {
-                        "string": "parameter[\"name\"]"
-                      },
-                      "programmingLanguage": "python"
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "CodeExpression",
+                          "code": {
+                            "string": "parameter[\"name\"].upper()"
+                          },
+                          "programmingLanguage": "python"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -375,7 +380,7 @@
             {
               "type": "Text",
               "value": {
-                "string": ",\nusing the container image "
+                "string": ", using the container image "
               }
             },
             {
@@ -681,7 +686,7 @@
         {
           "type": "Text",
           "value": {
-            "string": ".\nThe dataset, identified by this [DOI]("
+            "string": ". The dataset, identified by this [DOI]("
           }
         },
         {
@@ -2095,5 +2100,7 @@
         }
       ]
     }
-  ]
+  ],
+  "source": "dynamic_publication.smd",
+  "commit": "dirty"
 }

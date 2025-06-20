@@ -50,16 +50,16 @@ rochtml interface.crate/ro-crate-metadata.json
 
 # Step 9: Generate the DNF Document from the dynamic_publication.smd specification
 echo "📄 Generating DNF Document..."
-stencila convert dynamic_publication.smd DNF_document.json
+stencila convert dynamic_publication.smd DNF_Document.json
 
 # Step 10: Render the DNF Document using the interface.crate
 echo "📑 Rendering DNF Document with interface.crate..."
-stencila render --no-save DNF_Document.json dynamic_article.json    
+stencila render --no-save DNF_Document.json DNF_Evaluated_Document.json    
 
 # Step 11: Create exmaple presentation verisons of the rendered article
 echo "📊 Creating example presentation versions of the rendered article..."
-stencila convert dynamic_article.json  docs/publication/dynamic_article.html
-stencila convert dynamic_article.json docs/publication/dynamic_article.pdf
+stencila convert DNF_Evaluated_Document.json  docs/publication/research_article.html
+stencila convert DNF_Evaluated_Document.json docs/publication/research_article.md
 
 # Step 12: Generate the Publication Crate
 echo "📦 Generating the Publication Crate..."

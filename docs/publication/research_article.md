@@ -175,7 +175,6 @@ for step in steps:
         "Inputs": input_entities,
         "Outputs": output_entities,
     })
-
 ```
 
 ```python exec always
@@ -192,12 +191,11 @@ some body text here
 
 ![Workflow Preview](interface.crate/provenance_output.crate/workflow_preview.png)
 
-
 ### Parameters
 
-::: for parameter in `FormalParameters`{python exec}
+::: for parameter in FormalParameters {python}
 
-::::: if `parameter.get("description")`{python exec}
+::::: if parameter.get("description") {python}
 
 #### **`parameter["name"].upper()`{python exec}**
 
@@ -219,15 +217,14 @@ This step, **`step["CreateAction"]["name"]`{python exec}**, uses the tool _`step
 
 `step["SoftwareApplication"]["description"]`{python exec}
 
-It was executed from **`step["CreateAction"]["startTime"]`{python exec}** to **`step["CreateAction"]["endTime"]`{python exec}**,
-using the container image **`step["ContainerImage"]["name"]`{python exec}**.
+It was executed from **`step["CreateAction"]["startTime"]`{python exec}** to **`step["CreateAction"]["endTime"]`{python exec}**, using the container image **`step["ContainerImage"]["name"]`{python exec}**.
 
 #### Inputs
 
 ::::: for input in step["Inputs"]
 
-| Name                                                              | Reference                                    |
-| ----------------------------------------------------------------- | -------------------------------------------- |
+| Name                                                              | Reference                                                                                                                                                                                        |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `input["name"] if "name" in input else input["@id"]`{python exec} | `", ".join(e["@id"] if isinstance(e, dict) and "@id" in e else str(e) for e in (input["exampleOfWork"] if isinstance(input["exampleOfWork"], list) else [input["exampleOfWork"]]))`{python exec} |
 
 :::::
@@ -236,8 +233,8 @@ using the container image **`step["ContainerImage"]["name"]`{python exec}**.
 
 ::::: for output in step["Outputs"]
 
-| Name                                                                 | Reference                                     |
-| -------------------------------------------------------------------- | --------------------------------------------- |
+| Name                                                                 | Reference                                                                                                                                                                                           |
+| -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `output["name"] if "name" in output else output["@id"]`{python exec} | `", ".join(e["@id"] if isinstance(e, dict) and "@id" in e else str(e) for e in (output["exampleOfWork"] if isinstance(output["exampleOfWork"], list) else [output["exampleOfWork"]]))`{python exec} |
 
 :::::
@@ -246,8 +243,7 @@ using the container image **`step["ContainerImage"]["name"]`{python exec}**.
 
 ## Sentinel-2A Data Product Overview
 
-This publication uses a **`e1_platform_info_human["SPACECRAFT_NAME"]`{python exec}** `e1_product_info_human["PROCESSING_LEVEL"]`{python exec} product acquired during orbit `e1_platform_info_human["SENSING_ORBIT_NUMBER"]`{python exec} on `e1_platform_info_human["DATATAKE_SENSING_START_HUMAN"]`{python exec}.
-The dataset, identified by this [DOI](`e1_product_info_human["PRODUCT_DOI"]`{python exec}), was processed using baseline **`e1_product_info_human["PROCESSING_BASELINE"]`{python exec}** (see [here](https://sentiwiki.copernicus.eu/web/s2-processing) for information on baseline processing algorithms) on `e1_product_info_human["GENERATION_TIME_HUMAN"]`{python exec}.
+This publication uses a **`e1_platform_info_human["SPACECRAFT_NAME"]`{python exec}** `e1_product_info_human["PROCESSING_LEVEL"]`{python exec} product acquired during orbit `e1_platform_info_human["SENSING_ORBIT_NUMBER"]`{python exec} on `e1_platform_info_human["DATATAKE_SENSING_START_HUMAN"]`{python exec}. The dataset, identified by this [DOI](`e1_product_info_human["PRODUCT_DOI"]`{python exec}), was processed using baseline **`e1_product_info_human["PROCESSING_BASELINE"]`{python exec}** (see [here](https://sentiwiki.copernicus.eu/web/s2-processing) for information on baseline processing algorithms) on `e1_product_info_human["GENERATION_TIME_HUMAN"]`{python exec}.
 
 ## Data Alerts
 
@@ -280,50 +276,49 @@ active_flags_len = len(active_ranked_flags)
 # Workaround: ensure it's at least 2 items so the loop will execute
 if len(active_ranked_flags) == 1:
     active_ranked_flags.append("no_op")
-
 ```
 
 The Sentinel-2A scene was assessed for conditions that may impact analysis reliability. There are currently **`active_flags_len`{python exec}** active data quality flags:
 
-::: for flag in `active_ranked_flags`{python exec}
+::: for flag in active_ranked_flags {python}
 
-::::: if `flag == "low_data"`{python exec}
+::::: if flag == "low_data" {python}
 
 A significant portion of the scene contains no data ({{ e1_image_quality["NODATA_PIXEL_PERCENTAGE"] }}%), which may limit the reliability of GNDVI calculations.
 
 :::::
 
-::::: if `flag == "cloudy_pixels"`{python exec}
+::::: if flag == "cloudy_pixels" {python}
 
 A large proportion of the land surface is cloud-covered ({{ e1_image_quality["CLOUDY_PIXEL_OVER_LAND_PERCENTAGE"] }}%), which may significantly distort GNDVI signals.
 
 :::::
 
-::::: if `flag == "thin_cirrus"`{python exec}
+::::: if flag == "thin_cirrus" {python}
 
 Thin cirrus clouds are present ({{ e1_image_quality["THIN_CIRRUS_PERCENTAGE"] }}%), potentially elevating NIR values and distorting vegetation estimates.
 
 :::::
 
-::::: if `flag == "cloud_shadow"`{python exec}
+::::: if flag == "cloud_shadow" {python}
 
 Cloud shadows affect part of the scene ({{ e1_image_quality["CLOUD_SHADOW_PERCENTAGE"] }}%), possibly reducing GNDVI by lowering NIR reflectance.
 
 :::::
 
-::::: if `flag == "saturated_pixels"`{python exec}
+::::: if flag == "saturated_pixels" {python}
 
 Saturation has been detected in {{ e1_image_quality["SATURATED_DEFECTIVE_PIXEL_PERCENTAGE"] }}% of pixels, indicating possible data corruption in bright areas.
 
 :::::
 
-::::: if `flag == "low_vegetation"`{python exec}
+::::: if flag == "low_vegetation" {python}
 
 Vegetation coverage is low ({{ e1_image_quality["VEGETATION_PERCENTAGE"] }}%), which can make GNDVI more sensitive to atmospheric noise or edge effects.
 
 :::::
 
-::::: if `flag == "no_op"`{python exec}
+::::: if flag == "no_op" {python}
 
 :::::
 

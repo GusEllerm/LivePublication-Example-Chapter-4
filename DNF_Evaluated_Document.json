@@ -1,6 +1,6 @@
 {
-  "$schema": "https://stencila.org/v2.1.0/Article.schema.json",
-  "@context": "https://stencila.org/v2.1.0/context.jsonld",
+  "$schema": "https://stencila.org/v2.2.0/Article.schema.json",
+  "@context": "https://stencila.org/v2.2.0/context.jsonld",
   "type": "Article",
   "headings": {
     "type": "List",
@@ -21,7 +21,7 @@
                     }
                   }
                 ],
-                "target": "#hea_lRSu9HhmVJTjNqNJgrndXhsj"
+                "target": "#hea_C8edrAjoYHx0La1guXWaOSGZ"
               }
             ]
           },
@@ -44,7 +44,7 @@
                             }
                           }
                         ],
-                        "target": "#hea_F9D5Uhu2iTAcnBj2Vi37a8hp"
+                        "target": "#hea_rwc4joQgNv1NSSE6AgW0al07"
                       }
                     ]
                   },
@@ -67,7 +67,7 @@
                                     }
                                   }
                                 ],
-                                "target": "#hea_owAygU7WQdssaIaPDIJ4U9mf"
+                                "target": "#hea_rZE4OdUSIWLOBpFygFynKk5w"
                               }
                             ]
                           },
@@ -84,14 +84,19 @@
                                         "type": "Link",
                                         "content": [
                                           {
-                                            "type": "CodeExpression",
-                                            "code": {
-                                              "string": "parameter[\"name\"]"
-                                            },
-                                            "programmingLanguage": "python"
+                                            "type": "Strong",
+                                            "content": [
+                                              {
+                                                "type": "CodeExpression",
+                                                "code": {
+                                                  "string": "parameter[\"name\"].upper()"
+                                                },
+                                                "programmingLanguage": "python"
+                                              }
+                                            ]
                                           }
                                         ],
-                                        "target": "#hea_Q3UUdTG8geFr6Oavy8mcG8n0"
+                                        "target": "#hea_bRC9ItDZdu9YPRgsW3h4yXcX"
                                       }
                                     ]
                                   }
@@ -118,7 +123,7 @@
                                     }
                                   }
                                 ],
-                                "target": "#hea_Z8ovrXH0rYi85VwfnvBdhqtj"
+                                "target": "#hea_D3rYkMj2JFTVPpltfprM3iDc"
                               }
                             ]
                           }
@@ -147,7 +152,7 @@
                                     "programmingLanguage": "python"
                                   }
                                 ],
-                                "target": "#hea_TGPyuWTS9cx2m3regUJ22Wod"
+                                "target": "#hea_H9gldgVHA0QQMmClf7DKG3kX"
                               }
                             ]
                           },
@@ -170,7 +175,7 @@
                                             }
                                           }
                                         ],
-                                        "target": "#hea_2hx92Wegd6S417oS4mArGDcr"
+                                        "target": "#hea_HveewuqmJwViRBYc4zp0sAX2"
                                       }
                                     ]
                                   }
@@ -192,7 +197,7 @@
                                             }
                                           }
                                         ],
-                                        "target": "#hea_tnqaOheRbL7K57OPMuZWJxo0"
+                                        "target": "#hea_7FobIEh0mEptzxgeu59p0ZcQ"
                                       }
                                     ]
                                   }
@@ -224,7 +229,7 @@
                             }
                           }
                         ],
-                        "target": "#hea_XpWRKswZng5WCbQ1epEoYqP0"
+                        "target": "#hea_ai0n5Pxtrk2x7rRAEpaZhHNy"
                       }
                     ]
                   }
@@ -246,7 +251,7 @@
                             }
                           }
                         ],
-                        "target": "#hea_Bqyj8tTUjpUImX1DZXgiOq0w"
+                        "target": "#hea_hINtwTdqOrT9YccwYGQH1zEd"
                       }
                     ]
                   },
@@ -269,7 +274,7 @@
                                     }
                                   }
                                 ],
-                                "target": "#hea_NmPzr7bkqqvAHaazp2jqvj44"
+                                "target": "#hea_SgEUahl28ZCjYrxosv9phWaA"
                               }
                             ]
                           }
@@ -309,7 +314,7 @@
           "roleName": "Executor",
           "lastModified": {
             "type": "Timestamp",
-            "value": 1750286693932,
+            "value": 1750378919642,
             "timeUnit": "Millisecond"
           }
         }
@@ -325,15 +330,15 @@
       "executionCount": 1,
       "executionRequired": "No",
       "executionStatus": "Succeeded",
-      "executionInstance": "python_6TLSNcrZTMtv8rsEcst4zJ",
+      "executionInstance": "python_H1FL2nYaLbun1KCCzH6PVA",
       "executionEnded": {
         "type": "Timestamp",
-        "value": 1750286693911,
+        "value": 1750378919623,
         "timeUnit": "Millisecond"
       },
       "executionDuration": {
         "type": "Duration",
-        "value": 354,
+        "value": 332,
         "timeUnit": "Millisecond"
       }
     },
@@ -357,7 +362,7 @@
           "roleName": "Executor",
           "lastModified": {
             "type": "Timestamp",
-            "value": 1750286693938,
+            "value": 1750378919647,
             "timeUnit": "Millisecond"
           }
         }
@@ -373,15 +378,15 @@
       "executionCount": 1,
       "executionRequired": "No",
       "executionStatus": "Succeeded",
-      "executionInstance": "python_6TLSNcrZTMtv8rsEcst4zJ",
+      "executionInstance": "python_H1FL2nYaLbun1KCCzH6PVA",
       "executionEnded": {
         "type": "Timestamp",
-        "value": 1750286693938,
+        "value": 1750378919647,
         "timeUnit": "Millisecond"
       },
       "executionDuration": {
         "type": "Duration",
-        "value": 6,
+        "value": 5,
         "timeUnit": "Millisecond"
       }
     },
@@ -405,7 +410,7 @@
           "roleName": "Executor",
           "lastModified": {
             "type": "Timestamp",
-            "value": 1750286693939,
+            "value": 1750378919647,
             "timeUnit": "Millisecond"
           }
         }
@@ -421,15 +426,15 @@
       "executionCount": 1,
       "executionRequired": "No",
       "executionStatus": "Succeeded",
-      "executionInstance": "python_6TLSNcrZTMtv8rsEcst4zJ",
+      "executionInstance": "python_H1FL2nYaLbun1KCCzH6PVA",
       "executionEnded": {
         "type": "Timestamp",
-        "value": 1750286693939,
+        "value": 1750378919647,
         "timeUnit": "Millisecond"
       },
       "executionDuration": {
         "type": "Duration",
-        "value": 1,
+        "value": 0,
         "timeUnit": "Millisecond"
       }
     },
@@ -453,7 +458,7 @@
           "roleName": "Executor",
           "lastModified": {
             "type": "Timestamp",
-            "value": 1750286693940,
+            "value": 1750378919648,
             "timeUnit": "Millisecond"
           }
         }
@@ -469,10 +474,10 @@
       "executionCount": 1,
       "executionRequired": "No",
       "executionStatus": "Succeeded",
-      "executionInstance": "python_6TLSNcrZTMtv8rsEcst4zJ",
+      "executionInstance": "python_H1FL2nYaLbun1KCCzH6PVA",
       "executionEnded": {
         "type": "Timestamp",
-        "value": 1750286693940,
+        "value": 1750378919648,
         "timeUnit": "Millisecond"
       },
       "executionDuration": {
@@ -501,7 +506,7 @@
           "roleName": "Executor",
           "lastModified": {
             "type": "Timestamp",
-            "value": 1750286693940,
+            "value": 1750378919649,
             "timeUnit": "Millisecond"
           }
         }
@@ -517,15 +522,15 @@
       "executionCount": 1,
       "executionRequired": "No",
       "executionStatus": "Succeeded",
-      "executionInstance": "python_6TLSNcrZTMtv8rsEcst4zJ",
+      "executionInstance": "python_H1FL2nYaLbun1KCCzH6PVA",
       "executionEnded": {
         "type": "Timestamp",
-        "value": 1750286693940,
+        "value": 1750378919649,
         "timeUnit": "Millisecond"
       },
       "executionDuration": {
         "type": "Duration",
-        "value": 0,
+        "value": 1,
         "timeUnit": "Millisecond"
       }
     },
@@ -616,16 +621,21 @@
                   "level": 4,
                   "content": [
                     {
-                      "type": "CodeExpression",
-                      "code": {
-                        "string": "parameter[\"name\"]"
-                      },
-                      "programmingLanguage": "python",
-                      "compilationDigest": {
-                        "type": "CompilationDigest",
-                        "stateDigest": 3131592812410646836
-                      },
-                      "executionRequired": "NeverExecuted"
+                      "type": "Strong",
+                      "content": [
+                        {
+                          "type": "CodeExpression",
+                          "code": {
+                            "string": "parameter[\"name\"].upper()"
+                          },
+                          "programmingLanguage": "python",
+                          "compilationDigest": {
+                            "type": "CompilationDigest",
+                            "stateDigest": 6126853296635849448
+                          },
+                          "executionRequired": "NeverExecuted"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -767,51 +777,56 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "authors": [
+                          "type": "Strong",
+                          "content": [
                             {
-                              "type": "AuthorRole",
-                              "author": {
-                                "type": "SoftwareApplication",
-                                "name": "Python",
-                                "url": "/opt/homebrew/Cellar/python@3.12/3.12.2_1/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
-                                "softwareVersion": "3.12.2",
-                                "operatingSystem": "posix macOS-15.5-arm64-arm-64bit"
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
                               },
-                              "roleName": "Executor",
-                              "lastModified": {
+                              "programmingLanguage": "python",
+                              "authors": [
+                                {
+                                  "type": "AuthorRole",
+                                  "author": {
+                                    "type": "SoftwareApplication",
+                                    "name": "Python",
+                                    "url": "/opt/homebrew/Cellar/python@3.12/3.12.2_1/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+                                    "softwareVersion": "3.12.2",
+                                    "operatingSystem": "posix macOS-15.5-arm64-arm-64bit"
+                                  },
+                                  "roleName": "Executor",
+                                  "lastModified": {
+                                    "type": "Timestamp",
+                                    "value": 1750378919655,
+                                    "timeUnit": "Millisecond"
+                                  }
+                                }
+                              ],
+                              "output": "BANDS",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionCount": 1,
+                              "executionRequired": "No",
+                              "executionStatus": "Succeeded",
+                              "executionEnded": {
                                 "type": "Timestamp",
-                                "value": 1750286693950,
+                                "value": 1750378919655,
+                                "timeUnit": "Millisecond"
+                              },
+                              "executionDuration": {
+                                "type": "Duration",
+                                "value": 0,
                                 "timeUnit": "Millisecond"
                               }
                             }
-                          ],
-                          "output": "bands",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionCount": 1,
-                          "executionRequired": "No",
-                          "executionStatus": "Succeeded",
-                          "executionEnded": {
-                            "type": "Timestamp",
-                            "value": 1750286693950,
-                            "timeUnit": "Millisecond"
-                          },
-                          "executionDuration": {
-                            "type": "Duration",
-                            "value": 0,
-                            "timeUnit": "Millisecond"
-                          }
+                          ]
                         }
                       ]
                     },
@@ -895,7 +910,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286693951,
+                                            "value": 1750378919656,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -914,12 +929,12 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286693951,
+                                        "value": 1750378919656,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
                                         "type": "Duration",
-                                        "value": 1,
+                                        "value": 0,
                                         "timeUnit": "Millisecond"
                                       }
                                     }
@@ -952,7 +967,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286693951,
+                                            "value": 1750378919656,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -971,7 +986,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286693951,
+                                        "value": 1750378919656,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -1002,7 +1017,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693951,
+                    "value": 1750378919656,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -1025,7 +1040,7 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693951,
+                "value": 1750378919656,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
@@ -1056,51 +1071,56 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "authors": [
+                          "type": "Strong",
+                          "content": [
                             {
-                              "type": "AuthorRole",
-                              "author": {
-                                "type": "SoftwareApplication",
-                                "name": "Python",
-                                "url": "/opt/homebrew/Cellar/python@3.12/3.12.2_1/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
-                                "softwareVersion": "3.12.2",
-                                "operatingSystem": "posix macOS-15.5-arm64-arm-64bit"
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
                               },
-                              "roleName": "Executor",
-                              "lastModified": {
+                              "programmingLanguage": "python",
+                              "authors": [
+                                {
+                                  "type": "AuthorRole",
+                                  "author": {
+                                    "type": "SoftwareApplication",
+                                    "name": "Python",
+                                    "url": "/opt/homebrew/Cellar/python@3.12/3.12.2_1/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+                                    "softwareVersion": "3.12.2",
+                                    "operatingSystem": "posix macOS-15.5-arm64-arm-64bit"
+                                  },
+                                  "roleName": "Executor",
+                                  "lastModified": {
+                                    "type": "Timestamp",
+                                    "value": 1750378919659,
+                                    "timeUnit": "Millisecond"
+                                  }
+                                }
+                              ],
+                              "output": "COLOR",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionCount": 1,
+                              "executionRequired": "No",
+                              "executionStatus": "Succeeded",
+                              "executionEnded": {
                                 "type": "Timestamp",
-                                "value": 1750286693954,
+                                "value": 1750378919659,
+                                "timeUnit": "Millisecond"
+                              },
+                              "executionDuration": {
+                                "type": "Duration",
+                                "value": 1,
                                 "timeUnit": "Millisecond"
                               }
                             }
-                          ],
-                          "output": "color",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionCount": 1,
-                          "executionRequired": "No",
-                          "executionStatus": "Succeeded",
-                          "executionEnded": {
-                            "type": "Timestamp",
-                            "value": 1750286693954,
-                            "timeUnit": "Millisecond"
-                          },
-                          "executionDuration": {
-                            "type": "Duration",
-                            "value": 1,
-                            "timeUnit": "Millisecond"
-                          }
+                          ]
                         }
                       ]
                     },
@@ -1184,7 +1204,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286693954,
+                                            "value": 1750378919659,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -1203,7 +1223,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286693954,
+                                        "value": 1750378919659,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -1241,7 +1261,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286693955,
+                                            "value": 1750378919660,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -1260,12 +1280,12 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286693955,
+                                        "value": 1750378919659,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
                                         "type": "Duration",
-                                        "value": 1,
+                                        "value": 0,
                                         "timeUnit": "Millisecond"
                                       }
                                     }
@@ -1291,7 +1311,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693955,
+                    "value": 1750378919660,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -1314,7 +1334,7 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693955,
+                "value": 1750378919660,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
@@ -1345,51 +1365,56 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "authors": [
+                          "type": "Strong",
+                          "content": [
                             {
-                              "type": "AuthorRole",
-                              "author": {
-                                "type": "SoftwareApplication",
-                                "name": "Python",
-                                "url": "/opt/homebrew/Cellar/python@3.12/3.12.2_1/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
-                                "softwareVersion": "3.12.2",
-                                "operatingSystem": "posix macOS-15.5-arm64-arm-64bit"
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
                               },
-                              "roleName": "Executor",
-                              "lastModified": {
+                              "programmingLanguage": "python",
+                              "authors": [
+                                {
+                                  "type": "AuthorRole",
+                                  "author": {
+                                    "type": "SoftwareApplication",
+                                    "name": "Python",
+                                    "url": "/opt/homebrew/Cellar/python@3.12/3.12.2_1/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+                                    "softwareVersion": "3.12.2",
+                                    "operatingSystem": "posix macOS-15.5-arm64-arm-64bit"
+                                  },
+                                  "roleName": "Executor",
+                                  "lastModified": {
+                                    "type": "Timestamp",
+                                    "value": 1750378919662,
+                                    "timeUnit": "Millisecond"
+                                  }
+                                }
+                              ],
+                              "output": "INDEX",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionCount": 1,
+                              "executionRequired": "No",
+                              "executionStatus": "Succeeded",
+                              "executionEnded": {
                                 "type": "Timestamp",
-                                "value": 1750286693958,
+                                "value": 1750378919662,
+                                "timeUnit": "Millisecond"
+                              },
+                              "executionDuration": {
+                                "type": "Duration",
+                                "value": 1,
                                 "timeUnit": "Millisecond"
                               }
                             }
-                          ],
-                          "output": "index",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionCount": 1,
-                          "executionRequired": "No",
-                          "executionStatus": "Succeeded",
-                          "executionEnded": {
-                            "type": "Timestamp",
-                            "value": 1750286693957,
-                            "timeUnit": "Millisecond"
-                          },
-                          "executionDuration": {
-                            "type": "Duration",
-                            "value": 0,
-                            "timeUnit": "Millisecond"
-                          }
+                          ]
                         }
                       ]
                     },
@@ -1473,7 +1498,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286693958,
+                                            "value": 1750378919662,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -1492,7 +1517,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286693958,
+                                        "value": 1750378919662,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -1530,7 +1555,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286693959,
+                                            "value": 1750378919663,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -1549,12 +1574,12 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286693958,
+                                        "value": 1750378919663,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
                                         "type": "Duration",
-                                        "value": 0,
+                                        "value": 1,
                                         "timeUnit": "Millisecond"
                                       }
                                     }
@@ -1580,7 +1605,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693959,
+                    "value": 1750378919663,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -1603,7 +1628,7 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693959,
+                "value": 1750378919663,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
@@ -1634,51 +1659,56 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "authors": [
+                          "type": "Strong",
+                          "content": [
                             {
-                              "type": "AuthorRole",
-                              "author": {
-                                "type": "SoftwareApplication",
-                                "name": "Python",
-                                "url": "/opt/homebrew/Cellar/python@3.12/3.12.2_1/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
-                                "softwareVersion": "3.12.2",
-                                "operatingSystem": "posix macOS-15.5-arm64-arm-64bit"
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
                               },
-                              "roleName": "Executor",
-                              "lastModified": {
+                              "programmingLanguage": "python",
+                              "authors": [
+                                {
+                                  "type": "AuthorRole",
+                                  "author": {
+                                    "type": "SoftwareApplication",
+                                    "name": "Python",
+                                    "url": "/opt/homebrew/Cellar/python@3.12/3.12.2_1/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+                                    "softwareVersion": "3.12.2",
+                                    "operatingSystem": "posix macOS-15.5-arm64-arm-64bit"
+                                  },
+                                  "roleName": "Executor",
+                                  "lastModified": {
+                                    "type": "Timestamp",
+                                    "value": 1750378919665,
+                                    "timeUnit": "Millisecond"
+                                  }
+                                }
+                              ],
+                              "output": "ALL_OUTPUTS",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionCount": 1,
+                              "executionRequired": "No",
+                              "executionStatus": "Succeeded",
+                              "executionEnded": {
                                 "type": "Timestamp",
-                                "value": 1750286693961,
+                                "value": 1750378919665,
+                                "timeUnit": "Millisecond"
+                              },
+                              "executionDuration": {
+                                "type": "Duration",
+                                "value": 0,
                                 "timeUnit": "Millisecond"
                               }
                             }
-                          ],
-                          "output": "all_outputs",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionCount": 1,
-                          "executionRequired": "No",
-                          "executionStatus": "Succeeded",
-                          "executionEnded": {
-                            "type": "Timestamp",
-                            "value": 1750286693961,
-                            "timeUnit": "Millisecond"
-                          },
-                          "executionDuration": {
-                            "type": "Duration",
-                            "value": 0,
-                            "timeUnit": "Millisecond"
-                          }
+                          ]
                         }
                       ]
                     },
@@ -1762,7 +1792,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286693962,
+                                            "value": 1750378919666,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -1781,7 +1811,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286693962,
+                                        "value": 1750378919666,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -1819,7 +1849,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286693962,
+                                            "value": 1750378919666,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -1838,7 +1868,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286693962,
+                                        "value": 1750378919666,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -1869,7 +1899,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693962,
+                    "value": 1750378919666,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -1892,7 +1922,7 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693962,
+                "value": 1750378919666,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
@@ -1923,51 +1953,56 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "authors": [
+                          "type": "Strong",
+                          "content": [
                             {
-                              "type": "AuthorRole",
-                              "author": {
-                                "type": "SoftwareApplication",
-                                "name": "Python",
-                                "url": "/opt/homebrew/Cellar/python@3.12/3.12.2_1/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
-                                "softwareVersion": "3.12.2",
-                                "operatingSystem": "posix macOS-15.5-arm64-arm-64bit"
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
                               },
-                              "roleName": "Executor",
-                              "lastModified": {
+                              "programmingLanguage": "python",
+                              "authors": [
+                                {
+                                  "type": "AuthorRole",
+                                  "author": {
+                                    "type": "SoftwareApplication",
+                                    "name": "Python",
+                                    "url": "/opt/homebrew/Cellar/python@3.12/3.12.2_1/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+                                    "softwareVersion": "3.12.2",
+                                    "operatingSystem": "posix macOS-15.5-arm64-arm-64bit"
+                                  },
+                                  "roleName": "Executor",
+                                  "lastModified": {
+                                    "type": "Timestamp",
+                                    "value": 1750378919669,
+                                    "timeUnit": "Millisecond"
+                                  }
+                                }
+                              ],
+                              "output": "TIFF",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionCount": 1,
+                              "executionRequired": "No",
+                              "executionStatus": "Succeeded",
+                              "executionEnded": {
                                 "type": "Timestamp",
-                                "value": 1750286693965,
+                                "value": 1750378919669,
+                                "timeUnit": "Millisecond"
+                              },
+                              "executionDuration": {
+                                "type": "Duration",
+                                "value": 1,
                                 "timeUnit": "Millisecond"
                               }
                             }
-                          ],
-                          "output": "tiff",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionCount": 1,
-                          "executionRequired": "No",
-                          "executionStatus": "Succeeded",
-                          "executionEnded": {
-                            "type": "Timestamp",
-                            "value": 1750286693965,
-                            "timeUnit": "Millisecond"
-                          },
-                          "executionDuration": {
-                            "type": "Duration",
-                            "value": 0,
-                            "timeUnit": "Millisecond"
-                          }
+                          ]
                         }
                       ]
                     },
@@ -2051,7 +2086,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286693966,
+                                            "value": 1750378919669,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -2070,12 +2105,12 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286693966,
+                                        "value": 1750378919669,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
                                         "type": "Duration",
-                                        "value": 1,
+                                        "value": 0,
                                         "timeUnit": "Millisecond"
                                       }
                                     }
@@ -2108,7 +2143,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286693967,
+                                            "value": 1750378919670,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -2127,12 +2162,12 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286693966,
+                                        "value": 1750378919670,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
                                         "type": "Duration",
-                                        "value": 0,
+                                        "value": 1,
                                         "timeUnit": "Millisecond"
                                       }
                                     }
@@ -2158,7 +2193,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693967,
+                    "value": 1750378919670,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -2181,7 +2216,7 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693967,
+                "value": 1750378919670,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
@@ -2212,16 +2247,21 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionRequired": "NeverExecuted"
+                          "type": "Strong",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
+                              },
+                              "programmingLanguage": "python",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionRequired": "NeverExecuted"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -2342,7 +2382,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693969,
+                    "value": 1750378919672,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -2365,7 +2405,7 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693969,
+                "value": 1750378919672,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
@@ -2396,16 +2436,21 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionRequired": "NeverExecuted"
+                          "type": "Strong",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
+                              },
+                              "programmingLanguage": "python",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionRequired": "NeverExecuted"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -2526,7 +2571,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693971,
+                    "value": 1750378919674,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -2549,7 +2594,7 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693971,
+                "value": 1750378919674,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
@@ -2580,16 +2625,21 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionRequired": "NeverExecuted"
+                          "type": "Strong",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
+                              },
+                              "programmingLanguage": "python",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionRequired": "NeverExecuted"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -2710,12 +2760,12 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693973,
+                    "value": 1750378919676,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
                     "type": "Duration",
-                    "value": 1,
+                    "value": 2,
                     "timeUnit": "Millisecond"
                   }
                 }
@@ -2733,12 +2783,12 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693973,
+                "value": 1750378919676,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
                 "type": "Duration",
-                "value": 1,
+                "value": 2,
                 "timeUnit": "Millisecond"
               }
             }
@@ -2764,16 +2814,21 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionRequired": "NeverExecuted"
+                          "type": "Strong",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
+                              },
+                              "programmingLanguage": "python",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionRequired": "NeverExecuted"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -2894,12 +2949,12 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693975,
+                    "value": 1750378919678,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
                     "type": "Duration",
-                    "value": 1,
+                    "value": 2,
                     "timeUnit": "Millisecond"
                   }
                 }
@@ -2917,12 +2972,12 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693975,
+                "value": 1750378919678,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
                 "type": "Duration",
-                "value": 1,
+                "value": 2,
                 "timeUnit": "Millisecond"
               }
             }
@@ -2948,16 +3003,21 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionRequired": "NeverExecuted"
+                          "type": "Strong",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
+                              },
+                              "programmingLanguage": "python",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionRequired": "NeverExecuted"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -3078,12 +3138,12 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693977,
+                    "value": 1750378919680,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
                     "type": "Duration",
-                    "value": 1,
+                    "value": 2,
                     "timeUnit": "Millisecond"
                   }
                 }
@@ -3101,12 +3161,12 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693977,
+                "value": 1750378919680,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
                 "type": "Duration",
-                "value": 1,
+                "value": 2,
                 "timeUnit": "Millisecond"
               }
             }
@@ -3132,16 +3192,21 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionRequired": "NeverExecuted"
+                          "type": "Strong",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
+                              },
+                              "programmingLanguage": "python",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionRequired": "NeverExecuted"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -3262,7 +3327,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693979,
+                    "value": 1750378919682,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -3285,7 +3350,7 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693979,
+                "value": 1750378919682,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
@@ -3316,16 +3381,21 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionRequired": "NeverExecuted"
+                          "type": "Strong",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
+                              },
+                              "programmingLanguage": "python",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionRequired": "NeverExecuted"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -3446,7 +3516,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693981,
+                    "value": 1750378919684,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -3469,7 +3539,7 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693981,
+                "value": 1750378919684,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
@@ -3500,16 +3570,21 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionRequired": "NeverExecuted"
+                          "type": "Strong",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
+                              },
+                              "programmingLanguage": "python",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionRequired": "NeverExecuted"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -3630,12 +3705,12 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693983,
+                    "value": 1750378919687,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
                     "type": "Duration",
-                    "value": 1,
+                    "value": 2,
                     "timeUnit": "Millisecond"
                   }
                 }
@@ -3653,12 +3728,12 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693983,
+                "value": 1750378919687,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
                 "type": "Duration",
-                "value": 1,
+                "value": 2,
                 "timeUnit": "Millisecond"
               }
             }
@@ -3684,16 +3759,21 @@
                       "level": 4,
                       "content": [
                         {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "parameter[\"name\"]"
-                          },
-                          "programmingLanguage": "python",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 3131592812410646836
-                          },
-                          "executionRequired": "NeverExecuted"
+                          "type": "Strong",
+                          "content": [
+                            {
+                              "type": "CodeExpression",
+                              "code": {
+                                "string": "parameter[\"name\"].upper()"
+                              },
+                              "programmingLanguage": "python",
+                              "compilationDigest": {
+                                "type": "CompilationDigest",
+                                "stateDigest": 6126853296635849448
+                              },
+                              "executionRequired": "NeverExecuted"
+                            }
+                          ]
                         }
                       ]
                     },
@@ -3814,12 +3894,12 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693985,
+                    "value": 1750378919689,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
                     "type": "Duration",
-                    "value": 1,
+                    "value": 2,
                     "timeUnit": "Millisecond"
                   }
                 }
@@ -3837,12 +3917,12 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286693985,
+                "value": 1750378919689,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
                 "type": "Duration",
-                "value": 1,
+                "value": 2,
                 "timeUnit": "Millisecond"
               }
             }
@@ -3852,23 +3932,23 @@
       ],
       "compilationDigest": {
         "type": "CompilationDigest",
-        "stateDigest": 15182626936708798011
+        "stateDigest": 2941388528173412965
       },
       "executionDigest": {
         "type": "CompilationDigest",
-        "stateDigest": 15182626936708798011
+        "stateDigest": 2941388528173412965
       },
       "executionCount": 1,
       "executionRequired": "No",
       "executionStatus": "Succeeded",
       "executionEnded": {
         "type": "Timestamp",
-        "value": 1750286693986,
+        "value": 1750378919689,
         "timeUnit": "Millisecond"
       },
       "executionDuration": {
         "type": "Duration",
-        "value": 46,
+        "value": 40,
         "timeUnit": "Millisecond"
       }
     },
@@ -4041,7 +4121,7 @@
             {
               "type": "Text",
               "value": {
-                "string": ",\nusing the container image "
+                "string": ", using the container image "
               }
             },
             {
@@ -4341,7 +4421,7 @@
                       "roleName": "Executor",
                       "lastModified": {
                         "type": "Timestamp",
-                        "value": 1750286693993,
+                        "value": 1750378919697,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -4360,12 +4440,12 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693992,
+                    "value": 1750378919696,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
                     "type": "Duration",
-                    "value": 2,
+                    "value": 3,
                     "timeUnit": "Millisecond"
                   }
                 }
@@ -4402,7 +4482,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286693993,
+                            "value": 1750378919697,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -4421,7 +4501,7 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286693993,
+                        "value": 1750378919697,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
@@ -4460,7 +4540,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286693994,
+                            "value": 1750378919698,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -4479,7 +4559,7 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286693994,
+                        "value": 1750378919698,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
@@ -4520,7 +4600,7 @@
                       "roleName": "Executor",
                       "lastModified": {
                         "type": "Timestamp",
-                        "value": 1750286693995,
+                        "value": 1750378919699,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -4539,7 +4619,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286693995,
+                    "value": 1750378919699,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -4581,12 +4661,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286693996,
+                            "value": 1750378919700,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": "2025-06-19 10:40:06",
+                      "output": "2025-06-20 12:18:39",
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 12916491360908565454
@@ -4600,7 +4680,7 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286693996,
+                        "value": 1750378919700,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
@@ -4639,12 +4719,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286693996,
+                            "value": 1750378919700,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": "2025-06-19 10:40:46",
+                      "output": "2025-06-20 12:19:29",
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 7408178283249921495
@@ -4658,7 +4738,7 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286693996,
+                        "value": 1750378919700,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
@@ -4672,7 +4752,7 @@
                 {
                   "type": "Text",
                   "value": {
-                    "string": ",\nusing the container image "
+                    "string": ", using the container image "
                   }
                 },
                 {
@@ -4697,7 +4777,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286693997,
+                            "value": 1750378919701,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -4716,7 +4796,7 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286693997,
+                        "value": 1750378919701,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
@@ -4922,7 +5002,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694000,
+                                            "value": 1750378919704,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -4941,7 +5021,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694000,
+                                        "value": 1750378919704,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -4979,7 +5059,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694001,
+                                            "value": 1750378919705,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -4998,7 +5078,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694001,
+                                        "value": 1750378919705,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -5091,7 +5171,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694003,
+                                            "value": 1750378919706,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -5110,12 +5190,12 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694003,
+                                        "value": 1750378919706,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
                                         "type": "Duration",
-                                        "value": 1,
+                                        "value": 0,
                                         "timeUnit": "Millisecond"
                                       }
                                     }
@@ -5148,7 +5228,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694004,
+                                            "value": 1750378919707,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -5167,7 +5247,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694004,
+                                        "value": 1750378919707,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -5260,12 +5340,12 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694006,
+                                            "value": 1750378919709,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
                                       ],
-                                      "output": "#fbb5a539-f5a2-4f9f-8316-899f00990006",
+                                      "output": "#df851d23-e364-4693-aba4-582a1ac9d6fd",
                                       "compilationDigest": {
                                         "type": "CompilationDigest",
                                         "stateDigest": 5666898825366413313
@@ -5279,7 +5359,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694006,
+                                        "value": 1750378919709,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -5317,7 +5397,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694007,
+                                            "value": 1750378919710,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -5336,7 +5416,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694007,
+                                        "value": 1750378919710,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -5370,12 +5450,12 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286694008,
+                "value": 1750378919711,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
                 "type": "Duration",
-                "value": 11,
+                "value": 10,
                 "timeUnit": "Millisecond"
               }
             },
@@ -5566,12 +5646,12 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694010,
+                                            "value": 1750378919713,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
                                       ],
-                                      "output": "6807d605d514c70f9feaef114a4f7c12f94ac12d",
+                                      "output": "16c15753d5eb1ff07dfb45d4d03564d9c6ba9ec1",
                                       "compilationDigest": {
                                         "type": "CompilationDigest",
                                         "stateDigest": 6817995381269904819
@@ -5585,7 +5665,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694010,
+                                        "value": 1750378919713,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -5623,12 +5703,12 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694011,
+                                            "value": 1750378919714,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
                                       ],
-                                      "output": "packed.cwl#tiff_gen.cwl/index_array, packed.cwl#index_def.cwl/index_matrix",
+                                      "output": "packed.cwl#index_def.cwl/index_matrix, packed.cwl#tiff_gen.cwl/index_array",
                                       "compilationDigest": {
                                         "type": "CompilationDigest",
                                         "stateDigest": 17472054079087345135
@@ -5642,7 +5722,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694011,
+                                        "value": 1750378919714,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -5735,7 +5815,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694013,
+                                            "value": 1750378919716,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -5754,7 +5834,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694013,
+                                        "value": 1750378919716,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -5792,7 +5872,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694014,
+                                            "value": 1750378919717,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -5811,7 +5891,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694014,
+                                        "value": 1750378919717,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -5845,7 +5925,7 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286694015,
+                "value": 1750378919718,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
@@ -5889,7 +5969,7 @@
                       "roleName": "Executor",
                       "lastModified": {
                         "type": "Timestamp",
-                        "value": 1750286694020,
+                        "value": 1750378919722,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -5908,7 +5988,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286694020,
+                    "value": 1750378919722,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -5950,7 +6030,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694021,
+                            "value": 1750378919723,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -5969,7 +6049,7 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694021,
+                        "value": 1750378919723,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
@@ -6008,7 +6088,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694022,
+                            "value": 1750378919724,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -6027,7 +6107,7 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694022,
+                        "value": 1750378919724,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
@@ -6068,7 +6148,7 @@
                       "roleName": "Executor",
                       "lastModified": {
                         "type": "Timestamp",
-                        "value": 1750286694024,
+                        "value": 1750378919725,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -6087,7 +6167,7 @@
                   "executionStatus": "Succeeded",
                   "executionEnded": {
                     "type": "Timestamp",
-                    "value": 1750286694023,
+                    "value": 1750378919725,
                     "timeUnit": "Millisecond"
                   },
                   "executionDuration": {
@@ -6129,12 +6209,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694025,
+                            "value": 1750378919726,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": "2025-06-19 10:40:47",
+                      "output": "2025-06-20 12:19:30",
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 12916491360908565454
@@ -6148,12 +6228,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694024,
+                        "value": 1750378919726,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -6187,12 +6267,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694026,
+                            "value": 1750378919727,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": "2025-06-19 10:41:15",
+                      "output": "2025-06-20 12:19:59",
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 7408178283249921495
@@ -6206,12 +6286,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694025,
+                        "value": 1750378919727,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -6220,7 +6300,7 @@
                 {
                   "type": "Text",
                   "value": {
-                    "string": ",\nusing the container image "
+                    "string": ", using the container image "
                   }
                 },
                 {
@@ -6245,7 +6325,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694027,
+                            "value": 1750378919728,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -6264,12 +6344,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694026,
+                        "value": 1750378919728,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -6470,12 +6550,12 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694030,
+                                            "value": 1750378919731,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
                                       ],
-                                      "output": "6807d605d514c70f9feaef114a4f7c12f94ac12d",
+                                      "output": "16c15753d5eb1ff07dfb45d4d03564d9c6ba9ec1",
                                       "compilationDigest": {
                                         "type": "CompilationDigest",
                                         "stateDigest": 5666898825366413313
@@ -6489,7 +6569,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694030,
+                                        "value": 1750378919731,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -6527,12 +6607,12 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694031,
+                                            "value": 1750378919732,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
                                       ],
-                                      "output": "packed.cwl#tiff_gen.cwl/index_array, packed.cwl#index_def.cwl/index_matrix",
+                                      "output": "packed.cwl#index_def.cwl/index_matrix, packed.cwl#tiff_gen.cwl/index_array",
                                       "compilationDigest": {
                                         "type": "CompilationDigest",
                                         "stateDigest": 467649242127727857
@@ -6546,7 +6626,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694031,
+                                        "value": 1750378919732,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -6639,7 +6719,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694034,
+                                            "value": 1750378919734,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -6658,12 +6738,12 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694034,
+                                        "value": 1750378919734,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
                                         "type": "Duration",
-                                        "value": 2,
+                                        "value": 1,
                                         "timeUnit": "Millisecond"
                                       }
                                     }
@@ -6696,7 +6776,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694035,
+                                            "value": 1750378919735,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -6715,7 +6795,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694035,
+                                        "value": 1750378919735,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -6808,12 +6888,12 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694037,
+                                            "value": 1750378919737,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
                                       ],
-                                      "output": "#5fb4d462-31ba-4525-920c-8d3630dd2862",
+                                      "output": "#8c10a5a8-4701-4b0f-a755-64eb901df9e2",
                                       "compilationDigest": {
                                         "type": "CompilationDigest",
                                         "stateDigest": 5666898825366413313
@@ -6827,7 +6907,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694037,
+                                        "value": 1750378919737,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -6865,7 +6945,7 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694039,
+                                            "value": 1750378919738,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
@@ -6884,7 +6964,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694039,
+                                        "value": 1750378919738,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -6918,12 +6998,12 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286694040,
+                "value": 1750378919739,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
                 "type": "Duration",
-                "value": 13,
+                "value": 11,
                 "timeUnit": "Millisecond"
               }
             },
@@ -7114,12 +7194,12 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694043,
+                                            "value": 1750378919741,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
                                       ],
-                                      "output": "0eeb7588b982dceffb97ee7f1304f717a8c44e3c",
+                                      "output": "ed8622fb95826ac73a705146800972cafefbbec0",
                                       "compilationDigest": {
                                         "type": "CompilationDigest",
                                         "stateDigest": 6817995381269904819
@@ -7133,7 +7213,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694042,
+                                        "value": 1750378919741,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -7171,12 +7251,12 @@
                                           "roleName": "Executor",
                                           "lastModified": {
                                             "type": "Timestamp",
-                                            "value": 1750286694044,
+                                            "value": 1750378919742,
                                             "timeUnit": "Millisecond"
                                           }
                                         }
                                       ],
-                                      "output": "packed.cwl#main/tiff, packed.cwl#tiff_gen.cwl/tiff",
+                                      "output": "packed.cwl#tiff_gen.cwl/tiff, packed.cwl#main/tiff",
                                       "compilationDigest": {
                                         "type": "CompilationDigest",
                                         "stateDigest": 17472054079087345135
@@ -7190,7 +7270,7 @@
                                       "executionStatus": "Succeeded",
                                       "executionEnded": {
                                         "type": "Timestamp",
-                                        "value": 1750286694044,
+                                        "value": 1750378919742,
                                         "timeUnit": "Millisecond"
                                       },
                                       "executionDuration": {
@@ -7224,12 +7304,12 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286694045,
+                "value": 1750378919743,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
                 "type": "Duration",
-                "value": 5,
+                "value": 4,
                 "timeUnit": "Millisecond"
               }
             }
@@ -7239,23 +7319,23 @@
       ],
       "compilationDigest": {
         "type": "CompilationDigest",
-        "stateDigest": 14335110223308556556
+        "stateDigest": 9413259160119961456
       },
       "executionDigest": {
         "type": "CompilationDigest",
-        "stateDigest": 14335110223308556556
+        "stateDigest": 9413259160119961456
       },
       "executionCount": 1,
       "executionRequired": "No",
       "executionStatus": "Succeeded",
       "executionEnded": {
         "type": "Timestamp",
-        "value": 1750286694045,
+        "value": 1750378919743,
         "timeUnit": "Millisecond"
       },
       "executionDuration": {
         "type": "Duration",
-        "value": 59,
+        "value": 54,
         "timeUnit": "Millisecond"
       }
     },
@@ -7302,7 +7382,7 @@
                   "roleName": "Executor",
                   "lastModified": {
                     "type": "Timestamp",
-                    "value": 1750286694046,
+                    "value": 1750378919744,
                     "timeUnit": "Millisecond"
                   }
                 }
@@ -7321,12 +7401,12 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286694046,
+                "value": 1750378919743,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
                 "type": "Duration",
-                "value": 1,
+                "value": 0,
                 "timeUnit": "Millisecond"
               }
             }
@@ -7357,7 +7437,7 @@
               "roleName": "Executor",
               "lastModified": {
                 "type": "Timestamp",
-                "value": 1750286694047,
+                "value": 1750378919745,
                 "timeUnit": "Millisecond"
               }
             }
@@ -7376,12 +7456,12 @@
           "executionStatus": "Succeeded",
           "executionEnded": {
             "type": "Timestamp",
-            "value": 1750286694047,
+            "value": 1750378919744,
             "timeUnit": "Millisecond"
           },
           "executionDuration": {
             "type": "Duration",
-            "value": 1,
+            "value": 0,
             "timeUnit": "Millisecond"
           }
         },
@@ -7410,12 +7490,12 @@
               "roleName": "Executor",
               "lastModified": {
                 "type": "Timestamp",
-                "value": 1750286694048,
+                "value": 1750378919745,
                 "timeUnit": "Millisecond"
               }
             }
           ],
-          "output": "72",
+          "output": "136",
           "compilationDigest": {
             "type": "CompilationDigest",
             "stateDigest": 14013747792267762983
@@ -7429,12 +7509,12 @@
           "executionStatus": "Succeeded",
           "executionEnded": {
             "type": "Timestamp",
-            "value": 1750286694048,
+            "value": 1750378919745,
             "timeUnit": "Millisecond"
           },
           "executionDuration": {
             "type": "Duration",
-            "value": 1,
+            "value": 0,
             "timeUnit": "Millisecond"
           }
         },
@@ -7463,12 +7543,12 @@
               "roleName": "Executor",
               "lastModified": {
                 "type": "Timestamp",
-                "value": 1750286694049,
+                "value": 1750378919746,
                 "timeUnit": "Millisecond"
               }
             }
           ],
-          "output": "2018-11-18 22:37:01",
+          "output": "2018-10-14 09:30:31",
           "compilationDigest": {
             "type": "CompilationDigest",
             "stateDigest": 12835405619189802221
@@ -7482,7 +7562,7 @@
           "executionStatus": "Succeeded",
           "executionEnded": {
             "type": "Timestamp",
-            "value": 1750286694049,
+            "value": 1750378919746,
             "timeUnit": "Millisecond"
           },
           "executionDuration": {
@@ -7494,7 +7574,7 @@
         {
           "type": "Text",
           "value": {
-            "string": ".\nThe dataset, identified by this [DOI]("
+            "string": ". The dataset, identified by this [DOI]("
           }
         },
         {
@@ -7516,7 +7596,7 @@
               "roleName": "Executor",
               "lastModified": {
                 "type": "Timestamp",
-                "value": 1750286694051,
+                "value": 1750378919747,
                 "timeUnit": "Millisecond"
               }
             }
@@ -7535,7 +7615,7 @@
           "executionStatus": "Succeeded",
           "executionEnded": {
             "type": "Timestamp",
-            "value": 1750286694050,
+            "value": 1750378919747,
             "timeUnit": "Millisecond"
           },
           "executionDuration": {
@@ -7572,7 +7652,7 @@
                   "roleName": "Executor",
                   "lastModified": {
                     "type": "Timestamp",
-                    "value": 1750286694052,
+                    "value": 1750378919748,
                     "timeUnit": "Millisecond"
                   }
                 }
@@ -7591,7 +7671,7 @@
               "executionStatus": "Succeeded",
               "executionEnded": {
                 "type": "Timestamp",
-                "value": 1750286694052,
+                "value": 1750378919748,
                 "timeUnit": "Millisecond"
               },
               "executionDuration": {
@@ -7645,12 +7725,12 @@
               "roleName": "Executor",
               "lastModified": {
                 "type": "Timestamp",
-                "value": 1750286694053,
+                "value": 1750378919749,
                 "timeUnit": "Millisecond"
               }
             }
           ],
-          "output": "2023-06-17 09:43:01",
+          "output": "2023-07-30 09:50:07",
           "compilationDigest": {
             "type": "CompilationDigest",
             "stateDigest": 12162151084458081537
@@ -7664,7 +7744,7 @@
           "executionStatus": "Succeeded",
           "executionEnded": {
             "type": "Timestamp",
-            "value": 1750286694053,
+            "value": 1750378919749,
             "timeUnit": "Millisecond"
           },
           "executionDuration": {
@@ -7697,7 +7777,7 @@
       "type": "CodeChunk",
       "executionMode": "Always",
       "code": {
-        "string": "# Create boolean flags for data Alerts\ndata_alert_flags = {\n    \"cloudy_pixels\": float(e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]) > 50.0,\n    \"thin_cirrus\": float(e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]) > 30.0,\n    \"saturated_pixels\": float(e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]) > 0.1,\n    \"cloud_shadow\": float(e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]) > 10.0,\n    \"low_vegetation\": float(e1_image_quality[\"VEGETATION_PERCENTAGE\"]) < 5.0\n}\n\n# Ranked list of all flags\npriority_order = [\n    \"cloudy_pixels\",\n    \"thin_cirrus\",\n    \"cloud_shadow\",\n    \"saturated_pixels\",\n    \"low_vegetation\"\n]\n\n\nactive_ranked_flags = [flag for flag in priority_order if data_alert_flags.get(flag)]\n\n# Workaround: ensure it's at least 2 items so the loop will execute\nif len(active_ranked_flags) == 1:\n    active_ranked_flags.append(\"no_op\")\n\n# You can also define a narrative for \"no_op\" that renders nothing"
+        "string": "# Create boolean flags for data Alerts\ndata_alert_flags = {\n    \"cloudy_pixels\": float(e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]) > 50.0,\n    \"thin_cirrus\": float(e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]) > 30.0,\n    \"saturated_pixels\": float(e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]) > 0.1,\n    \"cloud_shadow\": float(e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]) > 10.0,\n    \"low_vegetation\": float(e1_image_quality[\"VEGETATION_PERCENTAGE\"]) < 5.0,\n    \"low_data\": float(e1_image_quality[\"NODATA_PIXEL_PERCENTAGE\"]) > 10.0,\n}\n\n# Ranked list of all flags\npriority_order = [\n    \"low_data\",\n    \"cloudy_pixels\",\n    \"thin_cirrus\",\n    \"cloud_shadow\",\n    \"saturated_pixels\",\n    \"low_vegetation\"\n]\n\n\nactive_ranked_flags = [flag for flag in priority_order if data_alert_flags.get(flag)]\n\nactive_flags_len = len(active_ranked_flags)\n\n# Workaround: ensure it's at least 2 items so the loop will execute\nif len(active_ranked_flags) == 1:\n    active_ranked_flags.append(\"no_op\")\n"
       },
       "programmingLanguage": "python",
       "authors": [
@@ -7713,26 +7793,26 @@
           "roleName": "Executor",
           "lastModified": {
             "type": "Timestamp",
-            "value": 1750286694054,
+            "value": 1750378919750,
             "timeUnit": "Millisecond"
           }
         }
       ],
       "compilationDigest": {
         "type": "CompilationDigest",
-        "stateDigest": 10772660103443626893
+        "stateDigest": 5177736083113017641
       },
       "executionDigest": {
         "type": "CompilationDigest",
-        "stateDigest": 10772660103443626893
+        "stateDigest": 5177736083113017641
       },
       "executionCount": 1,
       "executionRequired": "No",
       "executionStatus": "Succeeded",
-      "executionInstance": "python_6TLSNcrZTMtv8rsEcst4zJ",
+      "executionInstance": "python_H1FL2nYaLbun1KCCzH6PVA",
       "executionEnded": {
         "type": "Timestamp",
-        "value": 1750286694054,
+        "value": 1750378919750,
         "timeUnit": "Millisecond"
       },
       "executionDuration": {
@@ -7747,7 +7827,65 @@
         {
           "type": "Text",
           "value": {
-            "string": "The Sentinel-2A scene was assessed for conditions that may impact analysis reliability."
+            "string": "The Sentinel-2A scene was assessed for conditions that may impact analysis reliability. There are currently "
+          }
+        },
+        {
+          "type": "Strong",
+          "content": [
+            {
+              "type": "CodeExpression",
+              "code": {
+                "string": "active_flags_len"
+              },
+              "programmingLanguage": "python",
+              "authors": [
+                {
+                  "type": "AuthorRole",
+                  "author": {
+                    "type": "SoftwareApplication",
+                    "name": "Python",
+                    "url": "/opt/homebrew/Cellar/python@3.12/3.12.2_1/Frameworks/Python.framework/Versions/3.12/bin/python3.12",
+                    "softwareVersion": "3.12.2",
+                    "operatingSystem": "posix macOS-15.5-arm64-arm-64bit"
+                  },
+                  "roleName": "Executor",
+                  "lastModified": {
+                    "type": "Timestamp",
+                    "value": 1750378919751,
+                    "timeUnit": "Millisecond"
+                  }
+                }
+              ],
+              "output": 0,
+              "compilationDigest": {
+                "type": "CompilationDigest",
+                "stateDigest": 12131230806745076915
+              },
+              "executionDigest": {
+                "type": "CompilationDigest",
+                "stateDigest": 12131230806745076915
+              },
+              "executionCount": 1,
+              "executionRequired": "No",
+              "executionStatus": "Succeeded",
+              "executionEnded": {
+                "type": "Timestamp",
+                "value": 1750378919751,
+                "timeUnit": "Millisecond"
+              },
+              "executionDuration": {
+                "type": "Duration",
+                "value": 1,
+                "timeUnit": "Millisecond"
+              }
+            }
+          ]
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": " active data quality flags:"
           }
         }
       ]
@@ -7760,6 +7898,59 @@
       "programmingLanguage": "python",
       "variable": "flag",
       "content": [
+        {
+          "type": "IfBlock",
+          "clauses": [
+            {
+              "type": "IfBlockClause",
+              "code": {
+                "string": "flag == \"low_data\""
+              },
+              "programmingLanguage": "python",
+              "content": [
+                {
+                  "type": "Paragraph",
+                  "content": [
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "A significant portion of the scene contains no data ("
+                      }
+                    },
+                    {
+                      "type": "CodeExpression",
+                      "code": {
+                        "string": "e1_image_quality[\"NODATA_PIXEL_PERCENTAGE\"]"
+                      },
+                      "programmingLanguage": "docsql",
+                      "compilationDigest": {
+                        "type": "CompilationDigest",
+                        "stateDigest": 7560003694071826434
+                      },
+                      "executionRequired": "NeverExecuted"
+                    },
+                    {
+                      "type": "Text",
+                      "value": {
+                        "string": "%), which may limit the reliability of GNDVI calculations."
+                      }
+                    }
+                  ]
+                }
+              ],
+              "compilationDigest": {
+                "type": "CompilationDigest",
+                "stateDigest": 9961947472746728671
+              },
+              "executionRequired": "NeverExecuted"
+            }
+          ],
+          "compilationDigest": {
+            "type": "CompilationDigest",
+            "stateDigest": 11547887400990757231
+          },
+          "executionRequired": "NeverExecuted"
+        },
         {
           "type": "IfBlock",
           "clauses": [
@@ -8049,1043 +8240,26 @@
           "executionRequired": "NeverExecuted"
         }
       ],
-      "iterations": [
-        {
-          "type": "Section",
-          "content": [
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"cloudy_pixels\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": false,
-                  "content": [
-                    {
-                      "type": "Paragraph",
-                      "content": [
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "A large proportion of the land surface is cloud-covered ("
-                          }
-                        },
-                        {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]"
-                          },
-                          "programmingLanguage": "docsql",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 4995478641660384573
-                          },
-                          "executionRequired": "NeverExecuted"
-                        },
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "%), which may significantly distort GNDVI signals."
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 14232278161523569545
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 14232278161523569545
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694065,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 8,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 9079348378535719332
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 9079348378535719332
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694065,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 8,
-                "timeUnit": "Millisecond"
-              }
-            },
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"thin_cirrus\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": false,
-                  "content": [
-                    {
-                      "type": "Paragraph",
-                      "content": [
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "Thin cirrus clouds are present ("
-                          }
-                        },
-                        {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]"
-                          },
-                          "programmingLanguage": "docsql",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 10234398642937450455
-                          },
-                          "executionRequired": "NeverExecuted"
-                        },
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "%), potentially elevating NIR values and distorting vegetation estimates."
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17746885610374007918
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17746885610374007918
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694066,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 1,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 16304473382199583675
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 16304473382199583675
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694066,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 1,
-                "timeUnit": "Millisecond"
-              }
-            },
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"cloud_shadow\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": false,
-                  "content": [
-                    {
-                      "type": "Paragraph",
-                      "content": [
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "Cloud shadows affect part of the scene ("
-                          }
-                        },
-                        {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]"
-                          },
-                          "programmingLanguage": "docsql",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 13102818520405199197
-                          },
-                          "executionRequired": "NeverExecuted"
-                        },
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "%), possibly reducing GNDVI by lowering NIR reflectance."
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17223575081274200407
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17223575081274200407
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694068,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 2,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 12628008678203361384
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 12628008678203361384
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694068,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 2,
-                "timeUnit": "Millisecond"
-              }
-            },
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"saturated_pixels\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": false,
-                  "content": [
-                    {
-                      "type": "Paragraph",
-                      "content": [
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "Saturation has been detected in "
-                          }
-                        },
-                        {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]"
-                          },
-                          "programmingLanguage": "docsql",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 17743417093370831572
-                          },
-                          "executionRequired": "NeverExecuted"
-                        },
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "% of pixels, indicating possible data corruption in bright areas."
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 11186898089060694839
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 11186898089060694839
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694069,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 1,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 2859814892245914127
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 2859814892245914127
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694069,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 1,
-                "timeUnit": "Millisecond"
-              }
-            },
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"low_vegetation\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": true,
-                  "content": [
-                    {
-                      "type": "Paragraph",
-                      "content": [
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "Vegetation coverage is low ("
-                          }
-                        },
-                        {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "e1_image_quality[\"VEGETATION_PERCENTAGE\"]"
-                          },
-                          "programmingLanguage": "docsql",
-                          "authors": [
-                            {
-                              "type": "AuthorRole",
-                              "author": {
-                                "type": "SoftwareApplication",
-                                "name": "DocSQL Kernel"
-                              },
-                              "roleName": "Executor",
-                              "lastModified": {
-                                "type": "Timestamp",
-                                "value": 1750286694078,
-                                "timeUnit": "Millisecond"
-                              }
-                            }
-                          ],
-                          "output": 0.0,
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 2999038894275365203
-                          },
-                          "executionDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 2999038894275365203
-                          },
-                          "executionCount": 1,
-                          "executionRequired": "No",
-                          "executionStatus": "Succeeded",
-                          "executionEnded": {
-                            "type": "Timestamp",
-                            "value": 1750286694078,
-                            "timeUnit": "Millisecond"
-                          },
-                          "executionDuration": {
-                            "type": "Duration",
-                            "value": 8,
-                            "timeUnit": "Millisecond"
-                          }
-                        },
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "%), which can make GNDVI more sensitive to atmospheric noise or edge effects."
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17764850087462051042
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17764850087462051042
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694078,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 9,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 7348983793312777776
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 7348983793312777776
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694078,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 9,
-                "timeUnit": "Millisecond"
-              }
-            },
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"no_op\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": false,
-                  "content": [],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 1308449142872527455
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 1308449142872527455
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694078,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 0,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 10811192553721650976
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 10811192553721650976
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694078,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 0,
-                "timeUnit": "Millisecond"
-              }
-            }
-          ],
-          "sectionType": "Iteration"
-        },
-        {
-          "type": "Section",
-          "content": [
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"cloudy_pixels\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": false,
-                  "content": [
-                    {
-                      "type": "Paragraph",
-                      "content": [
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "A large proportion of the land surface is cloud-covered ("
-                          }
-                        },
-                        {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]"
-                          },
-                          "programmingLanguage": "docsql",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 4995478641660384573
-                          },
-                          "executionRequired": "NeverExecuted"
-                        },
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "%), which may significantly distort GNDVI signals."
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 14232278161523569545
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 14232278161523569545
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694079,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 1,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 9079348378535719332
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 9079348378535719332
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694079,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 1,
-                "timeUnit": "Millisecond"
-              }
-            },
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"thin_cirrus\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": false,
-                  "content": [
-                    {
-                      "type": "Paragraph",
-                      "content": [
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "Thin cirrus clouds are present ("
-                          }
-                        },
-                        {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]"
-                          },
-                          "programmingLanguage": "docsql",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 10234398642937450455
-                          },
-                          "executionRequired": "NeverExecuted"
-                        },
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "%), potentially elevating NIR values and distorting vegetation estimates."
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17746885610374007918
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17746885610374007918
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694079,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 0,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 16304473382199583675
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 16304473382199583675
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694079,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 0,
-                "timeUnit": "Millisecond"
-              }
-            },
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"cloud_shadow\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": false,
-                  "content": [
-                    {
-                      "type": "Paragraph",
-                      "content": [
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "Cloud shadows affect part of the scene ("
-                          }
-                        },
-                        {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]"
-                          },
-                          "programmingLanguage": "docsql",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 13102818520405199197
-                          },
-                          "executionRequired": "NeverExecuted"
-                        },
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "%), possibly reducing GNDVI by lowering NIR reflectance."
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17223575081274200407
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17223575081274200407
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694079,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 0,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 12628008678203361384
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 12628008678203361384
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694079,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 0,
-                "timeUnit": "Millisecond"
-              }
-            },
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"saturated_pixels\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": false,
-                  "content": [
-                    {
-                      "type": "Paragraph",
-                      "content": [
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "Saturation has been detected in "
-                          }
-                        },
-                        {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]"
-                          },
-                          "programmingLanguage": "docsql",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 17743417093370831572
-                          },
-                          "executionRequired": "NeverExecuted"
-                        },
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "% of pixels, indicating possible data corruption in bright areas."
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 11186898089060694839
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 11186898089060694839
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694079,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 0,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 2859814892245914127
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 2859814892245914127
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694079,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 0,
-                "timeUnit": "Millisecond"
-              }
-            },
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"low_vegetation\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": false,
-                  "content": [
-                    {
-                      "type": "Paragraph",
-                      "content": [
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "Vegetation coverage is low ("
-                          }
-                        },
-                        {
-                          "type": "CodeExpression",
-                          "code": {
-                            "string": "e1_image_quality[\"VEGETATION_PERCENTAGE\"]"
-                          },
-                          "programmingLanguage": "docsql",
-                          "compilationDigest": {
-                            "type": "CompilationDigest",
-                            "stateDigest": 2999038894275365203
-                          },
-                          "executionRequired": "NeverExecuted"
-                        },
-                        {
-                          "type": "Text",
-                          "value": {
-                            "string": "%), which can make GNDVI more sensitive to atmospheric noise or edge effects."
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17764850087462051042
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 17764850087462051042
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694079,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 0,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 7348983793312777776
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 7348983793312777776
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694079,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 0,
-                "timeUnit": "Millisecond"
-              }
-            },
-            {
-              "type": "IfBlock",
-              "clauses": [
-                {
-                  "type": "IfBlockClause",
-                  "code": {
-                    "string": "flag == \"no_op\""
-                  },
-                  "programmingLanguage": "python",
-                  "isActive": true,
-                  "content": [],
-                  "compilationDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 1308449142872527455
-                  },
-                  "executionDigest": {
-                    "type": "CompilationDigest",
-                    "stateDigest": 1308449142872527455
-                  },
-                  "executionCount": 1,
-                  "executionRequired": "No",
-                  "executionStatus": "Succeeded",
-                  "executionEnded": {
-                    "type": "Timestamp",
-                    "value": 1750286694079,
-                    "timeUnit": "Millisecond"
-                  },
-                  "executionDuration": {
-                    "type": "Duration",
-                    "value": 0,
-                    "timeUnit": "Millisecond"
-                  }
-                }
-              ],
-              "compilationDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 10811192553721650976
-              },
-              "executionDigest": {
-                "type": "CompilationDigest",
-                "stateDigest": 10811192553721650976
-              },
-              "executionCount": 1,
-              "executionRequired": "No",
-              "executionStatus": "Succeeded",
-              "executionEnded": {
-                "type": "Timestamp",
-                "value": 1750286694079,
-                "timeUnit": "Millisecond"
-              },
-              "executionDuration": {
-                "type": "Duration",
-                "value": 0,
-                "timeUnit": "Millisecond"
-              }
-            }
-          ],
-          "sectionType": "Iteration"
-        }
-      ],
+      "iterations": [],
       "compilationDigest": {
         "type": "CompilationDigest",
-        "stateDigest": 4747503933415132118
+        "stateDigest": 6276772210366763597
       },
       "executionDigest": {
         "type": "CompilationDigest",
-        "stateDigest": 4747503933415132118
+        "stateDigest": 6276772210366763597
       },
       "executionCount": 1,
       "executionRequired": "No",
       "executionStatus": "Succeeded",
       "executionEnded": {
         "type": "Timestamp",
-        "value": 1750286694079,
+        "value": 1750378919752,
         "timeUnit": "Millisecond"
       },
       "executionDuration": {
         "type": "Duration",
-        "value": 24,
+        "value": 1,
         "timeUnit": "Millisecond"
       }
     },
@@ -9203,12 +8377,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694079,
+                            "value": 1750378919754,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 0.0,
+                      "output": 26.59,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 15325399970747523334
@@ -9222,12 +8396,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694079,
+                        "value": 1750378919754,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 2,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -9292,12 +8466,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694080,
+                            "value": 1750378919755,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 88.27,
+                      "output": 0.0,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 3690501758302942457
@@ -9311,12 +8485,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694079,
+                        "value": 1750378919755,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -9381,7 +8555,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694080,
+                            "value": 1750378919756,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -9400,12 +8574,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694080,
+                        "value": 1750378919756,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -9470,12 +8644,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694080,
+                            "value": 1750378919757,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 0.0,
+                      "output": 1.69,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 6684402502220672819
@@ -9489,12 +8663,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694080,
+                        "value": 1750378919757,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -9559,12 +8733,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694080,
+                            "value": 1750378919758,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 0.0,
+                      "output": 2.22,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 5889465842184258478
@@ -9578,12 +8752,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694080,
+                        "value": 1750378919758,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -9648,12 +8822,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694080,
+                            "value": 1750378919759,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 0.0,
+                      "output": 39.72,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 17727999621643404656
@@ -9667,12 +8841,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694080,
+                        "value": 1750378919759,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -9737,12 +8911,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694080,
+                            "value": 1750378919760,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 0.0,
+                      "output": 26.33,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 14511652883662706136
@@ -9756,12 +8930,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694080,
+                        "value": 1750378919760,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -9826,12 +9000,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694081,
+                            "value": 1750378919761,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 35.13,
+                      "output": 0.42,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 12629331194449100308
@@ -9845,12 +9019,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694080,
+                        "value": 1750378919761,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -9915,12 +9089,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694081,
+                            "value": 1750378919762,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 0.0,
+                      "output": 3.0,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 5475008540463972149
@@ -9934,12 +9108,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694081,
+                        "value": 1750378919762,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -10004,12 +9178,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694081,
+                            "value": 1750378919763,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 15.21,
+                      "output": 8.27,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 8734504088682391137
@@ -10023,12 +9197,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694081,
+                        "value": 1750378919763,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -10093,12 +9267,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694081,
+                            "value": 1750378919764,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 46.71,
+                      "output": 14.78,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 5141979134836257652
@@ -10112,12 +9286,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694081,
+                        "value": 1750378919764,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -10182,12 +9356,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694081,
+                            "value": 1750378919765,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 2.95,
+                      "output": 3.56,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 2783166538431246137
@@ -10201,12 +9375,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694081,
+                        "value": 1750378919765,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -10271,7 +9445,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694082,
+                            "value": 1750378919766,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -10290,12 +9464,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694081,
+                        "value": 1750378919766,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     },
@@ -10360,7 +9534,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694082,
+                            "value": 1750378919767,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -10379,12 +9553,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694082,
+                        "value": 1750378919767,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -10443,7 +9617,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694082,
+                            "value": 1750378919768,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -10462,12 +9636,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694082,
+                        "value": 1750378919768,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -10526,7 +9700,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694082,
+                            "value": 1750378919770,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -10545,12 +9719,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694082,
+                        "value": 1750378919769,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -10609,12 +9783,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694082,
+                            "value": 1750378919771,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": "CAMS",
+                      "output": "SEN2COR_DDV",
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 433211409770457143
@@ -10628,7 +9802,7 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694082,
+                        "value": 1750378919770,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
@@ -10692,12 +9866,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694082,
+                            "value": 1750378919772,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 0.11,
+                      "output": 0.13,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 1105610252881977042
@@ -10711,12 +9885,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694082,
+                        "value": 1750378919772,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -10775,12 +9949,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694082,
+                            "value": 1750378919773,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 0.51,
+                      "output": 1.21,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 13697584157254852128
@@ -10794,12 +9968,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694082,
+                        "value": 1750378919773,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -10858,7 +10032,7 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694083,
+                            "value": 1750378919774,
                             "timeUnit": "Millisecond"
                           }
                         }
@@ -10877,7 +10051,7 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694083,
+                        "value": 1750378919774,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
@@ -10941,12 +10115,12 @@
                           "roleName": "Executor",
                           "lastModified": {
                             "type": "Timestamp",
-                            "value": 1750286694083,
+                            "value": 1750378919775,
                             "timeUnit": "Millisecond"
                           }
                         }
                       ],
-                      "output": 360.27,
+                      "output": 298.14,
                       "compilationDigest": {
                         "type": "CompilationDigest",
                         "stateDigest": 15114514636078256636
@@ -10960,12 +10134,12 @@
                       "executionStatus": "Succeeded",
                       "executionEnded": {
                         "type": "Timestamp",
-                        "value": 1750286694083,
+                        "value": 1750378919775,
                         "timeUnit": "Millisecond"
                       },
                       "executionDuration": {
                         "type": "Duration",
-                        "value": 0,
+                        "value": 1,
                         "timeUnit": "Millisecond"
                       }
                     }
@@ -10983,12 +10157,14 @@
   "executionStatus": "Succeeded",
   "executionEnded": {
     "type": "Timestamp",
-    "value": 1750286694083,
+    "value": 1750378919775,
     "timeUnit": "Millisecond"
   },
   "executionDuration": {
     "type": "Duration",
-    "value": 526,
+    "value": 484,
     "timeUnit": "Millisecond"
-  }
+  },
+  "source": "dynamic_publication.smd",
+  "commit": "dirty"
 }

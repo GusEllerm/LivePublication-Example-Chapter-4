@@ -45,6 +45,7 @@ provenance_output.crate/
 interface.crate/
 publication.crate/
 workflow_inputs/Data/
+*.pickle
 
 zenodo_token.py
 copernicus_token.py
