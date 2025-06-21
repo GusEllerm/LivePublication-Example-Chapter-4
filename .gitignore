@@ -41,12 +41,22 @@ Thumbs.db
 batch_push.sh
 
 provenance_output/
-provenance_output.crate/
-interface.crate/
 publication.crate/
 workflow_inputs/Data/
 *.pickle
 *.tif
 
+# Ignore these globally
+interface.crate/
+provenance_output.crate/
+
+# BUT keep anything inside the docs folder
+!docs/interface.crate/
+!docs/interface.crate/**
+!docs/interface.crate/provenance_output.crate/
+!docs/interface.crate/provenance_output.crate/**
+
 zenodo_token.py
 copernicus_token.py
+
+
