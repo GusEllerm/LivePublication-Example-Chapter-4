@@ -62,7 +62,7 @@
     {
       "@id": "./",
       "@type": "Dataset",
-      "datePublished": "2025-06-20T23:50:21+00:00",
+      "datePublished": "2025-06-21T02:25:47+00:00",
       "hasPart": [
         {
           "@id": "research_article.html"
@@ -106,43 +106,21 @@
     {
       "@id": "#research-article",
       "@type": "ScholarlyArticle",
-      "alternateFormat": [
-        {
-          "@id": "research_article.md"
-        }
-      ],
       "description": "Human-Readable, compiled article generated from dynamic inputs, code, and narrative.",
-      "hasFormat": [
-        {
-          "@id": "research_article.html"
-        }
-      ],
       "hasPart": [
         {
-          "@id": "#dnf-evaluated-document"
+          "@id": "research_article.html"
         },
         {
-          "@id": "#dnf-document"
-        },
-        {
-          "@id": "#dnf-engine"
-        },
-        {
-          "@id": "#dnf-engine-specification"
-        },
-        {
-          "@id": "#dnf-presentation-environment"
-        },
-        {
-          "@id": "#dnf-schema"
-        },
-        {
-          "@id": "#dnf-data-dependencies"
+          "@id": "research_article.md"
         }
       ],
       "isBasedOn": [
         {
           "@id": "#dnf-evaluated-document"
+        },
+        {
+          "@id": "#dnf-presentation-environment"
         }
       ],
       "name": "LivePublication: A Dynamic and Reproducible Research Article",
@@ -167,9 +145,7 @@
         "hasPart": [
           {
             "@id": "./"
-          }
-        ],
-        "hasFormat": [
+          },
           {
             "@id": "#research-article"
           }
@@ -186,11 +162,52 @@
         "hasPart": [
           {
             "@id": "./"
-          }
-        ],
-        "alternateFormat": [
+          },
           {
             "@id": "#research-article"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#dnf-engine-specification",
+      "@type": "CreativeWork",
+      "description": "Formal specification of the DNF Engine's expected behavior and schema usage.",
+      "hasPart": [
+        {
+          "@id": "#stencila-schema"
+        }
+      ],
+      "name": "DNF Engine Specification",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "#dnf-evaluated-document"
+          }
+        ],
+        "isBasedOn": [
+          {
+            "@id": "#dnf-engine"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#stencila-schema",
+      "@type": "CreativeWork",
+      "description": "Specification and JSON Schemas used by the Stencila DNF Engine to validate and interpret dynamic documents.",
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "name": "Stencila DNF Engine Specification",
+      "url": "https://github.com/stencila/stencila/tree/v2.2.0/schema",
+      "@reverse": {
+        "hasPart": [
+          {
+            "@id": "#dnf-engine-specification"
+          }
+        ],
+        "conformsTo": [
+          {
+            "@id": "#dnf-schema"
           }
         ]
       }
@@ -216,24 +233,10 @@
         },
         {
           "@id": "#dnf-engine"
-        },
-        {
-          "@id": "#dnf-engine-specification"
         }
       ],
       "name": "DNF Evaluated Document",
-      "usedSoftware": {
-        "@id": "#dnf-engine"
-      },
-      "wasGeneratedBy": {
-        "@id": "#dnf-engine"
-      },
       "@reverse": {
-        "hasPart": [
-          {
-            "@id": "#research-article"
-          }
-        ],
         "isBasedOn": [
           {
             "@id": "#research-article"
@@ -270,21 +273,8 @@
           "@id": "DNF_Document.json"
         }
       ],
-      "isBasedOn": [
-        {
-          "@id": "#dnf-schema"
-        }
-      ],
       "name": "DNF Document",
-      "usedSoftware": {
-        "@id": "#dnf-engine"
-      },
       "@reverse": {
-        "hasPart": [
-          {
-            "@id": "#research-article"
-          }
-        ],
         "isBasedOn": [
           {
             "@id": "#dnf-evaluated-document"
@@ -310,6 +300,22 @@
       }
     },
     {
+      "@id": "#dnf-schema",
+      "@type": "CreativeWork",
+      "conformsTo": {
+        "@id": "#stencila-schema"
+      },
+      "description": "Schema used to validate the structure and fields of the DNF Document.",
+      "name": "DNF Document Schema",
+      "@reverse": {
+        "conformsTo": [
+          {
+            "@id": "#dnf-document"
+          }
+        ]
+      }
+    },
+    {
       "@id": "#dnf-engine",
       "@type": "CreativeWork",
       "description": "The software application responsible for evaluating the DNF Document.",
@@ -325,33 +331,12 @@
       ],
       "name": "DNF Engine",
       "@reverse": {
-        "hasPart": [
-          {
-            "@id": "#research-article"
-          }
-        ],
         "isBasedOn": [
           {
             "@id": "#dnf-evaluated-document"
           },
           {
             "@id": "#dnf-presentation-environment"
-          }
-        ],
-        "usedSoftware": [
-          {
-            "@id": "#dnf-evaluated-document"
-          },
-          {
-            "@id": "#dnf-document"
-          },
-          {
-            "@id": "#dnf-presentation-environment"
-          }
-        ],
-        "wasGeneratedBy": [
-          {
-            "@id": "#dnf-evaluated-document"
           }
         ]
       }
@@ -370,131 +355,6 @@
         "hasPart": [
           {
             "@id": "#dnf-engine"
-          },
-          {
-            "@id": "#dnf-presentation-environment"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "#dnf-engine-specification",
-      "@type": "CreativeWork",
-      "description": "Formal specification of the DNF Engine's expected behavior and schema usage.",
-      "hasPart": [
-        {
-          "@id": "#stencila-schema"
-        }
-      ],
-      "name": "DNF Engine Specification",
-      "@reverse": {
-        "hasPart": [
-          {
-            "@id": "#research-article"
-          }
-        ],
-        "conformsTo": [
-          {
-            "@id": "#dnf-evaluated-document"
-          },
-          {
-            "@id": "#dnf-schema"
-          }
-        ],
-        "isBasedOn": [
-          {
-            "@id": "#dnf-evaluated-document"
-          },
-          {
-            "@id": "#dnf-engine"
-          },
-          {
-            "@id": "#dnf-schema"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "#stencila-schema",
-      "@type": "CreativeWork",
-      "description": "Specification and JSON Schemas used by the Stencila DNF Engine to validate and interpret dynamic documents.",
-      "license": "https://www.apache.org/licenses/LICENSE-2.0",
-      "name": "Stencila DNF Engine Specification",
-      "url": "https://github.com/stencila/stencila/tree/v2.2.0/schema",
-      "@reverse": {
-        "hasPart": [
-          {
-            "@id": "#dnf-engine-specification"
-          },
-          {
-            "@id": "#dnf-schema"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "#dnf-presentation-environment",
-      "@type": "CreativeWork",
-      "description": "Environment responsible for converting the evaluated DNF document into presentation formats.",
-      "hasPart": [
-        {
-          "@id": "#stencila"
-        }
-      ],
-      "isBasedOn": [
-        {
-          "@id": "#dnf-engine"
-        }
-      ],
-      "name": "DNF Presentation Environment",
-      "usedSoftware": {
-        "@id": "#dnf-engine"
-      },
-      "@reverse": {
-        "hasPart": [
-          {
-            "@id": "#research-article"
-          }
-        ],
-        "wasGeneratedBy": [
-          {
-            "@id": "#research-article"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "#dnf-schema",
-      "@type": "CreativeWork",
-      "conformsTo": {
-        "@id": "#dnf-engine-specification"
-      },
-      "description": "Schema used to validate the structure and fields of the DNF Document.",
-      "hasPart": [
-        {
-          "@id": "#stencila-schema"
-        }
-      ],
-      "isBasedOn": [
-        {
-          "@id": "#dnf-engine-specification"
-        }
-      ],
-      "name": "DNF Document Schema",
-      "@reverse": {
-        "hasPart": [
-          {
-            "@id": "#research-article"
-          }
-        ],
-        "conformsTo": [
-          {
-            "@id": "#dnf-document"
-          }
-        ],
-        "isBasedOn": [
-          {
-            "@id": "#dnf-document"
           }
         ]
       }
@@ -510,11 +370,6 @@
       ],
       "name": "DNF Operation Data Dependencies",
       "@reverse": {
-        "hasPart": [
-          {
-            "@id": "#research-article"
-          }
-        ],
         "isBasedOn": [
           {
             "@id": "#dnf-evaluated-document"
@@ -535,6 +390,29 @@
           },
           {
             "@id": "#dnf-data-dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "#dnf-presentation-environment",
+      "@type": "CreativeWork",
+      "description": "Environment responsible for converting the evaluated DNF document into presentation formats.",
+      "isBasedOn": [
+        {
+          "@id": "#dnf-engine"
+        }
+      ],
+      "name": "DNF Presentation Environment",
+      "@reverse": {
+        "isBasedOn": [
+          {
+            "@id": "#research-article"
+          }
+        ],
+        "wasGeneratedBy": [
+          {
+            "@id": "#research-article"
           }
         ]
       }
@@ -605,7 +483,7 @@ table.table {
             <td style='text-align:left'><span>Dataset</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">datePublished<span>&nbsp;</span><a href="http://schema.org/datePublished">[?]</a></th>
-            <td style='text-align:left'><span>2025-06-20T23:50:21+00:00</span></td>
+            <td style='text-align:left'><span>2025-06-21T02:25:47+00:00</span></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
             <td style='text-align:left'><ul>
@@ -657,10 +535,11 @@ table.table {
             <td style='text-align:left'><span>text/html</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">./</a></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">hasFormat</th>
-            <td style='text-align:left'><a href="#%23research-article">LivePublication: A Dynamic and Reproducible Research Article</a></td>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">./</a></li>
+                        
+                        <li><a href="#%23research-article">LivePublication: A Dynamic and Reproducible Research Article</a></li>
+                        </ul></td>
             </tr></tbody>
             </table>
         </div>
@@ -693,10 +572,11 @@ table.table {
             <td style='text-align:left'><span>text/markdown</span></td>
             </tr><tr><th colspan="2" style="text-align:center">Items that reference this one</th><tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
-            <td style='text-align:left'><a href="#./">./</a></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">alternateFormat</th>
-            <td style='text-align:left'><a href="#%23research-article">LivePublication: A Dynamic and Reproducible Research Article</a></td>
+            <td style='text-align:left'><ul>
+                        <li><a href="#./">./</a></li>
+                        
+                        <li><a href="#%23research-article">LivePublication: A Dynamic and Reproducible Research Article</a></li>
+                        </ul></td>
             </tr></tbody>
             </table>
         </div>
@@ -836,31 +716,19 @@ table.table {
             <th style="text-align:left;" class="prop">description<span>&nbsp;</span><a href="http://schema.org/description">[?]</a></th>
             <td style='text-align:left'><span>Human-Readable, compiled article generated from dynamic inputs, code, and narrative.</span></td>
             </tr><tr>
-            <th style="text-align:left;" class="prop">alternateFormat</th>
-            <td style='text-align:left'><a href="#research_article.md">LivePublication Markdown Source</a></td>
-            </tr><tr>
-            <th style="text-align:left;" class="prop">hasFormat</th>
-            <td style='text-align:left'><a href="#research_article.html">LivePublication HTML View</a></td>
-            </tr><tr>
             <th style="text-align:left;" class="prop">hasPart<span>&nbsp;</span><a href="http://schema.org/hasPart">[?]</a></th>
             <td style='text-align:left'><ul>
-                        <li><a href="#%23dnf-evaluated-document">DNF Evaluated Document</a></li>
+                        <li><a href="#research_article.html">LivePublication HTML View</a></li>
                         
-                        <li><a href="#%23dnf-document">DNF Document</a></li>
-                        
-                        <li><a href="#%23dnf-engine">DNF Engine</a></li>
-                        
-                        <li><a href="#%23dnf-engine-specification">DNF Engine Specification</a></li>
-                        
-                        <li><a href="#%23dnf-presentation-environment">DNF Presentation Environment</a></li>
-                        
-                        <li><a href="#%23dnf-schema">DNF Document Schema</a></li>
-                        
-                        <li><a href="#%23dnf-data-dependencies">DNF Operation Data Dependencies</a></li>
+                        <li><a href="#research_article.md">LivePublication Markdown Source</a></li>
                         </ul></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">isBasedOn<span>&nbsp;</span><a href="http://schema.org/isBasedOn">[?]</a></th>
-            <td style='text-align:left'><a href="#%23dnf-evaluated-document">DNF Evaluated Document</a></td>
+            <td style='text-align:left'><ul>
+                        <li><a href="#%23dnf-evaluated-document">DNF Evaluated Document</a></li>
+                        
+                        <li><a href="#%23dnf-presentation-environment">DNF Presentation Environment</a></li>
+                        </ul></td>
             </tr><tr>
             <th style="text-align:left;" class="prop">wasGeneratedBy</th>
             <td style='text-align:left'><a href="#%23dnf-presentation-environment">DNF Presentation Environment</a></td>

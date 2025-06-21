@@ -21,6 +21,10 @@ def add_dnf_evaluated_document(crate):
         "encodingFormat": "application/json"
     })
 
+    dnf_document = add_dnf_document(crate)
+    dnf_engine = add_dnf_engine(crate)
+    dnf_data_dependencies = add_dnf_data_dependencies(crate)
+    # Only include the evaluated file as hasPart
     wrapper["hasPart"] = [evaluated_file]
     return wrapper
 
@@ -38,6 +42,7 @@ def add_dnf_document(crate):
         "encodingFormat": "application/json"
     })
 
+    dnf_schema = add_dnf_schema(crate)
     wrapper["hasPart"] = [dnf_file]
     return wrapper
 
@@ -102,10 +107,6 @@ def add_dnf_presentation_env(crate):
         "description": "Environment responsible for converting the evaluated DNF document into presentation formats."
     }))
 
-    # Reference the shared Stencila software application
-    stencila_software = crate.get("#stencila")
-    wrapper["hasPart"] = [stencila_software]
-
     return wrapper
 
 def add_dnf_schema(crate):
@@ -115,8 +116,7 @@ def add_dnf_schema(crate):
         "description": "Schema used to validate the structure and fields of the DNF Document."
     }))
 
-    stencila_spec = crate.get("#stencila-schema")
-    wrapper["hasPart"] = [stencila_spec]
+    wrapper["conformsTo"] = crate.get("#stencila-schema")
 
     return wrapper
 
@@ -162,8 +162,7 @@ def add_main_article(crate):
         "encodingFormat": "text/markdown"
     })
 
-    main_article["hasFormat"] = [html_article]
-    main_article["alternateFormat"] = [markdown_article]
+    main_article["hasPart"] = [html_article, markdown_article]
 
     crate.mainEntity = main_article
     return main_article
@@ -173,28 +172,16 @@ def create_publication_crate(crate_name: str):
 
     main_article = add_main_article(crate)
 
-    parts = [
-        add_dnf_evaluated_document(crate),
-        add_dnf_document(crate),
-        add_dnf_engine(crate),
-        add_dnf_engine_spec(crate),
-        add_dnf_presentation_env(crate),
-        add_dnf_schema(crate),
-        add_dnf_data_dependencies(crate)
-    ]
+    add_dnf_engine_spec(crate)
 
-    main_article["hasPart"] = parts
+    add_dnf_evaluated_document(crate)
+    add_dnf_presentation_env(crate)
 
     # Establish isBasedOn relationships
     crate.get("#dnf-evaluated-document")["isBasedOn"] = [
         crate.get("#dnf-document"),
         crate.get("#dnf-data-dependencies"),
-        crate.get("#dnf-engine"),
-        crate.get("#dnf-engine-specification")
-    ]
-
-    crate.get("#dnf-document")["isBasedOn"] = [
-        crate.get("#dnf-schema")
+        crate.get("#dnf-engine")
     ]
 
     crate.get("#dnf-presentation-environment")["isBasedOn"] = [
@@ -205,27 +192,17 @@ def create_publication_crate(crate_name: str):
         crate.get("#dnf-engine-specification")
     ]
 
-    crate.get("#dnf-schema")["isBasedOn"] = [
-        crate.get("#dnf-engine-specification")
-    ]
-
     crate.get("#research-article")["isBasedOn"] = [
-        crate.get("#dnf-evaluated-document")
+        crate.get("#dnf-evaluated-document"),
+        crate.get("#dnf-presentation-environment")
     ]
 
     # Add the specified relationships
-    crate.get("#dnf-evaluated-document")["usedSoftware"] = crate.get("#dnf-engine")
     crate.get("#dnf-evaluated-document")["conformsTo"] = crate.get("#dnf-engine-specification")
-    crate.get("#dnf-evaluated-document")["wasGeneratedBy"] = crate.get("#dnf-engine")
 
     crate.get("#research-article")["wasGeneratedBy"] = crate.get("#dnf-presentation-environment")
 
-    crate.get("#dnf-document")["usedSoftware"] = crate.get("#dnf-engine")
     crate.get("#dnf-document")["conformsTo"] = crate.get("#dnf-schema")
-
-    crate.get("#dnf-presentation-environment")["usedSoftware"] = crate.get("#dnf-engine")
-
-    crate.get("#dnf-schema")["conformsTo"] = crate.get("#dnf-engine-specification")
 
     crate.write(crate_name)
 
