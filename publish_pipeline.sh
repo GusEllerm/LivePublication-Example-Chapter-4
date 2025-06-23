@@ -58,7 +58,7 @@ stencila render DNF_Document.json DNF_Evaluated_Document.json --force-all --pret
 
 # Step 11: Create exmaple presentation verisons of the rendered article
 echo "📊 Creating example presentation versions of the rendered article..."
-stencila convert DNF_Evaluated_Document.json  docs/publication/research_article.html --pretty
+stencila convert DNF_Evaluated_Document.json  docs/publication/research_article.html --pretty --no-table-of-contents
 stencila convert DNF_Evaluated_Document.json docs/publication/research_article.md --pretty
 mkdir -p docs/interface.crate/provenance_output.crate
 cp workflow_preview.png docs/interface.crate/provenance_output.crate/workflow_preview.png
