@@ -103,7 +103,8 @@ if __name__ == "__main__":
                 '<strong>Note:</strong> This embedded article is currently broken and waiting on downstream development.'
                 '</div>'
             )
-            full_content = alert_html + article_html
+            # Removed alert_html from the article content as it is now rendering correctly. 
+            full_content = article_html
             render_crate_page(research_article_input, research_article_output, "Research Article", content_override=full_content)
         except Exception as e:
             print(f"Warning: Could not render research article: {e}")

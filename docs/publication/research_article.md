@@ -245,6 +245,14 @@ It was executed from **`step["CreateAction"]["startTime"]`{python exec}** to **`
 
 This publication uses a **`e1_platform_info_human["SPACECRAFT_NAME"]`{python exec}** `e1_product_info_human["PROCESSING_LEVEL"]`{python exec} product acquired during orbit `e1_platform_info_human["SENSING_ORBIT_NUMBER"]`{python exec} on `e1_platform_info_human["DATATAKE_SENSING_START_HUMAN"]`{python exec}. The dataset, identified by this [DOI](`e1_product_info_human["PRODUCT_DOI"]`{python exec}), was processed using baseline **`e1_product_info_human["PROCESSING_BASELINE"]`{python exec}** (see [here](https://sentiwiki.copernicus.eu/web/s2-processing) for information on baseline processing algorithms) on `e1_product_info_human["GENERATION_TIME_HUMAN"]`{python exec}.
 
+[DOI](`e1_product_info_human["PRODUCT_DOI"]`{python exec})
+
+[DOI](https://doi.org/10.5270/S2_-znk9xsj)
+
+![Sentinal-2A Thumbnail](interface.crate/`e1_thumbnail_id`{python exec})
+
+![Sentinal-2A Thumbnail](interface.crate/S2A_MSIL2A_20181026T101111_N0500_R022_T33TUJ_20230621T212917-ql.jpg)
+
 ## Data Alerts
 
 ```python exec always

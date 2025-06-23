@@ -54,12 +54,12 @@ stencila convert dynamic_publication.smd DNF_Document.json
 
 # Step 10: Render the DNF Document using the interface.crate
 echo "📑 Rendering DNF Document with interface.crate..."
-stencila render DNF_Document.json DNF_Evaluated_Document.json --force-all
+stencila render DNF_Document.json DNF_Evaluated_Document.json --force-all --pretty --no-table-of-contents
 
 # Step 11: Create exmaple presentation verisons of the rendered article
 echo "📊 Creating example presentation versions of the rendered article..."
-stencila convert DNF_Evaluated_Document.json  docs/publication/research_article.html
-stencila convert DNF_Evaluated_Document.json docs/publication/research_article.md
+stencila convert DNF_Evaluated_Document.json  docs/publication/research_article.html --pretty
+stencila convert DNF_Evaluated_Document.json docs/publication/research_article.md --pretty
 mkdir -p docs/interface.crate/provenance_output.crate
 cp workflow_preview.png docs/interface.crate/provenance_output.crate/workflow_preview.png
 

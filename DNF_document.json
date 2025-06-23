@@ -31,7 +31,7 @@
       "type": "CodeChunk",
       "executionMode": "Always",
       "code": {
-        "string": "# --- NEW: Load the provenance_output.crate ---\n# Get the path to the nested crate from the E2.2 entry\ne22_wms = by_id.get(\"#E2.2-wms\", {})\nprovenance_crate_path = e22_wms.get(\"hasPart\", [{}])[0].get(\"@id\", None)\n\n# Load the nested provenance crate if the path is found\nprovenance_data = {}\nif provenance_crate_path:\n    provenance_manifest = Path(\"interface.crate\") / provenance_crate_path / \"ro-crate-metadata.json\"\n    if provenance_manifest.exists():\n        with provenance_manifest.open() as f:\n            provenance_data = json.load(f)\n\n\nprovenance_graph = provenance_data[\"@graph\"]\nprovenance_by_id = {entry[\"@id\"]: entry for entry in provenance_graph}\nworkflow = next((e for e in provenance_graph if e.get(\"@type\") == [\"File\", \"SoftwareSourceCode\", \"ComputationalWorkflow\", \"HowTo\"]), None)\nsteps = sorted([e for e in provenance_graph if e.get(\"@type\") == \"ControlAction\"], key=lambda x: x.get(\"position\", 0))\n\nFormalParameters = [e for e in provenance_graph if e.get(\"@type\") == \"FormalParameter\"]\n\nstep_summaries = []\nfor step in steps:\n    for e in provenance_graph:\n        if e.get(\"@id\") == step.get(\"object\").get(\"@id\"):\n            create_action = e\n\n    inputs = create_action.get(\"object\")\n    outputs = create_action.get(\"result\")\n\n    input_entities = []\n    output_entities = []\n\n    for e in provenance_graph:\n        for input in inputs:\n            if input.get(\"@id\") == e.get(\"@id\"):\n                input_entities.append(e)\n\n    for e in provenance_graph:\n        for output in outputs:\n            if output.get(\"@id\") == e.get(\"@id\"):\n                output_entities.append(e)\n    \n    for e in provenance_graph:\n        if create_action.get(\"instrument\").get(\"@id\") == e.get(\"@id\"):\n            softwareApplication = e\n            \n    for e in provenance_graph:\n        if create_action.get(\"containerImage\").get(\"@id\") == e.get(\"@id\"):\n            ContainerImage = e\n\n    # replace the startTime and endTime with human-readable format\n    create_action[\"startTime\"] = parse_iso8601(create_action[\"startTime\"])\n    create_action[\"endTime\"] = parse_iso8601(create_action[\"endTime\"]) \n    \n    step_summaries.append({\n        \"CreateAction\": create_action,\n        \"SoftwareApplication\": softwareApplication,\n        \"ContainerImage\": ContainerImage,\n        \"Inputs\": input_entities,\n        \"Outputs\": output_entities,\n    })\n"
+        "string": "# --- NEW: Load the provenance_output.crate ---\n# Get the path to the nested crate from the E2.2 entry\ne22_wms = by_id.get(\"#E2.2-wms\", {})\nprovenance_crate_path = e22_wms.get(\"hasPart\", [{}])[0].get(\"@id\", None)\n\n# Load the nested provenance crate if the path is found\nprovenance_data = {}\nif provenance_crate_path:\n    provenance_manifest = Path(\"interface.crate\") / provenance_crate_path / \"ro-crate-metadata.json\"\n    if provenance_manifest.exists():\n        with provenance_manifest.open() as f:\n            provenance_data = json.load(f)\n\n\nprovenance_graph = provenance_data[\"@graph\"]\nprovenance_by_id = {entry[\"@id\"]: entry for entry in provenance_graph}\nworkflow = next((e for e in provenance_graph if e.get(\"@type\") == [\"File\", \"SoftwareSourceCode\", \"ComputationalWorkflow\", \"HowTo\"]), None)\nsteps = sorted([e for e in provenance_graph if e.get(\"@type\") == \"ControlAction\"], key=lambda x: x.get(\"position\", 0))\n\nFormalParameters = [e for e in provenance_graph if e.get(\"@type\") == \"FormalParameter\"]\n\nstep_summaries = []\nfor step in steps:\n    for e in provenance_graph:\n        if e.get(\"@id\") == step.get(\"object\").get(\"@id\"):\n            create_action = e\n\n    inputs = create_action.get(\"object\")\n    outputs = create_action.get(\"result\")\n\n    input_entities = []\n    output_entities = []\n\n    for e in provenance_graph:\n        for input in inputs:\n            if input.get(\"@id\") == e.get(\"@id\"):\n                input_entities.append(e)\n\n    for e in provenance_graph:\n        for output in outputs:\n            if output.get(\"@id\") == e.get(\"@id\"):\n                output_entities.append(e)\n    \n    for e in provenance_graph:\n        if create_action.get(\"instrument\").get(\"@id\") == e.get(\"@id\"):\n            softwareApplication = e\n            \n    for e in provenance_graph:\n        if create_action.get(\"containerImage\").get(\"@id\") == e.get(\"@id\"):\n            ContainerImage = e\n\n    # replace the startTime and endTime with human-readable format\n    create_action[\"startTime\"] = parse_iso8601(create_action[\"startTime\"])\n    create_action[\"endTime\"] = parse_iso8601(create_action[\"endTime\"]) \n    \n    step_summaries.append({\n        \"CreateAction\": create_action,\n        \"SoftwareApplication\": softwareApplication,\n        \"ContainerImage\": ContainerImage,\n        \"Inputs\": input_entities,\n        \"Outputs\": output_entities,\n    })"
       },
       "programmingLanguage": "python"
     },
@@ -754,6 +754,88 @@
       ]
     },
     {
+      "type": "Paragraph",
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "[DOI]("
+          }
+        },
+        {
+          "type": "CodeExpression",
+          "code": {
+            "string": "e1_product_info_human[\"PRODUCT_DOI\"]"
+          },
+          "programmingLanguage": "python"
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": ")"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Paragraph",
+      "content": [
+        {
+          "type": "Link",
+          "content": [
+            {
+              "type": "Text",
+              "value": {
+                "string": "DOI"
+              }
+            }
+          ],
+          "target": "https://doi.org/10.5270/S2_-znk9xsj"
+        }
+      ]
+    },
+    {
+      "type": "Paragraph",
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "![Sentinal-2A Thumbnail](interface.crate/"
+          }
+        },
+        {
+          "type": "CodeExpression",
+          "code": {
+            "string": "e1_thumbnail_id"
+          },
+          "programmingLanguage": "python"
+        },
+        {
+          "type": "Text",
+          "value": {
+            "string": ")"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Paragraph",
+      "content": [
+        {
+          "type": "ImageObject",
+          "contentUrl": "interface.crate/S2A_MSIL2A_20181026T101111_N0500_R022_T33TUJ_20230621T212917-ql.jpg",
+          "caption": [
+            {
+              "type": "Text",
+              "value": {
+                "string": "Sentinal-2A Thumbnail"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "type": "Heading",
       "level": 2,
       "content": [
@@ -769,7 +851,7 @@
       "type": "CodeChunk",
       "executionMode": "Always",
       "code": {
-        "string": "# Create boolean flags for data Alerts\ndata_alert_flags = {\n    \"cloudy_pixels\": float(e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]) > 50.0,\n    \"thin_cirrus\": float(e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]) > 30.0,\n    \"saturated_pixels\": float(e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]) > 0.1,\n    \"cloud_shadow\": float(e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]) > 10.0,\n    \"low_vegetation\": float(e1_image_quality[\"VEGETATION_PERCENTAGE\"]) < 5.0,\n    \"low_data\": float(e1_image_quality[\"NODATA_PIXEL_PERCENTAGE\"]) > 10.0,\n}\n\n# Ranked list of all flags\npriority_order = [\n    \"low_data\",\n    \"cloudy_pixels\",\n    \"thin_cirrus\",\n    \"cloud_shadow\",\n    \"saturated_pixels\",\n    \"low_vegetation\"\n]\n\n\nactive_ranked_flags = [flag for flag in priority_order if data_alert_flags.get(flag)]\n\nactive_flags_len = len(active_ranked_flags)\n\n# Workaround: ensure it's at least 2 items so the loop will execute\nif len(active_ranked_flags) == 1:\n    active_ranked_flags.append(\"no_op\")\n"
+        "string": "# Create boolean flags for data Alerts\ndata_alert_flags = {\n    \"cloudy_pixels\": float(e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]) > 50.0,\n    \"thin_cirrus\": float(e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]) > 30.0,\n    \"saturated_pixels\": float(e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]) > 0.1,\n    \"cloud_shadow\": float(e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]) > 10.0,\n    \"low_vegetation\": float(e1_image_quality[\"VEGETATION_PERCENTAGE\"]) < 5.0,\n    \"low_data\": float(e1_image_quality[\"NODATA_PIXEL_PERCENTAGE\"]) > 10.0,\n}\n\n# Ranked list of all flags\npriority_order = [\n    \"low_data\",\n    \"cloudy_pixels\",\n    \"thin_cirrus\",\n    \"cloud_shadow\",\n    \"saturated_pixels\",\n    \"low_vegetation\"\n]\n\n\nactive_ranked_flags = [flag for flag in priority_order if data_alert_flags.get(flag)]\n\nactive_flags_len = len(active_ranked_flags)\n\n# Workaround: ensure it's at least 2 items so the loop will execute\nif len(active_ranked_flags) == 1:\n    active_ranked_flags.append(\"no_op\")"
       },
       "programmingLanguage": "python"
     },
@@ -2102,5 +2184,5 @@
     }
   ],
   "source": "dynamic_publication.smd",
-  "commit": "578ad887b96934b1fb6c338df9a1ca5c7513cd81"
+  "commit": "dirty"
 }
