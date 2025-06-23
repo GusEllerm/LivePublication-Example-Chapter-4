@@ -1,4 +1,4 @@
-```python exec always 
+```python exec always
 # Interface connections for incoming interface.crate objects
 import json
 from pathlib import Path
@@ -24,7 +24,9 @@ def parse_iso8601(dt_str):
         return dt.strftime("%Y-%m-%d %H:%M:%S")
     except Exception:
         return dt_str  # fallback to original if parsing fails
+
 ```
+
 
 ```python exec always
 # Load metadata for E1: Data Producer Output

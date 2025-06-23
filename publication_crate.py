@@ -135,7 +135,8 @@ def add_dnf_data_dependencies(crate):
     nested_interface_crate = crate.add(Dataset(crate, os.path.basename(interface_crate_path), properties={
         "name": "Interface Crate",
         "description": "Nested interface.crate containing Experiment Infrastructure execution data.",
-        "license": "https://creativecommons.org/licenses/by/4.0/"
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "@type": ["RO-Crate", "Dataset", "InterfaceCrate"],
     }))
 
     wrapper["hasPart"] = [nested_interface_crate]

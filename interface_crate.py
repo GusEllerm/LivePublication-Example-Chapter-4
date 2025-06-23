@@ -172,8 +172,10 @@ def encode_e2_2_wms(crate, output_dir):
         "name": "Provenance Run Crate",
         "description": "Nested RO-Crate containing workflow execution provenance.",
         "conformsTo": {"@id": "https://w3id.org/ro/crate/1.1"},
-        "license": "https://creativecommons.org/licenses/by/4.0/"
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "@type": ["RO-Crate", "Dataset", "ProvenanceRunCrate"],
     }))
+    
 
     nested_prov["isPartOf"] = {"@id": "#livepublication-interface"}
 
