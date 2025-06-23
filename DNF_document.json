@@ -1,6 +1,6 @@
 {
-  "$schema": "https://stencila.org/v2.2.0/Article.schema.json",
-  "@context": "https://stencila.org/v2.2.0/context.jsonld",
+  "$schema": "https://stencila.org/v2.3.0/Article.schema.json",
+  "@context": "https://stencila.org/v2.3.0/context.jsonld",
   "type": "Article",
   "content": [
     {
@@ -832,7 +832,7 @@
                     {
                       "type": "CodeExpression",
                       "code": {
-                        "string": "e1_image_quality[\"NODATA_PIXEL_PERCENTAGE\"]"
+                        "string": " e1_image_quality[\"NODATA_PIXEL_PERCENTAGE\"] "
                       },
                       "programmingLanguage": "docsql"
                     },
@@ -870,7 +870,7 @@
                     {
                       "type": "CodeExpression",
                       "code": {
-                        "string": "e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"]"
+                        "string": " e1_image_quality[\"CLOUDY_PIXEL_OVER_LAND_PERCENTAGE\"] "
                       },
                       "programmingLanguage": "docsql"
                     },
@@ -908,7 +908,7 @@
                     {
                       "type": "CodeExpression",
                       "code": {
-                        "string": "e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"]"
+                        "string": " e1_image_quality[\"THIN_CIRRUS_PERCENTAGE\"] "
                       },
                       "programmingLanguage": "docsql"
                     },
@@ -946,7 +946,7 @@
                     {
                       "type": "CodeExpression",
                       "code": {
-                        "string": "e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"]"
+                        "string": " e1_image_quality[\"CLOUD_SHADOW_PERCENTAGE\"] "
                       },
                       "programmingLanguage": "docsql"
                     },
@@ -984,7 +984,7 @@
                     {
                       "type": "CodeExpression",
                       "code": {
-                        "string": "e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"]"
+                        "string": " e1_image_quality[\"SATURATED_DEFECTIVE_PIXEL_PERCENTAGE\"] "
                       },
                       "programmingLanguage": "docsql"
                     },
@@ -1022,7 +1022,7 @@
                     {
                       "type": "CodeExpression",
                       "code": {
-                        "string": "e1_image_quality[\"VEGETATION_PERCENTAGE\"]"
+                        "string": " e1_image_quality[\"VEGETATION_PERCENTAGE\"] "
                       },
                       "programmingLanguage": "docsql"
                     },
@@ -2102,5 +2102,5 @@
     }
   ],
   "source": "dynamic_publication.smd",
-  "commit": "f1158aab1b1416e9fe4220db3a0197199be3160d"
+  "commit": "5f202317d55c24b97992e6458fd3cf8e7ffac4e0"
 }
