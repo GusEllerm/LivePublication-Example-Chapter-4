@@ -243,7 +243,7 @@ It was executed from **`step["CreateAction"]["startTime"]`{python exec}** to **`
 
 ## Sentinel-2A Data Product Overview
 
-This publication uses a **`e1_platform_info_human["SPACECRAFT_NAME"]`{python exec}** `e1_product_info_human["PROCESSING_LEVEL"]`{python exec} product acquired during orbit `e1_platform_info_human["SENSING_ORBIT_NUMBER"]`{python exec} on `e1_platform_info_human["DATATAKE_SENSING_START_HUMAN"]`{python exec}. The dataset, identified by this [DOI](`e1_product_info_human["PRODUCT_DOI"]`{python exec}), was processed using baseline **`e1_product_info_human["PROCESSING_BASELINE"]`{python exec}** (see [here](https://sentiwiki.copernicus.eu/web/s2-processing) for information on baseline processing algorithms) on `e1_product_info_human["GENERATION_TIME_HUMAN"]`{python exec}.
+This publication uses a **`e1_platform_info_human["SPACECRAFT_NAME"]`{python exec}** `e1_product_info_human["PROCESSING_LEVEL"]`{python exec} product acquired during orbit `e1_platform_info_human["SENSING_ORBIT_NUMBER"]`{python exec} on `e1_platform_info_human["DATATAKE_SENSING_START_HUMAN"]`{python exec}. The dataset, identified by this `dict(type="Link", target=e1_product_info_human["PRODUCT_DOI"], content=[dict(type="Text", value=f"DOI")])`{python exec}, was processed using baseline **`e1_product_info_human["PROCESSING_BASELINE"]`{python exec}** (see [here](https://sentiwiki.copernicus.eu/web/s2-processing) for information on baseline processing algorithms) on `e1_product_info_human["GENERATION_TIME_HUMAN"]`{python exec}.
 
 ## Data Alerts
 
@@ -325,6 +325,19 @@ Vegetation coverage is low ({{ e1_image_quality["VEGETATION_PERCENTAGE"] }}%), w
 :::
 
 Analysts should carefully consider these conditions before using this dataset in quantitative workflows.
+
+### Image Preview
+
+```python exec always
+# Scan the directory containing crate_path for a .jpg file and return its path
+jpg_path = None
+for file in crate_path.parent.iterdir():
+    if file.suffix.lower() == ".jpg":
+        jpg_path = str(file)
+        break
+```
+
+`dict(type="ImageObject", contentUrl=jpg_path)`{python exec}
 
 ### Image Quality Summary
 

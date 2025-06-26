@@ -686,20 +686,20 @@
         {
           "type": "Text",
           "value": {
-            "string": ". The dataset, identified by this [DOI]("
+            "string": ". The dataset, identified by this "
           }
         },
         {
           "type": "CodeExpression",
           "code": {
-            "string": "e1_product_info_human[\"PRODUCT_DOI\"]"
+            "string": "dict(type=\"Link\", target=e1_product_info_human[\"PRODUCT_DOI\"], content=[dict(type=\"Text\", value=f\"DOI\")])"
           },
           "programmingLanguage": "python"
         },
         {
           "type": "Text",
           "value": {
-            "string": "), was processed using baseline "
+            "string": ", was processed using baseline "
           }
         },
         {
@@ -1061,6 +1061,38 @@
           "value": {
             "string": "Analysts should carefully consider these conditions before using this dataset in quantitative workflows."
           }
+        }
+      ]
+    },
+    {
+      "type": "Heading",
+      "level": 3,
+      "content": [
+        {
+          "type": "Text",
+          "value": {
+            "string": "Image Preview"
+          }
+        }
+      ]
+    },
+    {
+      "type": "CodeChunk",
+      "executionMode": "Always",
+      "code": {
+        "string": "# Scan the directory containing crate_path for a .jpg file and return its path\njpg_path = None\nfor file in crate_path.parent.iterdir():\n    if file.suffix.lower() == \".jpg\":\n        jpg_path = str(file)\n        break"
+      },
+      "programmingLanguage": "python"
+    },
+    {
+      "type": "Paragraph",
+      "content": [
+        {
+          "type": "CodeExpression",
+          "code": {
+            "string": "dict(type=\"ImageObject\", contentUrl=jpg_path)"
+          },
+          "programmingLanguage": "python"
         }
       ]
     },
