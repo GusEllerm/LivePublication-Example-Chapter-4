@@ -226,9 +226,7 @@
           "@id": "#58e7fc01-d53c-45e4-9c1c-df452eb5aa81"
         }
       ],
-      "description": "A CWL workflow for computing a vegetation index (e.g., NDVI, GNDVI)
-from Sentinel-2 band inputs and generating a color-mapped GeoTIFF.
-",
+      "description": "A CWL workflow for computing a vegetation index (e.g., NDVI, GNDVI)from Sentinel-2 band inputs and generating a color-mapped GeoTIFF.",
       "hasPart": [
         {
           "@id": "packed.cwl#index_def.cwl"
@@ -459,10 +457,7 @@ from Sentinel-2 band inputs and generating a color-mapped GeoTIFF.
     {
       "@id": "packed.cwl#index_def.cwl",
       "@type": "SoftwareApplication",
-      "description": "This CWL tool computes a vegetation index matrix from provided spectral bands.
-It dynamically loads an index definition script (index_def.py) which uses
-auxiliary functions from file_handling.py.
-",
+      "description": "This CWL tool computes a vegetation index matrix from provided spectral bands.It dynamically loads an index definition script (index_def.py) which usesauxiliary functions from file_handling.py.",
       "input": [
         {
           "@id": "packed.cwl#index_def.cwl/bands"
@@ -646,10 +641,7 @@ auxiliary functions from file_handling.py.
     {
       "@id": "packed.cwl#tiff_gen.cwl",
       "@type": "SoftwareApplication",
-      "description": "This CWL tool converts a vegetation index matrix (in pickle format)
-into a color-mapped GeoTIFF file. It dynamically loads a TIFF generation
-script (tiff_gen.py) which depends on auxiliary functions from file_handling.py.
-",
+      "description": "This CWL tool converts a vegetation index matrix (in pickle format)into a color-mapped GeoTIFF file. It dynamically loads a TIFF generationscript (tiff_gen.py) which depends on auxiliary functions from file_handling.py.",
       "input": [
         {
           "@id": "packed.cwl#tiff_gen.cwl/color"
