@@ -8,51 +8,22 @@ import subprocess
 
 # Helper functions for DNF contextual entities
 def add_dnf_evaluated_document(crate):
-    wrapper = crate.add(ContextEntity(crate, "#dnf-evaluated-document", properties={
-        "@type": "CreativeWork",
-        "name": "DNF Evaluated Document",
-        "description": "The machine-readable, coompiled DNF document containing resolved dynamic content."
-    }))
-
     evaluated_file = crate.add_file("DNF_Evaluated_Document.json", properties={
         "name": "DNF Evaluated Document File",
-        "description": "The actual evaluated JSON file corresponding to the DNF document.",
+        "description": "The machine-readable, coompiled DNF document containing resolved dynamic content.",
         "encodingFormat": "application/json"
     })
-
-    dnf_document = add_dnf_document(crate)
-    dnf_engine = add_dnf_engine(crate)
-    dnf_data_dependencies = add_dnf_data_dependencies(crate)
-    # Only include the evaluated file as hasPart
-    wrapper["hasPart"] = [evaluated_file]
-    return wrapper
+    return evaluated_file
 
 def add_dnf_document(crate):
-    wrapper = crate.add(ContextEntity(crate, "#dnf-document", properties={
-        "@type": "CreativeWork",
-        "name": "DNF Document",
-        "description": "The unresolved dynamic narrative document serving as input to the DNF Engine."
-    }))
-
     dnf_file = crate.add_file("DNF_Document.json", properties={
         "name": "DNF Document File",
-        "description": "The unresolved DNF document in JSON format.",
+        "description": "The unresolved dynamic narrative document serving as input to the DNF Engine.",
         "encodingFormat": "application/json"
     })
-
-    dnf_schema = add_dnf_schema(crate)
-    wrapper["hasPart"] = [dnf_file]
-    return wrapper
-
-import subprocess
+    return dnf_file
 
 def add_dnf_engine(crate):
-    wrapper = crate.add(ContextEntity(crate, "#dnf-engine", properties={
-        "@type": "CreativeWork",
-        "name": "DNF Engine",
-        "description": "The software application responsible for evaluating the DNF Document."
-    }))
-
     try:
         version_output = subprocess.check_output(["stencila", "--version"], text=True).strip()
     except Exception:
@@ -69,16 +40,9 @@ def add_dnf_engine(crate):
         "operatingSystem": "all"
     }))
 
-    wrapper["hasPart"] = [stencila_software]
-    return wrapper
+    return stencila_software
 
 def add_dnf_engine_spec(crate):
-    wrapper = crate.add(ContextEntity(crate, "#dnf-engine-specification", properties={
-        "@type": "CreativeWork",
-        "name": "DNF Engine Specification",
-        "description": "Formal specification of the DNF Engine's expected behavior and schema usage."
-    }))
-
     try:
         version_output = subprocess.check_output(["stencila", "--version"], text=True).strip()
     except subprocess.CalledProcessError:
@@ -95,8 +59,7 @@ def add_dnf_engine_spec(crate):
         "license": "https://www.apache.org/licenses/LICENSE-2.0"
     }))
 
-    wrapper["hasPart"] = [stencila_spec]
-    return wrapper
+    return stencila_spec
 
 def add_dnf_presentation_env(crate):
     wrapper = crate.add(ContextEntity(crate, "#dnf-presentation-environment", properties={
@@ -119,12 +82,6 @@ def add_dnf_schema(crate):
     return wrapper
 
 def add_dnf_data_dependencies(crate):
-    wrapper = crate.add(ContextEntity(crate, "#dnf-data-dependencies", properties={
-        "@type": "Dataset",
-        "name": "DNF Operation Data Dependencies",
-        "description": "Metadata describing the data outputs required by DNF operations for resolution."
-    }))
-
     interface_crate_path = "interface.crate"
     if not os.path.isdir(interface_crate_path):
         raise Exception(f"{interface_crate_path} directory is missing.")
@@ -132,13 +89,13 @@ def add_dnf_data_dependencies(crate):
 
     nested_interface_crate = crate.add(Dataset(crate, os.path.basename(interface_crate_path), properties={
         "name": "Interface Crate",
+        "@type": ["RO-Crate", "Dataset"],
         "description": "Nested interface.crate containing Experiment Infrastructure execution data.",
         "license": "https://creativecommons.org/licenses/by/4.0/",
         "@type": ["RO-Crate", "Dataset"],
     }))
 
-    wrapper["hasPart"] = [nested_interface_crate]
-    return wrapper
+    return nested_interface_crate
 
 def add_main_article(crate):
     main_article = crate.add(ContextEntity(crate, "#research-article", properties={
@@ -167,39 +124,25 @@ def add_main_article(crate):
 def create_publication_crate(crate_name: str):
     crate = ROCrate()
 
-    main_article = add_main_article(crate)
+    research_article = add_main_article(crate)
 
-    add_dnf_engine_spec(crate)
+    dnf_document = add_dnf_document(crate)
+    dnf_engine = add_dnf_engine(crate)
+    dnf_engine_spec = add_dnf_engine_spec(crate)
+    dnf_data_dependencies = add_dnf_data_dependencies(crate)
+    dnf_engine_schema = add_dnf_schema(crate)
 
-    add_dnf_evaluated_document(crate)
-    add_dnf_presentation_env(crate)
+    dnf_eval_doc = add_dnf_evaluated_document(crate)
+    dnf_presentation_env = add_dnf_presentation_env(crate)
 
-    # Establish isBasedOn relationships
-    crate.get("#dnf-evaluated-document")["isBasedOn"] = [
-        crate.get("#dnf-document"),
-        crate.get("#dnf-data-dependencies"),
-        crate.get("#dnf-engine")
-    ]
+    dnf_eval_doc["isBasedOn"] = [dnf_document, dnf_data_dependencies, dnf_engine]
+    dnf_presentation_env["isBasedOn"] = [dnf_engine]
+    dnf_engine["isBasedOn"] = [dnf_engine_spec]
+    research_article["isBasedOn"] = [dnf_eval_doc, dnf_presentation_env]
 
-    crate.get("#dnf-presentation-environment")["isBasedOn"] = [
-        crate.get("#dnf-engine")
-    ]
-
-    crate.get("#dnf-engine")["isBasedOn"] = [
-        crate.get("#dnf-engine-specification")
-    ]
-
-    crate.get("#research-article")["isBasedOn"] = [
-        crate.get("#dnf-evaluated-document"),
-        crate.get("#dnf-presentation-environment")
-    ]
-
-    # Add the specified relationships
-    crate.get("#dnf-evaluated-document")["conformsTo"] = crate.get("#dnf-engine-specification")
-
-    crate.get("#research-article")["wasGeneratedBy"] = crate.get("#dnf-presentation-environment")
-
-    crate.get("#dnf-document")["conformsTo"] = crate.get("#dnf-schema")
+    dnf_document["conformsTo"] = dnf_engine_spec
+    research_article["wasGeneratedBy"] = dnf_presentation_env
+    dnf_document["conformsTo"] = dnf_engine_schema
 
     crate.write(crate_name)
 
