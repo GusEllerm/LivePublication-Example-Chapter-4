@@ -189,7 +189,17 @@ some body text here
 
 ## Computational Workflow
 
-![Workflow Preview](interface.crate/provenance_output.crate/workflow_preview.png)
+```python exec always
+png_path = None
+png_dir = Path("interface.crate/provenance_output.crate")
+if png_dir.exists():
+    for file in png_dir.iterdir():
+        if file.suffix.lower() == ".png":
+            png_path = str(file)
+            break
+```
+
+`dict(type="ImageObject", contentUrl=png_path)`{python exec}
 
 ### Parameters
 

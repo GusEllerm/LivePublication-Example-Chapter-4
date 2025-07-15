@@ -15,7 +15,6 @@ def add_dnf_evaluated_document(crate):
     }))
 
     evaluated_file = crate.add_file("DNF_Evaluated_Document.json", properties={
-        "@type": "CreativeWork",
         "name": "DNF Evaluated Document File",
         "description": "The actual evaluated JSON file corresponding to the DNF document.",
         "encodingFormat": "application/json"
@@ -36,7 +35,6 @@ def add_dnf_document(crate):
     }))
 
     dnf_file = crate.add_file("DNF_Document.json", properties={
-        "@type": "CreativeWork",
         "name": "DNF Document File",
         "description": "The unresolved DNF document in JSON format.",
         "encodingFormat": "application/json"
@@ -136,7 +134,7 @@ def add_dnf_data_dependencies(crate):
         "name": "Interface Crate",
         "description": "Nested interface.crate containing Experiment Infrastructure execution data.",
         "license": "https://creativecommons.org/licenses/by/4.0/",
-        "@type": ["RO-Crate", "Dataset", "InterfaceCrate"],
+        "@type": ["RO-Crate", "Dataset"],
     }))
 
     wrapper["hasPart"] = [nested_interface_crate]
@@ -150,14 +148,12 @@ def add_main_article(crate):
     }))
 
     html_article = crate.add_file("docs/publication/research_article.html", properties={
-        "@type": "MediaObject",
         "name": "LivePublication HTML View",
         "description": "HTML-rendered version of the LivePublication article.",
         "encodingFormat": "text/html"
     })
 
     markdown_article = crate.add_file("docs/publication/research_article.md", properties={
-        "@type": "MediaObject",
         "name": "LivePublication Markdown Source",
         "description": "Markdown-rendered version of the LivePublication article.",
         "encodingFormat": "text/markdown"

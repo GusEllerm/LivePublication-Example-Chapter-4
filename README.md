@@ -1,4 +1,3 @@
-
 # **LivePublication Example: Chapter 4**
 
 This repository demonstrates a **reproducible, transparent, and publishable computational workflow** using the Common Workflow Language (CWL) and the **LivePublication Framework**. It integrates three core components:
@@ -49,7 +48,7 @@ Create and activate a Python virtual environment:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install cwltool rocrate runcrate stencila
+pip install cwltool rocrate runcrate
 ```
 
 Install the HTML preview tool:

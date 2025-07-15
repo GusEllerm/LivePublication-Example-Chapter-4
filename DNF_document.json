@@ -1,6 +1,6 @@
 {
-  "$schema": "https://stencila.org/v2.3.0/Article.schema.json",
-  "@context": "https://stencila.org/v2.3.0/context.jsonld",
+  "$schema": "https://stencila.org/v2.4.1/Article.schema.json",
+  "@context": "https://stencila.org/v2.4.1/context.jsonld",
   "type": "Article",
   "content": [
     {
@@ -79,19 +79,22 @@
       ]
     },
     {
+      "type": "CodeChunk",
+      "executionMode": "Always",
+      "code": {
+        "string": "png_path = None\npng_dir = Path(\"interface.crate/provenance_output.crate\")\nif png_dir.exists():\n    for file in png_dir.iterdir():\n        if file.suffix.lower() == \".png\":\n            png_path = str(file)\n            break"
+      },
+      "programmingLanguage": "python"
+    },
+    {
       "type": "Paragraph",
       "content": [
         {
-          "type": "ImageObject",
-          "contentUrl": "interface.crate/provenance_output.crate/workflow_preview.png",
-          "caption": [
-            {
-              "type": "Text",
-              "value": {
-                "string": "Workflow Preview"
-              }
-            }
-          ]
+          "type": "CodeExpression",
+          "code": {
+            "string": "dict(type=\"ImageObject\", contentUrl=png_path)"
+          },
+          "programmingLanguage": "python"
         }
       ]
     },
