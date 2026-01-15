@@ -1,0 +1,35 @@
+{
+  "title": "LivePublication example application (Chapter 4)",
+  "description": "Example application for Chapter 4 of the LivePublication Framework thesis, demonstrating a CWL-based experiment infrastructure, RO-Crate interface outputs, and dynamic publication rendering.",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "creators": [
+    {
+      "name": "Ellerm, Augustus",
+      "orcid": "https://orcid.org/0000-0001-8260-231X"
+    }
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "LivePublication",
+    "Chapter 4",
+    "RO-Crate",
+    "provenance",
+    "liveness",
+    "CWL",
+    "dynamic publication"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/GusEllerm/LivePublication-Example-Chapter-4",
+      "resource_type": "software"
+    },
+    {
+      "relation": "references",
+      "identifier": "https://doi.org/10.5281/zenodo.18250033",
+      "resource_type": "other"
+    }
+  ]
+}
+

@@ -1,162 +1,42 @@
-# **LivePublication Example: Chapter 4**
+# LivePublication example application (Chapter 4)
 
-This repository demonstrates a **reproducible, transparent, and publishable computational workflow** using the Common Workflow Language (CWL) and the **LivePublication Framework**. It integrates three core components:
+## What this is
+This repository contains the Chapter 4 LivePublication example application used in the thesis to demonstrate the LivePublication Framework end-to-end. It implements a CWL-based experiment infrastructure, generates provenance and interface crates, and renders a LivePaper-style publication using a dynamic narrative workflow. The example computes the GNDVI vegetation index from Sentinel-2 data and produces a rendered research article from those results.
 
-- **Experiment Infrastructure**: Automated data ingestion and CWL workflow execution
-- **Interface**: Generation of standardised provenance and metadata crates
-- **LivePaper**: Rendering a dynamic, data-responsive publication using a DNF (Dynamic Narrative Framework)
-  - Uses the [Stencila engine](https://github.com/stencila/stencila)
+## What it demonstrates
+- Experiment Infrastructure: CWL workflow execution with provenance capture.
+- Interface: generation of provenance and interface RO-Crates for downstream use.
+- LivePaper: dynamic narrative rendering into publication outputs using Stencila.
+- Provenance handoff between workflow outputs and publication rendering.
 
-The example workflow calculates the GNDVI vegetation index from Sentinel-2 satellite imagery and renders a corresponding LivePublication article.
-
-![Workflow Diagram](workflow_preview.png)
-
----
-
-## 📦 Directory Structure
-
-```
-.
-├── Workflows/                     # CWL workflow definitions
-├── Workflows/Modules/            # Individual CWL tool definitions
-├── Workflows/Modules/Scripts/   # Python scripts for vegetation index analysis
-├── Workflow_inputs/              # CWL input job file(s)
-├── Workflow_inputs/Data/         # Sentinel-2 .SAFE data
-├── provenance_output/            # Provenance output from CWL
-├── provenance_output.crate/      # Workflow Run Crate (RO-Crate with provenance)
-├── interface.crate/              # Interface Crate for rendering publications
-├── docs/                         # Templated HTML site renderer
-├── DNF_document.json             # Data-driven article definition (DNF)
-├── dynamic_article.json          # Fully rendered LivePublication article
-```
-
----
-
-## 🚀 Quick Start
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
-```
-
-### 2. Set Up Your Environment
-
-Create and activate a Python virtual environment:
+## How to run
+Prerequisites: Python 3, Docker (32 GB RAM recommended), CWL toolchain, Stencila CLI, and Node.js for crate HTML preview.
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install cwltool rocrate runcrate
-```
-
-Install the HTML preview tool:
-
-```bash
+pip install -r requirements.txt rocrate runcrate
 npm install -g ro-crate-html-js
-```
-
----
-
-## 🛣️ Run the Full LivePublication Pipeline
-
-To run the complete LivePublication process—from data retrieval to rendered publication—execute:
-
-```bash
 ./publish_pipeline.sh
 ```
 
-This script will:
+## Outputs
+- `provenance_output.crate.zip`: provenance run crate generated from the CWL workflow.
+- `interface.crate.zip`: interface crate representing outputs consumed by the LivePaper.
+- `publication.crate.zip`: publication crate for the rendered article.
+- `docs/publication/research_article.html`: rendered publication output.
+- `docs/index.html`: generated HTML site entry point.
 
-1. 🧹 Clean the project directory of prior outputs
-2. 🛰️ Download new Sentinel-2 data using `copernicus_data.py`
-3. ▶️ Execute the CWL workflow with provenance tracking
-4. 📦 Convert the output into a **Provenance Run Crate**
-5. 🖼️ Generate a workflow diagram and embed it into the crate
-6. ☁️ Upload results to Zenodo (optional; requires token)
-7. 🧬 Generate the **Interface Crate**
-8. 🌐 Generate HTML previews of the crates (via `rochtml`)
-9. 🧱 Build the templated website from metadata and results
-10. 📄 Convert the `.smd` DNF specification into a **DNF Document**
-11. 📑 Render the **DNF Document** into a publication-ready article
-12. 📤 Commit and push the update to GitHub
+## How to view
+- Open `docs/index.html` in a browser to browse the rendered site locally.
+- Open `docs/publication/research_article.html` directly to view the LivePaper output.
+- Live demo: https://gusellerm.github.io/LivePublication-Example-Chapter-4/
 
----
+## How to cite
+Use `CITATION.cff` in this repository. A Zenodo DOI will be added after a GitHub Release is deposited.
 
-## 🧪 Run Workflow Manually (Advanced)
+## Related artefacts
+- LivePublication Interface Schemas (DPC/DSC): https://doi.org/10.5281/zenodo.18250033
 
-### Run the Workflow with Provenance
-
-```bash
-cwltool --provenance provenance_output Workflows/workflow.cwl Workflow_inputs/GNDVI_10m.yaml
-```
-
-### Convert to a Workflow Run Crate
-
-```bash
-runcrate convert provenance_output --output provenance_output.crate
-```
-
-### Generate Workflow Diagram
-
-```bash
-cwltool --print-dot provenance_output.crate/packed.cwl | dot -Tpng -o workflow_preview.png
-cp workflow_preview.png provenance_output.crate/workflow_preview.png
-```
-
-### Generate HTML Crate Preview
-
-```bash
-rochtml provenance_output.crate/ro-crate-metadata.json
-rochtml interface.crate/ro-crate-metadata.json
-```
-
-### Render the DNF Publication
-
-```bash
-stencila convert dynamic_publication.smd DNF_document.json
-stencila render --no-save DNF_document.json dynamic_article.json
-```
-
----
-
-## 🐳 Docker Requirements
-
-Ensure Docker is installed and has **at least 32 GB RAM** configured:
-
-### On macOS or Windows:
-
-- Docker Desktop → **Settings** → **Resources** → **Memory**
-- Set to **32 GB** and click **Apply & Restart**
-
-### On Linux:
-
-- Check memory: `free -h`
-- Diagnose OOM errors: `dmesg | grep -i kill`
-
----
-
-## ☁️ Zenodo Integration (Optional)
-
-To enable automatic uploads, create a file `zenodo_token.py` with:
-
-```python
-token = "your_zenodo_access_token"
-```
-
----
-
-## 📚 References
-
-- [Common Workflow Language (CWL)](https://www.commonwl.org/)
-- [RO-Crate](https://www.researchobject.org/ro-crate/)
-- [runcrate](https://github.com/ResearchObject/runcrate)
-- [ro-crate-html-js](https://github.com/UTS-eResearch/ro-crate-html-js)
-- [Stencila](https://github.com/stencila)
-
----
-
-## 📄 License
-
-MIT License.
+## License
+Apache-2.0 (see `LICENSE`).

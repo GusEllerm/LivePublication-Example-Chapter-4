@@ -1,0 +1,215 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "creator": {
+                "@id": "https://orcid.org/0000-0001-8260-231X"
+            },
+            "datePublished": "2026-01-15T05:20:37+00:00",
+            "description": "Example application for Chapter 4 of the LivePublication Framework thesis, demonstrating a CWL-based experiment infrastructure, RO-Crate interface outputs, and dynamic publication rendering.",
+            "hasPart": [
+                {
+                    "@id": "README.md"
+                },
+                {
+                    "@id": "LICENSE"
+                },
+                {
+                    "@id": "CITATION.cff"
+                },
+                {
+                    "@id": "codemeta.json"
+                },
+                {
+                    "@id": ".zenodo.json"
+                },
+                {
+                    "@id": "requirements.txt"
+                },
+                {
+                    "@id": "Dockerfile"
+                },
+                {
+                    "@id": "publish_pipeline.sh"
+                },
+                {
+                    "@id": "copernicus_data.py"
+                },
+                {
+                    "@id": "interface_crate.py"
+                },
+                {
+                    "@id": "publication_crate.py"
+                },
+                {
+                    "@id": "dynamic_publication.smd"
+                },
+                {
+                    "@id": "Workflows/workflow.cwl"
+                },
+                {
+                    "@id": "Workflow_inputs/GNDVI_10m.yaml"
+                },
+                {
+                    "@id": "workflow_preview.png"
+                },
+                {
+                    "@id": "docs/index.html"
+                },
+                {
+                    "@id": "docs/publication/research_article.html"
+                },
+                {
+                    "@id": "scripts/generate_ro_crate.py"
+                },
+                {
+                    "@id": "scripts/validate_metadata.py"
+                },
+                {
+                    "@id": "Makefile"
+                }
+            ],
+            "license": "Apache-2.0",
+            "mainEntity": {
+                "@id": "#livepublication-example"
+            },
+            "name": "LivePublication example application (Chapter 4)",
+            "version": "1.0.0"
+        },
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            }
+        },
+        {
+            "@id": "https://orcid.org/0000-0001-8260-231X",
+            "@type": "Person",
+            "familyName": "Ellerm",
+            "givenName": "Augustus",
+            "name": "Augustus Ellerm"
+        },
+        {
+            "@id": "#livepublication-example",
+            "@type": "SoftwareSourceCode",
+            "author": {
+                "@id": "https://orcid.org/0000-0001-8260-231X"
+            },
+            "codeRepository": "https://github.com/GusEllerm/LivePublication-Example-Chapter-4",
+            "description": "Example application for Chapter 4 of the LivePublication Framework thesis, demonstrating a CWL-based experiment infrastructure, RO-Crate interface outputs, and dynamic publication rendering.",
+            "license": "Apache-2.0",
+            "name": "LivePublication example application (Chapter 4)",
+            "programmingLanguage": "Python",
+            "version": "1.0.0"
+        },
+        {
+            "@id": "README.md",
+            "@type": "File",
+            "name": "README.md"
+        },
+        {
+            "@id": "LICENSE",
+            "@type": "File",
+            "name": "LICENSE"
+        },
+        {
+            "@id": "CITATION.cff",
+            "@type": "File",
+            "name": "CITATION.cff"
+        },
+        {
+            "@id": "codemeta.json",
+            "@type": "File",
+            "name": "codemeta.json"
+        },
+        {
+            "@id": ".zenodo.json",
+            "@type": "File",
+            "name": ".zenodo.json"
+        },
+        {
+            "@id": "requirements.txt",
+            "@type": "File",
+            "name": "requirements.txt"
+        },
+        {
+            "@id": "Dockerfile",
+            "@type": "File",
+            "name": "Dockerfile"
+        },
+        {
+            "@id": "publish_pipeline.sh",
+            "@type": "File",
+            "name": "publish_pipeline.sh"
+        },
+        {
+            "@id": "copernicus_data.py",
+            "@type": "File",
+            "name": "copernicus_data.py"
+        },
+        {
+            "@id": "interface_crate.py",
+            "@type": "File",
+            "name": "interface_crate.py"
+        },
+        {
+            "@id": "publication_crate.py",
+            "@type": "File",
+            "name": "publication_crate.py"
+        },
+        {
+            "@id": "dynamic_publication.smd",
+            "@type": "File",
+            "name": "dynamic_publication.smd"
+        },
+        {
+            "@id": "Workflows/workflow.cwl",
+            "@type": "File",
+            "name": "Workflows/workflow.cwl"
+        },
+        {
+            "@id": "Workflow_inputs/GNDVI_10m.yaml",
+            "@type": "File",
+            "name": "Workflow_inputs/GNDVI_10m.yaml"
+        },
+        {
+            "@id": "workflow_preview.png",
+            "@type": "File",
+            "name": "workflow_preview.png"
+        },
+        {
+            "@id": "docs/index.html",
+            "@type": "File",
+            "name": "docs/index.html"
+        },
+        {
+            "@id": "docs/publication/research_article.html",
+            "@type": "File",
+            "name": "docs/publication/research_article.html"
+        },
+        {
+            "@id": "scripts/generate_ro_crate.py",
+            "@type": "File",
+            "name": "scripts/generate_ro_crate.py"
+        },
+        {
+            "@id": "scripts/validate_metadata.py",
+            "@type": "File",
+            "name": "scripts/validate_metadata.py"
+        },
+        {
+            "@id": "Makefile",
+            "@type": "File",
+            "name": "Makefile"
+        }
+    ]
+}

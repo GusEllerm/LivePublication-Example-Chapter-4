@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "LivePublication example application (Chapter 4)"
+message: "If you use this software, please cite it."
+type: software
+authors:
+  - family-names: Ellerm
+    given-names: Augustus
+    orcid: https://orcid.org/0000-0001-8260-231X
+repository-code: https://github.com/GusEllerm/LivePublication-Example-Chapter-4
+url: https://github.com/GusEllerm/LivePublication-Example-Chapter-4
+abstract: "Example application for Chapter 4 of the LivePublication Framework thesis, demonstrating a CWL-based experiment infrastructure, RO-Crate interface outputs, and dynamic publication rendering."
+version: 1.0.0
+license: Apache-2.0
+preferred-citation:
+  type: software
+  title: "LivePublication example application (Chapter 4)"
+  authors:
+    - family-names: Ellerm
+      given-names: Augustus
+      orcid: https://orcid.org/0000-0001-8260-231X
+  url: https://github.com/GusEllerm/LivePublication-Example-Chapter-4
+
