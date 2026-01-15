@@ -1,4 +1,5 @@
-# LivePublication example application (Chapter 4)
+# LivePublication example application (Chapter 4) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18252595.svg)](https://doi.org/10.5281/zenodo.18252595)
+
 
 ## What this is
 This repository contains the Chapter 4 LivePublication example application used in the thesis to demonstrate the LivePublication Framework end-to-end. It implements a CWL-based experiment infrastructure, generates provenance and interface crates, and renders a LivePaper-style publication using a dynamic narrative workflow. The example computes the GNDVI vegetation index from Sentinel-2 data and produces a rendered research article from those results.

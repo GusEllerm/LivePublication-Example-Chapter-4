@@ -10,7 +10,7 @@
             "creator": {
                 "@id": "https://orcid.org/0000-0001-8260-231X"
             },
-            "datePublished": "2026-01-15T05:20:37+00:00",
+            "datePublished": "2026-01-15T05:29:48+00:00",
             "description": "Example application for Chapter 4 of the LivePublication Framework thesis, demonstrating a CWL-based experiment infrastructure, RO-Crate interface outputs, and dynamic publication rendering.",
             "hasPart": [
                 {
@@ -74,12 +74,13 @@
                     "@id": "Makefile"
                 }
             ],
+            "identifier": "https://doi.org/10.5281/zenodo.18252594",
             "license": "Apache-2.0",
             "mainEntity": {
                 "@id": "#livepublication-example"
             },
             "name": "LivePublication example application (Chapter 4)",
-            "version": "1.0.0"
+            "version": "1.0.1"
         },
         {
             "@id": "ro-crate-metadata.json",
@@ -106,10 +107,11 @@
             },
             "codeRepository": "https://github.com/GusEllerm/LivePublication-Example-Chapter-4",
             "description": "Example application for Chapter 4 of the LivePublication Framework thesis, demonstrating a CWL-based experiment infrastructure, RO-Crate interface outputs, and dynamic publication rendering.",
+            "identifier": "https://doi.org/10.5281/zenodo.18252594",
             "license": "Apache-2.0",
             "name": "LivePublication example application (Chapter 4)",
             "programmingLanguage": "Python",
-            "version": "1.0.0"
+            "version": "1.0.1"
         },
         {
             "@id": "README.md",

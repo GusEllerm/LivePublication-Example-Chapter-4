@@ -6,7 +6,9 @@
   "codeRepository": "https://github.com/GusEllerm/LivePublication-Example-Chapter-4",
   "readme": "https://github.com/GusEllerm/LivePublication-Example-Chapter-4/blob/main/README.md",
   "issueTracker": "https://github.com/GusEllerm/LivePublication-Example-Chapter-4/issues",
-  "version": "1.0.0",
+  "identifier": "https://doi.org/10.5281/zenodo.18252594",
+  "doi": "10.5281/zenodo.18252594",
+  "version": "1.0.1",
   "license": "Apache-2.0",
   "author": {
     "@type": "Person",

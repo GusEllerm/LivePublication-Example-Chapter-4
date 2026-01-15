@@ -12,7 +12,8 @@ DESCRIPTION = (
     "and dynamic publication rendering."
 )
 LICENSE = "Apache-2.0"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
+DOI_URL = "https://doi.org/10.5281/zenodo.18252594"
 REPO_URL = "https://github.com/GusEllerm/LivePublication-Example-Chapter-4"
 ORCID_URL = "https://orcid.org/0000-0001-8260-231X"
 
@@ -54,6 +55,7 @@ def main():
                 "name": TITLE,
                 "description": DESCRIPTION,
                 "codeRepository": REPO_URL,
+                "identifier": DOI_URL,
                 "version": VERSION,
                 "license": LICENSE,
                 "author": person,
@@ -67,6 +69,7 @@ def main():
     root["description"] = DESCRIPTION
     root["license"] = LICENSE
     root["version"] = VERSION
+    root["identifier"] = DOI_URL
     root["creator"] = person
     root["mainEntity"] = software
     root["conformsTo"] = {"@id": "https://w3id.org/ro/crate/1.1"}

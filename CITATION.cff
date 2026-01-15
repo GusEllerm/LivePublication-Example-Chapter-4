@@ -9,7 +9,8 @@ authors:
 repository-code: https://github.com/GusEllerm/LivePublication-Example-Chapter-4
 url: https://github.com/GusEllerm/LivePublication-Example-Chapter-4
 abstract: "Example application for Chapter 4 of the LivePublication Framework thesis, demonstrating a CWL-based experiment infrastructure, RO-Crate interface outputs, and dynamic publication rendering."
-version: 1.0.0
+version: 1.0.1
+doi: 10.5281/zenodo.18252594
 license: Apache-2.0
 preferred-citation:
   type: software
@@ -19,4 +20,5 @@ preferred-citation:
       given-names: Augustus
       orcid: https://orcid.org/0000-0001-8260-231X
   url: https://github.com/GusEllerm/LivePublication-Example-Chapter-4
+  doi: 10.5281/zenodo.18252594
 
